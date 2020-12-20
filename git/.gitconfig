@@ -1,0 +1,5 @@
+[user]
+	name = Ryan Preston
+	email = r.preston73@gmail.com
+[core]
+	excludesfile = /Users/rnprest/.gitignore

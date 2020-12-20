@@ -1,0 +1,11 @@
+Whenever you make changes to your dotfiles in place, you will need to remember
+to commit those changes
+
+If you add new files, you will have to remember to
+re-run stow: cd ~/dotfiles && stow *
+
+If you’ve removed files since the last
+run, you should re-stow: cd ~/dotfiles && stow -R *
+
+Finally, if you decide that you would like to un-stow all of your dotfiles for
+whatever reason, you can cd ~/dotfiles && stow -D
