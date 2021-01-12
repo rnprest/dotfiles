@@ -79,8 +79,8 @@ endif
 set matchpairs+=<:>
 
 " Ctrl-l will clear highlighted search results
-nnoremap <C-l> :nohlsearch<CR><C-L>
-"set nohlsearch
+"nnoremap <C-l> :nohlsearch<CR><C-L>
+set nohlsearch
 
 " Sync and syntax refresh stuff
 syntax enable
@@ -169,7 +169,7 @@ command! BufOnly silent! execute "%bd|e#|bd#"
 autocmd FileType markdown setlocal spell
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
-" Switch between line number styles when swithing modes
+" Switch between line number styles when switching modes
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -177,7 +177,17 @@ augroup numbertoggle
 augroup END
 
 au TermOpen * if &buftype == 'terminal' | :startinsert | endif " Start terminal in insert mode
-command! FixWhitespace :%s/\s\+$//e                            " Remove trailing whitespaces
+
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+augroup FixDisgustingWhitespace
+    autocmd!
+    autocmd BufWritePre * :call TrimWhitespace()
+augroup END
 
 let mapleader = ","        " Leader key
 
@@ -255,6 +265,7 @@ function TabsOrSpaces()
 endfunction
 augroup custom_tabs
     " Call the function after opening a buffer
+    autocmd!
     autocmd BufReadPost * call TabsOrSpaces()
 augroup end
 
