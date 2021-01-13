@@ -184,10 +184,40 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
+" Removes whitespace every time the file is saved
 augroup FixDisgustingWhitespace
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
+
+
+" -----------------------------------------------------------------------------
+" Compile and run c++ files
+function! TermWrapper(command) abort
+	if !exists('g:split_term_style') | let g:split_term_style = 'vertical' | endif
+	if g:split_term_style ==# 'vertical'
+		let buffercmd = 'vnew'
+	elseif g:split_term_style ==# 'horizontal'
+		let buffercmd = 'new'
+	else
+		echoerr 'ERROR! g:split_term_style is not a valid value (must be ''horizontal'' or ''vertical'' but is currently set to ''' . g:split_term_style . ''')'
+		throw 'ERROR! g:split_term_style is not a valid value (must be ''horizontal'' or ''vertical'')'
+	endif
+	if exists('g:split_term_resize_cmd')
+		exec g:split_term_resize_cmd
+	endif
+	exec buffercmd
+	exec 'term ' . a:command
+	exec 'startinsert'
+endfunction
+
+command! -nargs=0 CompileAndRun call TermWrapper(printf('g++ -std=c++11 %s && ./a.out', expand('%')))
+command! -nargs=1 CompileAndRunWithFile call TermWrapper(printf('g++ -std=c++11 %s && ./a.out < %s', expand('%'), <args>))
+augroup CppToolkit
+	autocmd!
+	autocmd FileType cpp nnoremap <leader>rf :CompileAndRun<CR>
+augroup END
+" -----------------------------------------------------------------------------
 
 let mapleader = ","        " Leader key
 
@@ -218,7 +248,7 @@ set splitbelow              " Open vertical splits BELOW current buffer
 set splitright              " Open horizontal splits RIGHT of current buffer
 set tabstop=4 softtabstop=4 " Use 4 spaces for a tab
 set updatetime=100          " Having longer updatetime (default is 4000ms) causes delays
-set wrap!                   " Disable soft wrapping
+set nowrap                  " Disable soft wrapping
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " Diagnostics appear/become resolved.
