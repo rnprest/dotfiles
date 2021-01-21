@@ -83,6 +83,8 @@ alias tree='tree -a -I .git'
 # move the files from the downloads folder to the current directory
 alias downhere='mv /Users/rnprest/Downloads/* .'
 alias ll='ls -al'
+# please will rerun prev command with sudo
+alias please='sudo $(fc -ln -1)'
 
 # Add flags to existing aliases.
 
