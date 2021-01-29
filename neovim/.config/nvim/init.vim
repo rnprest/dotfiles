@@ -53,6 +53,8 @@ Plug 'wellle/targets.vim'                      " Better text object movement
 Plug 'xolox/vim-misc'                          " Dependency for xolox/vim-session
 Plug 'AndrewRadev/splitjoin.vim'                   " Convert lines: gS 1-many, and gJ many-1
 
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 " Must load this plugin last
 Plug 'ryanoasis/vim-devicons'                  " Add filetype icons to nerdtree
 
@@ -541,6 +543,32 @@ nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gr :Gread<CR>
+
+" -----------------------------------------------------------------------------
+" glacambre/firenvim
+" -----------------------------------------------------------------------------
+
+let g:firenvim_config = {
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'content': 'text',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+
+" Larger font in firenvim
+if exists('g:started_by_firenvim')
+    set guifont=Iosevka:h20
+else
+    set guifont=Iosevka:h12
+endif
 
 " -----------------------------------------------------------------------------
 " mhinz/vim-startify
