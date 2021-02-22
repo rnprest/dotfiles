@@ -58,7 +58,6 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " Must load this plugin last
 Plug 'ryanoasis/vim-devicons'                  " Add filetype icons to nerdtree
 
-"testing testing
 
 call plug#end()
 
