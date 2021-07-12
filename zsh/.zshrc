@@ -47,7 +47,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --ignore-file $HOME/.gitignore -t d . $HOME"
 
 # Extend PATH.
-path=(~/bin $path)
+
+# opt is the m1 homebrew version - want to load that before rosetta version
+#path=(~/opt/homebrew/bin:~/bin:$path)
+export PATH=$HOME/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
 
 # Use additional Git repositories pulled in with `z4h install`.
 #
