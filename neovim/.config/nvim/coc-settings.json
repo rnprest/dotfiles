@@ -1,3 +1,12 @@
 {
-    "rust-analyzer.inlayHints.chainingHints": false
+    "rust-analyzer.inlayHints.chainingHints": false,
+
+    "languageserver": {
+        "terraform": {
+            "command": "terraform-ls",
+            "args": ["serve"],
+            "filetypes": ["terraform", "tf"],
+            "initializationOptions": {}
+        }
+    }
 }

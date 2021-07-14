@@ -33,4 +33,4 @@ shift + alt - 0 : yabai -m space --balance
 alt - e : yabai -m window --toggle split
 
 # Float or unfloat a window
-shift + alt - space : yabai -m window --toggle float
+shift + alt - f : yabai -m window --toggle float

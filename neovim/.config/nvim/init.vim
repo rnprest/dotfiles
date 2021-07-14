@@ -375,7 +375,7 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " Replace instances of word under cursor
 nnoremap <leader>r :%s/\<<C-r><C-w>\>/
-" Replace words with multile forms using abolish.vim
+" Replace words with multiple forms using abolish.vim
 nnoremap <leader>ra :%S//g<Left><Left>
 " Replace in visual selection
 xnoremap <leader>r :S//g<Left><Left>
@@ -402,9 +402,9 @@ vmap <C-/> <plug>NERDCommenterToggle
 " sirver/ultisnips
 " -----------------------------------------------------------------------------
 
-let g:UltiSnipsExpandTrigger='<c-tab>'
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
-let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 " -----------------------------------------------------------------------------
 " neoclide/coc.nvim
@@ -489,7 +489,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Fzf find files
 nnoremap <silent> <leader>f :GFiles<CR>
-nnoremap <silent> <leader>F :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
+nnoremap <silent> <leader>F :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
 " ,l to find lines in current file
