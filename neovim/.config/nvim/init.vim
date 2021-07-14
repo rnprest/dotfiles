@@ -42,7 +42,6 @@ Plug 'reedes/vim-colors-pencil'                " Colorscheme for writing prose (
 Plug 'rhysd/clever-f.vim'                      " Better f-movement - repeat w/ f or F
 Plug 'scrooloose/nerdcommenter'                " Comment file with <Ctrl-/> (same as VSCode)
 Plug 'sheerun/vim-polyglot'                    " Syntax and other support for almost every programming language
-Plug 'sirver/ultisnips'                        " Track the engine.
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Syntax highlighter for nerdtree
 Plug 'tpope/vim-abolish'                       " Coercion between snake_case, camelCase, etc. (crs & crc)
 Plug 'tpope/vim-fugitive'                      " Adds Gread, Gwrite, etc. all of which use buffer
@@ -397,14 +396,6 @@ let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace wh
 " Comment line with Ctrl + / (backslash)
 nmap <C-/> <plug>NERDCommenterToggle
 vmap <C-/> <plug>NERDCommenterToggle
-
-" -----------------------------------------------------------------------------
-" sirver/ultisnips
-" -----------------------------------------------------------------------------
-
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 " -----------------------------------------------------------------------------
 " neoclide/coc.nvim
