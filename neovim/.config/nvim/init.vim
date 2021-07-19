@@ -8,11 +8,10 @@ let g:coc_global_extensions = [
   \ 'coc-java',
   \ 'coc-jedi',
   \ 'coc-json',
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-rust-analyzer',
   \ 'coc-snippets',
   \ 'coc-tslint',
-  \ 'coc-tsserver',
   \ 'coc-tsserver',
   \ 'coc-yaml',
   \ ]
@@ -36,13 +35,11 @@ Plug 'machakann/vim-highlightedyank'           " Briefly highlight which text wa
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'                      " Vim start screen (with session selection)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/nerdtree'                      " Nerdtree
 Plug 'rakr/vim-one'                            " Vim-one colorscheme default for atom
 Plug 'reedes/vim-colors-pencil'                " Colorscheme for writing prose (for use with goyo)
 Plug 'rhysd/clever-f.vim'                      " Better f-movement - repeat w/ f or F
 Plug 'scrooloose/nerdcommenter'                " Comment file with <Ctrl-/> (same as VSCode)
 Plug 'sheerun/vim-polyglot'                    " Syntax and other support for almost every programming language
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Syntax highlighter for nerdtree
 Plug 'tpope/vim-abolish'                       " Coercion between snake_case, camelCase, etc. (crs & crc)
 Plug 'tpope/vim-fugitive'                      " Adds Gread, Gwrite, etc. all of which use buffer
 Plug 'tpope/vim-markdown'                      " Markdown support
@@ -53,6 +50,12 @@ Plug 'xolox/vim-misc'                          " Dependency for xolox/vim-sessio
 Plug 'AndrewRadev/splitjoin.vim'                   " Convert lines: gS 1-many, and gJ many-1
 
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+" telescope requirements...
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Must load this plugin last
 Plug 'ryanoasis/vim-devicons'                  " Add filetype icons to nerdtree
@@ -128,25 +131,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" -----------------------------------------------------------------------------
-" preservim/nerdtree
-" -----------------------------------------------------------------------------
-nnoremap <silent> <expr> <C-n> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
-let g:NERDTreeShowHidden=1
-let g:NERDTreeAutoDeleteBuffer=1
-let g:NERDTreeQuitOnOpen=0
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:webdevicons_enable = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
-" Close tab if nerdtree is last remaining buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Open it automatically
-" Augroup nerdtree_open
-"         autocmd!
-"         autocmd VimEnter * NERDTree | wincmd p
-" Augroup END
 
 " -----------------------------------------------------------------------------
 " Spell Check
@@ -478,14 +462,6 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " junegunn/fzf
 " -----------------------------------------------------------------------------
 
-" Fzf find files
-nnoremap <silent> <leader>f :GFiles<CR>
-nnoremap <silent> <leader>F :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-
-" ,l to find lines in current file
-nnoremap <silent> <leader>l :Lines<CR>
-
 " ,: to search through :command history
 nnoremap <silent> <leader>: :History:<CR>
 
@@ -532,7 +508,7 @@ nmap <leader>gu :diffget //2<CR>
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gr :Gread<CR>
 
 " -----------------------------------------------------------------------------
