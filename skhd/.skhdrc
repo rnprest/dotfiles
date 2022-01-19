@@ -1,0 +1,38 @@
+# open terminal, vsocde, and safari with shortcuts
+cmd - return : open -a iTerm
+alt - return : open -a "Google Chrome"
+alt - o : open -a "Microsoft Outlook"
+alt - t : open -a "Microsoft Teams"
+
+# # focus window
+# alt - h : yabai -m window --focus west
+# alt - j : yabai -m window --focus south
+# alt - k : yabai -m window --focus north
+# alt - l : yabai -m window --focus east
+#
+# # swap window
+# shift + alt - h : yabai -m window --swap west
+# shift + alt - j : yabai -m window --swap south
+# shift + alt - k : yabai -m window --swap north
+# shift + alt - l : yabai -m window --swap east
+#
+# # move window
+# shift + cmd - h : yabai -m window --warp west
+# shift + cmd - j : yabai -m window --warp south
+# shift + cmd - k : yabai -m window --warp north
+# shift + cmd - l : yabai -m window --warp east
+#
+# # toggle window fullscreen zoom
+# alt - f : yabai -m window --toggle zoom-fullscreen
+#
+# # toggle window split type
+# alt - e : yabai -m window --toggle split
+#
+# # balance size of windows
+# shift + alt - 0 : yabai -m space --balance
+#
+# # toggle window split type
+# alt - e : yabai -m window --toggle split
+#
+# # Float or unfloat a window
+# shift + alt - f : yabai -m window --toggle float
