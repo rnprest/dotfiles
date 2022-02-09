@@ -21,7 +21,6 @@ return require('packer').startup(function()
 	use('rhysd/clever-f.vim') -- Better f-movement - repeat w/ f or F
 	use('sheerun/vim-polyglot') -- Syntax and other support for almost every programming language
 	use('tpope/vim-abolish') -- Coercion between snake_case, camelCase, etc. (crs & crc)
-	use('tpope/vim-commentary') -- Comment and uncomment with Ctrl-/
 	use('tpope/vim-fugitive') -- Adds Gread, Gwrite, etc. all of which use buffer
 	use('tpope/vim-repeat') -- Repeat plugins with '.'
 	use('tpope/vim-rhubarb') -- Open github repo of current file
@@ -30,6 +29,25 @@ return require('packer').startup(function()
 	use('ThePrimeagen/git-worktree.nvim')
 	use('drewtempelmeyer/palenight.vim') -- Palenight theme
 	use('iamcco/markdown-preview.nvim') -- if on M1 mac, then need to 'yarn install && yarn upgrade' inside app directory
+	-- Comments
+	use({
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup({
+				ignore = '^$',
+			})
+		end,
+	})
+	use({
+		's1n7ax/nvim-comment-frame',
+		requires = {
+			{ 'nvim-treesitter' },
+		},
+		config = function()
+			require('nvim-comment-frame').setup()
+		end,
+	})
+	----------
 	use({
 		'windwp/nvim-autopairs',
 		config = function()
@@ -76,6 +94,15 @@ return require('packer').startup(function()
 			})
 			vim.notify = require('notify')
 		end,
+	})
+	use({
+		'danymat/neogen',
+		config = function()
+			require('neogen').setup({
+				enabled = true,
+			})
+		end,
+		requires = 'nvim-treesitter/nvim-treesitter',
 	})
 	-- Translate color codes in terminal
 	use({
@@ -143,6 +170,7 @@ return require('packer').startup(function()
 	})
 	use({ 'tami5/lspsaga.nvim', branch = 'nvim51' })
 	use({ 'ms-jpq/coq_nvim', branch = 'coq' }) -- main one
+	use({ 'ray-x/lsp_signature.nvim' })
 	-- Telescope
 	use({
 		'nvim-telescope/telescope.nvim',

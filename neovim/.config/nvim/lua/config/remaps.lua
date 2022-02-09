@@ -93,6 +93,8 @@ nest.applyKeymaps({
 			{ 'n>', [[:lua require("harpoon.ui").nav_file(3)<CR>]] },
 			{ 's>', [[:lua require("harpoon.ui").nav_file(4)<CR>]] },
 			{ 'g>', [[:lua require("harpoon.term").gotoTerminal(1)<CR>]] },
+			{ 'c>', [[:lua require("harpoon.term").sendCommand(1, "cargo run\n")<CR>]] },
+			-- { 'c>', [[:lua require("harpoon.term").sendCommand(1, "semgrep --config semgrep.yaml\n")<CR>]] },
 		},
 	},
 	-----------------------------------------------------------------------------
