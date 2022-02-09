@@ -15,6 +15,7 @@ Abolish beatiful beautiful
 Abolish becuase because
 Abolish begining beginning
 Abolish beleive believe
+Abolish chaange change
 Abolish changable changeable
 Abolish co{m,mm}i{t,tt}ed committed
 Abolish explicite{ly,ness} explicit{}
