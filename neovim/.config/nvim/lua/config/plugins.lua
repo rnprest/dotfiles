@@ -29,6 +29,15 @@ return require('packer').startup(function()
 	use('ThePrimeagen/git-worktree.nvim')
 	use('drewtempelmeyer/palenight.vim') -- Palenight theme
 	use('iamcco/markdown-preview.nvim') -- if on M1 mac, then need to 'yarn install && yarn upgrade' inside app directory
+	-- Minimap (scrolling preview pane)
+	use({
+		'wfxr/minimap.vim', -- requires: brew install code-minimap
+		config = function()
+			vim.g.minimap_width = 10
+			vim.g.minimap_auto_start = 1
+			vim.g.minimap_auto_start_win_enter = 1
+		end,
+	})
 	-- Comments
 	use({
 		'numToStr/Comment.nvim',
