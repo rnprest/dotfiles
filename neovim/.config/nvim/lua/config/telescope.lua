@@ -29,10 +29,6 @@ require('telescope').load_extension('fzy_native')
 -- Git worktrees using telescope
 --------------------------------------------------------------------------------
 require('telescope').load_extension('git_worktree')
---------------------------------------------------------------------------------
--- Project switcher using telescope
---------------------------------------------------------------------------------
-require('telescope').load_extension('projects')
 
 local M = {}
 M.search_dotfiles = function()

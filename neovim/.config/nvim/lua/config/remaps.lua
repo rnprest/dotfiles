@@ -17,6 +17,8 @@ nest.applyKeymaps({
 	{
 		'<leader>',
 		{
+			{ 'lspinstall', [[:LspInstall bashls dockerls gopls html jsonls pyright rust_analyzer sumneko_lua terraformls tsserver vimls yamlls<CR>]]},
+
 			{ 'ha', [[:lua require("harpoon.mark").add_file()<CR>]] },
 			-- saves the URL to the current resource block's azurerm docs page to the clipboard
 			{ 'or', [[ mz?resource "<CR>yi"Ohttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/<ESC>pbdf_dd`z ]] },
@@ -27,7 +29,6 @@ nest.applyKeymaps({
 			{ 'k', ':lnext<CR>zz' },
 			{ 'j', ':lprev<CR>zz' },
 			{ 'q', ':call ToggleQFList(0)<CR>' },
-			{ 'sp', [[:Telescope projects<CR>]] },
 			-- { 'q', [[:call ToggleQFList(1)<CR>]] },
 			-- list worktrees
 			{ 'w', [[:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]] },

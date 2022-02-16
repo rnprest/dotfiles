@@ -1,3 +1,9 @@
+local ok = pcall(require, 'impatient')
+require('config.packer_commands')
+
+if not ok then
+	require('config.plugins').sync()
+end
 -----------------------------------------------------------------------------
 -- Additional Settings
 -----------------------------------------------------------------------------
@@ -48,12 +54,10 @@ opt.signcolumn = 'yes' -- Always show the signcolumn, otherwise it would shift f
 -------------------------------------------------------------------------------
 -- Color settings
 -------------------------------------------------------------------------------
-cmd('colorscheme material')
 cmd('let $NVIM_TUI_ENABLE_TRUE_COLOR=1') -- Enable true colors
 cmd('syntax enable')
 cmd('syntax sync fromstart')
 cmd('filetype plugin on')
-cmd('highlight CursorLineNr guifg=#fb801a') -- current cursorline number (make it a pretty orange)
 -------------------------------------------------------------------------------
 -- Tekton Pipeline
 -------------------------------------------------------------------------------

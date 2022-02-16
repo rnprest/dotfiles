@@ -1,22 +1,36 @@
--- auto-install packer
 local execute = vim.api.nvim_command
+local packer = nil
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
-	execute('packadd packer.nvim')
-end
+local compile_path = install_path .. '/plugin/packer_compiled.lua'
+local is_installed = vim.fn.empty(vim.fn.glob(install_path)) == 0
 
--- automatically compile after changing plugins
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+local function init()
+	if not is_installed then
+		if vim.fn.input('Install packer.nvim? (y for yes) ') == 'y' then
+			execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+			execute('packadd packer.nvim')
+			print('Installed packer.nvim.')
+			is_installed = 1
+		end
+	end
 
-return require('packer').startup(function()
-	-- Packer can manage itself
-	use('wbthomason/packer.nvim')
+	if not is_installed then
+		return
+	end
+	if packer == nil then
+		packer = require('packer')
+		packer.init({
+			disable_commands = true,
+			compile_path = compile_path,
+		})
+	end
+
+	local use = packer.use
+	packer.reset()
+
+	use('wbthomason/packer.nvim') -- Which came first? The chicken or the egg?
+	use('lewis6991/impatient.nvim')
+	use('neovim/nvim-lspconfig')
 	use('godlygeek/tabular')
 	use('rhysd/clever-f.vim') -- Better f-movement - repeat w/ f or F
 	use('sheerun/vim-polyglot') -- Syntax and other support for almost every programming language
@@ -29,15 +43,6 @@ return require('packer').startup(function()
 	use('ThePrimeagen/git-worktree.nvim')
 	use('drewtempelmeyer/palenight.vim') -- Palenight theme
 	use('iamcco/markdown-preview.nvim') -- if on M1 mac, then need to 'yarn install && yarn upgrade' inside app directory
-	-- Minimap (scrolling preview pane)
-	use({
-		'wfxr/minimap.vim', -- requires: brew install code-minimap
-		config = function()
-			vim.g.minimap_width = 10
-			vim.g.minimap_auto_start = 1
-			vim.g.minimap_auto_start_win_enter = 1
-		end,
-	})
 	-- Comments
 	use({
 		'numToStr/Comment.nvim',
@@ -134,9 +139,25 @@ return require('packer').startup(function()
 		run = ':TSUpdate',
 		config = function()
 			require('nvim-treesitter.configs').setup({
-				ensure_installed = 'maintained',
+				-- One of "all", "maintained" (parsers with maintainers), or a list of languages
+				ensure_installed = { 'rust', 'go', 'java', 'yaml', 'json', 'lua' },
+
+				-- Install languages synchronously (only applied to `ensure_installed`)
+				sync_install = false,
+
+				indent = {
+					enabled = true,
+				},
+
 				highlight = {
+					-- `false` will disable the whole extension
 					enable = true,
+
+					-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+					-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+					-- Using this option may slow down your editor, and you may see some duplicate highlights.
+					-- Instead of true it can also be a list of languages
+					additional_vim_regex_highlighting = false,
 				},
 			})
 		end,
@@ -146,6 +167,11 @@ return require('packer').startup(function()
 	use({
 		'marko-cerovac/material.nvim',
 		requires = { 'tjdevries/colorbuddy.nvim' },
+		config = function()
+			vim.cmd('colorscheme material')
+			-- This highlight needs to load AFTER the colorscheme is set so that it isn't overwritten
+			vim.cmd('highlight CursorLineNr guifg=#fb801a') -- current cursorline number (make it a pretty orange)
+		end,
 	})
 	-- Statusline
 	use({
@@ -172,13 +198,22 @@ return require('packer').startup(function()
 	})
 	-- LSP
 	use({
-		'neovim/nvim-lspconfig',
+		'hrsh7th/nvim-cmp',
+		event = 'BufEnter',
 		config = function()
-			require('config.lsp')
+			require('config.cmp').setup()
 		end,
 	})
+	use({ 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-buffer', after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-path', after = 'nvim-cmp' })
+	use({ 'onsails/lspkind-nvim' })
+
+	use({ 'williamboman/nvim-lsp-installer', event = 'BufEnter', after = 'cmp-nvim-lsp', config = "require('config.lsp')" })
+
 	use({ 'tami5/lspsaga.nvim', branch = 'nvim51' })
-	use({ 'ms-jpq/coq_nvim', branch = 'coq' }) -- main one
 	use({ 'ray-x/lsp_signature.nvim' })
 	-- Telescope
 	use({
@@ -186,13 +221,6 @@ return require('packer').startup(function()
 		requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim' },
 		config = function()
 			require('config.telescope')
-		end,
-	})
-	-- Telescope PROJECTS
-	use({
-		'ahmedkhalf/project.nvim',
-		config = function()
-			require('project_nvim').setup({})
 		end,
 	})
 	-- Harpoon
@@ -211,4 +239,13 @@ return require('packer').startup(function()
 			require('refactoring').setup({})
 		end,
 	})
-end)
+end
+
+local plugins = setmetatable({}, {
+	__index = function(_, key)
+		init()
+		return packer[key]
+	end,
+})
+
+return plugins
