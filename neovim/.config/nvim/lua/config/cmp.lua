@@ -3,6 +3,18 @@ local M = {}
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
+local snip_status_ok, luasnip = pcall(require, 'luasnip')
+if not snip_status_ok then
+	return
+end
+
+require('luasnip/loaders/from_vscode').lazy_load()
+
+local check_backspace = function()
+	local col = vim.fn.col('.') - 1
+	return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
+end
+
 function M.setup()
 	cmp.setup({
 		formatting = {
@@ -20,7 +32,7 @@ function M.setup()
 		snippet = {
 			-- REQUIRED - you must specify a snippet engine
 			expand = function(args)
-				vim.fn['vsnip#anonymous'](args.body) -- For `vsnip` users.
+				require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 			end,
 		},
 		mapping = {
@@ -28,7 +40,22 @@ function M.setup()
 			--        lol this is the only mapping that matters idk what        --
 			--            the rest do. they were included by default            --
 			----------------------------------------------------------------------
-			['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+			['<Tab>'] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					cmp.select_next_item()
+				elseif luasnip.expandable() then
+					luasnip.expand()
+				elseif luasnip.expand_or_jumpable() then
+					luasnip.expand_or_jump()
+				elseif check_backspace() then
+					fallback()
+				else
+					fallback()
+				end
+			end, {
+				'i',
+				's',
+			}),
 			----------------------------------------------------------------------
 			['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
 			['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -46,6 +73,7 @@ function M.setup()
 			{ name = 'buffer' },
 			{ name = 'path' },
 			{ name = 'cmdline' },
+			{ name = 'luasnip' }, -- For luasnip users.
 		}),
 	})
 

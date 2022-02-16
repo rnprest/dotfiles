@@ -215,6 +215,10 @@ local function init()
 
 	use({ 'tami5/lspsaga.nvim', branch = 'nvim51' })
 	use({ 'ray-x/lsp_signature.nvim' })
+
+	-- luasnip ❤️   cmp
+	use({ 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' })
+	use({ 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp_luasnip' })
 	-- Telescope
 	use({
 		'nvim-telescope/telescope.nvim',
