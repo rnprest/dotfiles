@@ -11,46 +11,47 @@ require('config')
 -----------------------------------------------------------------------------
 -- Helpers
 -----------------------------------------------------------------------------
-local g, opt, cmd, api = vim.g, vim.opt, vim.cmd, vim.api
+local g, opt, cmd = vim.g, vim.opt, vim.cmd
 -----------------------------------------------------------------------------
 -- Settings
 -----------------------------------------------------------------------------
 g.mapleader = ','
 -----------------
--- Right now, this setting interferes with harpoon
--- opt.autochdir = true -- Set CWD automatically when changing buffers
-opt.clipboard:append('unnamedplus')
-opt.cmdheight = 2 -- Give more space for displaying messages.
-opt.conceallevel = 3 -- Removes square brackets from devicons
-opt.encoding = 'UTF-8' -- Encoding
-opt.errorbells = false
-opt.expandtab = true -- Turn tabs into spaces
-opt.fileencoding = 'UTF-8' -- Encoding
-opt.fileencodings = 'UTF-8' -- Encoding
-opt.hidden = true -- Allow switching between buffers without saving
-opt.hlsearch = false
-opt.ignorecase = true -- Case insensitive searching
-opt.inccommand = 'split' -- Live substitution with search&replace (:%s)
-opt.lazyredraw = true -- Speeds up scrolling
-opt.mouse = 'a' -- Mouse support
-opt.redrawtime = 10000
-opt.regexpengine = 1 -- Speeds up scrolling
-opt.relativenumber = true
-opt.scrolloff = 2 -- Always show at least one line above/below the cursor.
-opt.shiftwidth = 4 -- The number of spaces in a tab
-opt.shortmess:append('c')
-opt.sidescrolloff = 5 -- Always show at least one line left/right of the cursor.
-opt.smartcase = true -- Will automatically switch to case sensitive if you use any capitals
-opt.softtabstop = 4 -- Use 4 spaces for a tab
-opt.splitbelow = true -- Open vertical splits BELOW current buffer
-opt.splitright = true -- Open horizontal splits RIGHT of current buffer
-opt.tabstop = 4
-opt.updatetime = 100 -- default updatetime 4000ms is not good for async update (vim/signify)
-opt.wrap = false -- Disable soft wrapping
-opt.matchpairs:append('<:>')
-opt.termguicolors = true -- Enable 24-bit true colors
-opt.guifont = 'Iosevka Nerd Font Mono:h16' -- Set font for neovide and other gui editors
-opt.signcolumn = 'yes' -- Always show the signcolumn, otherwise it would shift for diagnostics
+
+local options = {
+	clipboard = 'unnamedplus',
+	cmdheight = 2, -- Give more space for displaying messages.
+	conceallevel = 3, -- Removes square brackets from devicons
+	encoding = 'UTF-8', -- Encoding
+	expandtab = true, -- Turn tabs into spaces
+	fileencoding = 'UTF-8', -- Encoding
+	fileencodings = 'UTF-8', -- Encoding
+	guifont = 'Iosevka Nerd Font Mono:h16', -- Set font for neovide and other gui editors
+	hidden = true, -- Allow switching between buffers without saving
+	hlsearch = false,
+	ignorecase = true, -- Case insensitive searching
+	inccommand = 'split', -- Live substitution with search&replace (:%s)
+	lazyredraw = true, -- Speeds up scrolling
+	mouse = 'a', -- Mouse support
+	redrawtime = 10000,
+	regexpengine = 1, -- Speeds up scrolling
+	relativenumber = true,
+	scrolloff = 2, -- Always show at least one line above/below the cursor.
+	shiftwidth = 4, -- The number of spaces in a tab
+	sidescrolloff = 5, -- Always show at least one line left/right of the cursor.
+	signcolumn = 'yes', -- Always show the signcolumn, otherwise it would shift for diagnostics
+	smartcase = true, -- Will automatically switch to case sensitive if you use any capitals
+	softtabstop = 4, -- Use 4 spaces for a tab
+	splitbelow = true, -- Open vertical splits BELOW current buffer
+	splitright = true, -- Open horizontal splits RIGHT of current buffer
+	tabstop = 4,
+	termguicolors = true, -- Enable 24-bit true colors
+	updatetime = 100, -- default updatetime 4000ms is not good for async update (vim/signify)
+	wrap = false, -- Disable soft wrapping
+}
+for k, v in pairs(options) do
+	opt[k] = v
+end
 -------------------------------------------------------------------------------
 -- Color settings
 -------------------------------------------------------------------------------
