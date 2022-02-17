@@ -70,6 +70,13 @@ nest.applyKeymaps({
 					{ 'c', [[:lua require('config.telescope').git_branches()<CR>]] },
 				},
 			},
+			{
+				's',
+				{
+					{ 'r', [[<Plug>SnipRun]] },
+					{ 'c', [[<Plug>SnipClose]] },
+				},
+			},
 			-- These are saved macros
 			{
 				'm',

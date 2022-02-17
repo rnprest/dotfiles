@@ -243,6 +243,7 @@ local function init()
 			require('refactoring').setup({})
 		end,
 	})
+	use({ 'michaelb/sniprun', run = 'bash ./install.sh' })
 end
 
 local plugins = setmetatable({}, {
