@@ -17,7 +17,10 @@ nest.applyKeymaps({
 	{
 		'<leader>',
 		{
-			{ 'lspinstall', [[:LspInstall bashls dockerls gopls html jsonls pyright rust_analyzer sumneko_lua terraformls tsserver vimls yamlls<CR>]]},
+			{
+				'lspinstall',
+				[[:LspInstall bashls dockerls gopls html jsonls pyright rust_analyzer sumneko_lua terraformls tsserver vimls yamlls<CR>]],
+			},
 
 			{ 'ha', [[:lua require("harpoon.mark").add_file()<CR>]] },
 			-- saves the URL to the current resource block's azurerm docs page to the clipboard
@@ -65,7 +68,6 @@ nest.applyKeymaps({
 				'g',
 				{
 					{ 'p', ':Git push<CR>' },
-					{ 'r', ':Gread<CR>' },
 					{ 's', ':G<CR>' },
 					{ 'c', [[:lua require('config.telescope').git_branches()<CR>]] },
 				},
