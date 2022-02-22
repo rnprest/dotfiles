@@ -244,6 +244,13 @@ local function init()
 		end,
 	})
 	use({ 'michaelb/sniprun', run = 'bash ./install.sh' })
+	use({
+		'SmiteshP/nvim-gps',
+		requires = { 'nvim-treesitter/nvim-treesitter' },
+		config = function()
+			require('nvim-gps').setup()
+		end,
+	})
 end
 
 local plugins = setmetatable({}, {

@@ -1,4 +1,5 @@
 local lualine = require('lualine')
+local gps = require('nvim-gps')
 local M = {}
 
 function LspStatus()
@@ -151,6 +152,11 @@ ins_left({
 		color_warn = { fg = colors.yellow },
 		color_info = { fg = colors.cyan },
 	},
+})
+
+ins_left({
+	gps.get_location,
+	cond = gps.is_available,
 })
 
 -- Insert mid section. You can make any number of sections in neovim :)
