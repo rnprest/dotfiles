@@ -14,9 +14,9 @@ local on_attach = function(client, bufnr)
 				{ '<leader>lh', '<cmd>Lspsaga hover_doc<CR>' },
 				{ '<leader>lr', ':LspRestart<CR>' },
 				{ '<leader>ra', '<cmd>Lspsaga rename<CR>' },
-				{ '<leader>bgd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
-				{ '<leader>bgi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
-				{ '<leader>bgr', '<cmd>lua vim.lsp.buf.references()<CR>' },
+				{ '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
+				{ '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
+				{ '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>' },
 			},
 		},
 	})
