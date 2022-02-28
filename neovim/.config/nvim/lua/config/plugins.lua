@@ -37,10 +37,8 @@ local function init()
 	use('tpope/vim-abolish') -- Coercion between snake_case, camelCase, etc. (crs & crc)
 	use('tpope/vim-fugitive') -- Adds Gread, Gwrite, etc. all of which use buffer
 	use('tpope/vim-repeat') -- Repeat plugins with '.'
-	use('tpope/vim-rhubarb') -- Open github repo of current file
 	use('tpope/vim-surround') -- Surround words
 	use('wellle/targets.vim') -- Better text object movement
-	use('ThePrimeagen/git-worktree.nvim')
 	use('drewtempelmeyer/palenight.vim') -- Palenight theme
 	use('iamcco/markdown-preview.nvim') -- if on M1 mac, then need to 'yarn install && yarn upgrade' inside app directory
 	-- Comments
@@ -227,6 +225,8 @@ local function init()
 			require('config.telescope')
 		end,
 	})
+	-- use({ 'ThePrimeagen/git-worktree.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
+	use({ 'nvim-telescope/telescope-file-browser.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
 	-- Harpoon
 	use({
 		'ThePrimeagen/harpoon',
@@ -243,12 +243,18 @@ local function init()
 			require('refactoring').setup({})
 		end,
 	})
-	use({ 'michaelb/sniprun', run = 'bash ./install.sh' })
 	use({
 		'SmiteshP/nvim-gps',
 		requires = { 'nvim-treesitter/nvim-treesitter' },
 		config = function()
 			require('nvim-gps').setup()
+		end,
+	})
+	use({
+		'ruifm/gitlinker.nvim',
+		requires = 'nvim-lua/plenary.nvim',
+		config = function()
+			require('config.gitlinker')
 		end,
 	})
 end

@@ -26,17 +26,17 @@ nest.applyKeymaps({
 			-- saves the URL to the current resource block's azurerm docs page to the clipboard
 			{ 'or', [[ mz?resource "<CR>yi"Ohttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/<ESC>pbdf_dd`z ]] },
 			{ 'b', '%' },
-			{ 'of', ':GBrowse<CR>' }, -- Open file
+			{ 'of', '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>' },
 			{ 'dot', [[:lua require('config.telescope').search_dotfiles()<CR>]] },
 			{ 'f', ':Format<CR>' }, -- Format file
 			{ 'k', ':lnext<CR>zz' },
 			{ 'j', ':lprev<CR>zz' },
 			{ 'q', ':call ToggleQFList(0)<CR>' },
 			-- { 'q', [[:call ToggleQFList(1)<CR>]] },
-			-- list worktrees
-			{ 'w', [[:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]] },
-			-- new worktree
-			{ 'nw', [[:lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>]] },
+			-- open telescope netrw
+			{ 'tb', ':Telescope file_browser<CR><ESC>' },
+			{ '<leader>x', ':w<CR>:source %<CR>' },
+
 			-----------------
 			{
 				'y',
@@ -70,13 +70,6 @@ nest.applyKeymaps({
 					{ 'p', ':Git push<CR>' },
 					{ 's', ':G<CR>' },
 					{ 'c', [[:lua require('config.telescope').git_branches()<CR>]] },
-				},
-			},
-			{
-				's',
-				{
-					{ 'r', [[<Plug>SnipRun]] },
-					{ 'c', [[<Plug>SnipClose]] },
 				},
 			},
 			-- These are saved macros
@@ -141,6 +134,10 @@ nest.applyKeymaps({
 			{ 'J', [[:m '>+1<CR>gv=gv]] }, -- Moving text
 			{ 'K', [[:m '<-2<CR>gv=gv]] }, -- Moving text
 			{ 'rr', [[:lua require("config.telescope").refactors()<CR>]] },
+			{
+				'<leader>of',
+				'<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
+			},
 		},
 	},
 	-----------------------------------------------------------------------------
