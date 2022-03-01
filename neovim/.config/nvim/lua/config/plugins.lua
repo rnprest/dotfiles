@@ -191,6 +191,7 @@ local function init()
 		end,
 	})
 	use('nvim-lua/lsp-status.nvim') -- Add components to show LSP Status in Status Line
+	use('j-hui/fidget.nvim') -- LSP progress
 	use({
 		'lewis6991/gitsigns.nvim',
 		requires = {

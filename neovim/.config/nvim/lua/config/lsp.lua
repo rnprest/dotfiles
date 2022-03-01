@@ -2,6 +2,18 @@ local lsp_installer = require('nvim-lsp-installer')
 local lsp_status = require('lsp-status')
 lsp_status.register_progress()
 
+require('fidget').setup({
+	text = {
+		spinner = 'moon',
+	},
+	align = {
+		bottom = true,
+	},
+	window = {
+		relative = 'editor',
+	},
+})
+
 local on_attach = function(client, bufnr)
 	require('lsp_signature').on_attach()
 	require('nest').applyKeymaps({
