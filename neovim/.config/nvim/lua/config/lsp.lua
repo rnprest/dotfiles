@@ -1,6 +1,4 @@
 local lsp_installer = require('nvim-lsp-installer')
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
 
 require('fidget').setup({
 	text = {
@@ -32,7 +30,21 @@ local on_attach = function(client, bufnr)
 		},
 	})
 
-	lsp_status.on_attach(client, bufnr)
+	-- TODO: need to set these to NOT be underlined
+	-- to see the actual highlights. |LspReferenceText|
+	-- |LspReferenceRead| |LspReferenceWrite|
+
+	-- Set autocommands conditional on server_capabilities
+	if client.resolved_capabilities.document_highlight then
+		vim.cmd([[
+		    augroup lsp_document_highlight
+		    	autocmd! * <buffer>
+		    	autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+		    	autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+			augroup END
+		]])
+	end
+
 end
 
 lsp_installer.on_server_ready(function(server)

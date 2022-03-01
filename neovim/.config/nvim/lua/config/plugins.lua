@@ -180,6 +180,12 @@ local function init()
 			vim.cmd('colorscheme material')
 			-- This highlight needs to load AFTER the colorscheme is set so that it isn't overwritten
 			vim.cmd('highlight CursorLineNr guifg=#fb801a') -- current cursorline number (make it a pretty orange)
+			----------------------------------------------------------------------
+			--             Remove the underline from LspReference*              --
+			----------------------------------------------------------------------
+			vim.cmd('highlight LspReferenceRead gui=NONE guibg=#464B5D')
+			vim.cmd('highlight LspReferenceWrite gui=NONE guibg=#464B5D')
+			vim.cmd('highlight LspReferenceText gui=NONE guibg=#464B5D')
 		end,
 	})
 	-- Statusline
@@ -190,7 +196,6 @@ local function init()
 			require('config.statusline').setup()
 		end,
 	})
-	use('nvim-lua/lsp-status.nvim') -- Add components to show LSP Status in Status Line
 	use('j-hui/fidget.nvim') -- LSP progress
 	use({
 		'lewis6991/gitsigns.nvim',
