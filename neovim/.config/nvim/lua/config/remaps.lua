@@ -22,8 +22,9 @@ nest.applyKeymaps({
 				[[:LspInstall bashls dockerls gopls html jsonls pyright rust_analyzer sumneko_lua terraformls tsserver vimls yamlls<CR>]],
 			},
 
+			-- Load harpoon with terraform files
+			{ 'ht', [[ :lua require("harpoon.ui").toggle_quick_menu()<CR>ggVGcmain.tf<ESC>oterraform.tfvars<ESC>ovariables.tf<ESC>obackend.tfvars<ESC> ]] },
 			{ 'ha', [[:lua require("harpoon.mark").add_file()<CR>]] },
-			-- saves the URL to the current resource block's azurerm docs page to the clipboard
 			{ 'or', [[ mz?resource "<CR>yi"Ohttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/<ESC>pbdf_dd`z ]] },
 			{ 'b', '%' },
 			{ 'of', '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>' },
