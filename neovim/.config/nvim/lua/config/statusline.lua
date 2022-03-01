@@ -2,15 +2,6 @@ local lualine = require('lualine')
 local gps = require('nvim-gps')
 local M = {}
 
-function LspStatus()
-	local clients = vim.lsp.get_active_clients()
-	if next(clients) == nil then
-		return ''
-	end
-
-	return require('lsp-status').status()
-end
-
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
@@ -186,12 +177,6 @@ ins_left({
 	end,
 	icon = ' LSP:',
 	color = { fg = '#ffffff', gui = 'bold' },
-})
-
-ins_right({
-	function()
-		return LspStatus()
-	end,
 })
 
 -- Add components to right sections
