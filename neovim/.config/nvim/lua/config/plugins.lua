@@ -328,6 +328,8 @@ local function init()
 			require('config.gitlinker')
 		end,
 	})
+	-- I'm weak and still need this
+	use('ThePrimeagen/git-worktree.nvim')
 end
 
 local plugins = setmetatable({}, {
