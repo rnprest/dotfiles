@@ -30,10 +30,6 @@ local on_attach = function(client, bufnr)
 		},
 	})
 
-	-- TODO: need to set these to NOT be underlined
-	-- to see the actual highlights. |LspReferenceText|
-	-- |LspReferenceRead| |LspReferenceWrite|
-
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
 		vim.cmd([[
