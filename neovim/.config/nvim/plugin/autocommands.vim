@@ -1,3 +1,10 @@
+" Disable harpoon default keymap when in a norg buffer, so can use CR to follow links
+augroup NeorgHarpoon
+    autocmd!
+    autocmd BufEnter *.norg call nvim_set_keymap('n', '<CR>', '<CR>', {})
+    autocmd BufLeave *.norg call nvim_set_keymap('n', '<CR>', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {})
+augroup END
+
 " -----------------------------------------------------------------------------
 " Skeleton Files
 " -----------------------------------------------------------------------------
