@@ -23,7 +23,10 @@ nest.applyKeymaps({
 			},
 
 			-- Load harpoon with terraform files
-			{ 'ht', [[ :lua require("harpoon.ui").toggle_quick_menu()<CR>ggVGcmain.tf<ESC>oterraform.tfvars<ESC>ovariables.tf<ESC>obackend.tfvars<ESC> ]] },
+			{
+				'ht',
+				[[ :lua require("harpoon.ui").toggle_quick_menu()<CR>ggVGcmain.tf<ESC>oterraform.tfvars<ESC>ovariables.tf<ESC>obackend.tfvars<ESC> ]],
+			},
 			{ 'ha', [[:lua require("harpoon.mark").add_file()<CR>]] },
 			{ 'or', [[ mz?resource "<CR>yi"Ohttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/<ESC>pbdf_dd`z ]] },
 			{ 'b', '%' },
