@@ -251,7 +251,61 @@ local function init()
 	})
 	-- Task Warrior / Vim Wiki
 	use({ 'vimwiki/vimwiki', branch = 'dev' })
-	use('tools-life/taskwiki')
+	use({
+		'nvim-neorg/neorg',
+		tag = '0.0.11',
+		requires = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' },
+		config = function()
+			require('neorg').setup({
+				load = {
+					['core.defaults'] = {},
+					['core.integrations.telescope'] = {},
+					['core.keybinds'] = {
+						config = {
+							neorg_leader = ',',
+						},
+					},
+					['core.norg.concealer'] = {},
+					['core.norg.completion'] = {
+						config = {
+							engine = 'nvim-cmp',
+						},
+					},
+					['core.norg.dirman'] = {
+						config = {
+							workspaces = {
+								work = '~/notes/work',
+							},
+							autodetect = true,
+							autochdir = true,
+						},
+					},
+					['core.gtd.base'] = {
+						config = {
+							workspace = 'work',
+						},
+					},
+					['core.presenter'] = {
+						config = {
+							zen_mode = 'zen-mode',
+						},
+					},
+					['core.norg.qol.toc'] = {},
+				},
+			})
+		end,
+	})
+	-- Lua
+	use({
+		'folke/zen-mode.nvim',
+		config = function()
+			require('zen-mode').setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 	-- Refactoring
 	use({
 		'ThePrimeagen/refactoring.nvim',
