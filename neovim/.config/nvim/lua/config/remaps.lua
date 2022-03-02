@@ -77,7 +77,7 @@ nest.applyKeymaps({
 				'g',
 				{
 					{ 'p', ':Git push<CR>' },
-					{ 's', ':G<CR>' },
+					{ 's', ':Neogit<CR>' },
 					{ 'c', [[:lua require('config.telescope').git_branches()<CR>]] },
 				},
 			},
