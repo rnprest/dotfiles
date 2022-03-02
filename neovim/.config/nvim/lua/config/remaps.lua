@@ -33,10 +33,15 @@ nest.applyKeymaps({
 			{ 'k', ':lnext<CR>zz' },
 			{ 'j', ':lprev<CR>zz' },
 			{ 'q', ':call ToggleQFList(0)<CR>' },
+			-- list worktrees
+			{ 'w', [[:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]] },
+			-- new worktree
+			{ 'nw', [[:lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>]] },
 			-- { 'q', [[:call ToggleQFList(1)<CR>]] },
 			-- open telescope netrw
 			{ 'tb', ':Telescope file_browser<CR><ESC>' },
 			{ '<leader>x', ':w<CR>:source %<CR>' },
+			{ 'ow', ':Neorg context work<CR>' },
 
 			-----------------
 			{
