@@ -44,7 +44,9 @@ nest.applyKeymaps({
 			-- open telescope netrw
 			{ 'tb', ':Telescope file_browser<CR><ESC>' },
 			{ '<leader>x', ':w<CR>:source %<CR>' },
-			{ 'ow', ':Neorg context work<CR>' },
+			{ 'on', ':e ~/neorg/notes/index.norg<CR>' },
+			{ 'ot', ':e ~/neorg/tasks/index.norg<CR>' },
+			{ 'oi', ':e ~/neorg/tasks/inbox.norg<CR>' },
 
 			-----------------
 			{
@@ -89,6 +91,7 @@ nest.applyKeymaps({
 					{ 's', [[:sno/dev6/${var.suffix}<CR>]] }, --  dev6   --  > ${var.suffix}
 					-- FIXME: This macro doesn't work?? But it works if you copy it to clip and paste in command mode
 					{ 'rcc', [[:%s/\\[[0-9]\+m//g<CR>]] }, --  Remove color codes from buffer (^[[33m, etc.)
+					{ 'f', 'a{::}<ESC>hh'}, -- make a new file in Neorg
 				},
 			},
 		},

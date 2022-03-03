@@ -4,6 +4,12 @@ augroup NeorgHarpoon
     autocmd BufEnter *.norg call nvim_set_keymap('n', '<CR>', '<CR>', {})
     autocmd BufLeave *.norg call nvim_set_keymap('n', '<CR>', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {})
 augroup END
+" Use backspace to exit an entered file in neorg
+augroup NeorgBackspace
+    autocmd!
+    autocmd BufEnter *.norg call nvim_set_keymap('n', '<BS>', ':e ~/neorg/notes/index.norg<CR>', {})
+    autocmd BufLeave *.norg call nvim_set_keymap('n', '<BS>', '', {})
+augroup END
 
 " -----------------------------------------------------------------------------
 " Skeleton Files

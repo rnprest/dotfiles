@@ -321,7 +321,8 @@ local function init()
 					['core.norg.dirman'] = {
 						config = {
 							workspaces = {
-								work = '~/notes/work',
+								notes = '~/neorg/notes',
+								tasks = '~/neorg/tasks',
 							},
 							autodetect = true,
 							autochdir = true,
@@ -329,7 +330,7 @@ local function init()
 					},
 					['core.gtd.base'] = {
 						config = {
-							workspace = 'work',
+							workspace = 'tasks',
 						},
 					},
 					['core.presenter'] = {
