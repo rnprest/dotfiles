@@ -377,6 +377,8 @@ local function init()
 	})
 	-- I'm weak and still need this
 	use('ThePrimeagen/git-worktree.nvim')
+	use('nanotee/luv-vimdocs')
+	use('milisims/nvim-luaref')
 end
 
 local plugins = setmetatable({}, {
