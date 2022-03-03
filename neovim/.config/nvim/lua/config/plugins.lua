@@ -161,10 +161,43 @@ local function init()
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',
 		config = function()
+			----------------------------------------------------------------------
+			--                     add 2 parsers for neorg                      --
+			----------------------------------------------------------------------
+			local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+			-- These two are optional and provide syntax highlighting
+			-- for Neorg tables and the @document.meta tag
+			parser_configs.norg_meta = {
+				install_info = {
+					url = 'https://github.com/nvim-neorg/tree-sitter-norg-meta',
+					files = { 'src/parser.c' },
+					branch = 'main',
+				},
+			}
+			parser_configs.norg_table = {
+				install_info = {
+					url = 'https://github.com/nvim-neorg/tree-sitter-norg-table',
+					files = { 'src/parser.c' },
+					branch = 'main',
+				},
+			}
 			require('nvim-treesitter.configs').setup({
 				-- One of "all", "maintained" (parsers with maintainers), or a list of languages
-				ensure_installed = { 'rust', 'go', 'java', 'yaml', 'json', 'lua', 'hcl', 'make', 'python', 'norg' },
-
+				ensure_installed = {
+					'go',
+					'hcl',
+					'java',
+					'json',
+					'lua',
+					'make',
+					'norg',
+					'norg_meta',
+					'norg_table',
+					'python',
+					'rust',
+					'toml',
+					'yaml',
+				},
 				-- Install languages synchronously (only applied to `ensure_installed`)
 				sync_install = false,
 
@@ -267,7 +300,7 @@ local function init()
 	use({ 'vimwiki/vimwiki', branch = 'dev' })
 	use({
 		'nvim-neorg/neorg',
-		tag = '0.0.11',
+		-- tag = '0.0.11',
 		requires = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' },
 		config = function()
 			require('neorg').setup({
