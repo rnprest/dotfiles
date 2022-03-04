@@ -36,20 +36,6 @@ local function init()
     use 'sheerun/vim-polyglot' -- Syntax and other support for almost every programming language
     use 'tpope/vim-abolish' -- Coercion between snake_case, camelCase, etc. (crs & crc)
     use 'tpope/vim-fugitive' -- Adds Gread, Gwrite, etc. all of which use buffer
-    use {
-        'TimUntersberger/neogit',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'sindrets/diffview.nvim',
-        },
-        config = function()
-            require('neogit').setup {
-                integrations = {
-                    diffview = true,
-                },
-            }
-        end,
-    }
     use 'tpope/vim-repeat' -- Repeat plugins with '.'
     use 'tpope/vim-surround' -- Surround words
     use 'wellle/targets.vim' -- Better text object movement
