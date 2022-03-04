@@ -32,7 +32,7 @@ nest.applyKeymaps({
 			{ 'b', '%' },
 			{ 'of', '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>' },
 			{ 'dot', [[:lua require('config.telescope').search_dotfiles()<CR>]] },
-			{ 'f', ':Format<CR>' }, -- Format file
+			{ 'f', ':lua vim.lsp.buf.formatting_sync()<CR>' }, -- Format file
 			{ 'k', ':lnext<CR>zz' },
 			{ 'j', ':lprev<CR>zz' },
 			{ 'q', ':call ToggleQFList(0)<CR>' },

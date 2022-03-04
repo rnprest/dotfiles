@@ -92,12 +92,7 @@ local function init()
 			require('nvim-web-devicons').setup()
 		end,
 	})
-	use({
-		'mhartington/formatter.nvim',
-		config = function()
-			require('config.formatter')
-		end,
-	})
+	use('jose-elias-alvarez/null-ls.nvim')
 	use({
 		'rcarriga/nvim-notify',
 		config = function()
