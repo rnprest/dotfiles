@@ -306,6 +306,9 @@ local function init()
                     ['core.keybinds'] = {
                         config = {
                             neorg_leader = ',',
+                            hook = function(keybinds)
+                                keybinds.unmap('norg', 'i', '<C-l>')
+                            end,
                         },
                     },
                     ['core.norg.concealer'] = {},

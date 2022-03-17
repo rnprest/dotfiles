@@ -130,7 +130,7 @@ nest.applyKeymaps {
             { ',', ',<c-g>u' }, -- Undo break points
             { '.', '.<c-g>u' }, -- Undo break points
             { '?', '?<c-g>u' }, -- Undo break points
-            { '<C-l>', [[<c-g>u<Esc>[s1z=`]a<c-g>u]] }, -- Go back to last misspelled word and pick first suggestion.
+            -- { '<C-l>', [[<c-g>u<Esc>[s1z=`]a<c-g>u]] }, -- Go back to last misspelled word and pick first suggestion.
         },
     },
 
