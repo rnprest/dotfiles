@@ -243,6 +243,7 @@ local function init()
     -- LSP
     use {
         'hrsh7th/nvim-cmp',
+        branch = 'dev',
         event = 'BufEnter',
         config = function()
             require('config.cmp').setup()

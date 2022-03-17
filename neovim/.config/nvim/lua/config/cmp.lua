@@ -21,6 +21,19 @@ end
 
 function M.setup()
     cmp.setup {
+        ----------------------------------------------------------------------
+        --                  add borders to completion menu                  --
+        ----------------------------------------------------------------------
+        window = {
+            completion = { -- rounded border; thin-style scrollbar
+                border = 'rounded',
+                scrollbar = '║',
+            },
+            documentation = { -- rounded border; native-style scrollbar
+                border = 'rounded',
+                scrollbar = '',
+            },
+        },
         formatting = {
             format = lspkind.cmp_format {
                 mode = 'symbol', -- show only symbol annotations
