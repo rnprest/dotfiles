@@ -277,8 +277,9 @@ local function init()
             require 'config.telescope'
         end,
     }
-    -- use({ 'ThePrimeagen/git-worktree.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
+    use { 'nvim-telescope/telescope-ui-select.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
     use { 'nvim-telescope/telescope-file-browser.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
+    -- use({ 'ThePrimeagen/git-worktree.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
     -- Harpoon
     use {
         'ThePrimeagen/harpoon',
