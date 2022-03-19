@@ -6,7 +6,12 @@ local lsp_installer = require 'nvim-lsp-installer'
 local null_ls = require 'null-ls'
 local sources = {
     null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.prettier,
+    -- Tell prettier to just use whatever the buf says it's ft is
+    null_ls.builtins.formatting.prettier.with {
+        extra_args = function(params)
+            return { '--parser', params.ft }
+        end,
+    },
     null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.stylua,
