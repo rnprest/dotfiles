@@ -154,4 +154,22 @@ ls.snippets = {
     norg = {
         s('page', fmt([[ {{:{}:}}[{}] ]], { i(1), i(0) })),
     },
+    sh = {
+        -- check if an environment variable exists
+        s(
+            'varexists',
+            fmt(
+                [[
+                if [ -z ${} ]; then
+                    echo "Please set the {} env var in your shell"
+                    exit 1
+                fi
+                ]],
+                {
+                    i(1, 'ENV_VAR_NAME'),
+                    rep(1),
+                }
+            )
+        ),
+    },
 }
