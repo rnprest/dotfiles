@@ -25,13 +25,13 @@ function M.setup()
         --                  add borders to completion menu                  --
         ----------------------------------------------------------------------
         window = {
-            completion = { -- rounded border; thin-style scrollbar
+            completion = {
                 border = 'rounded',
-                scrollbar = '║',
+                -- scrollbar = '║',
             },
-            documentation = { -- rounded border; native-style scrollbar
+            documentation = {
                 border = 'rounded',
-                scrollbar = '',
+                -- scrollbar = '',
             },
         },
         formatting = {
