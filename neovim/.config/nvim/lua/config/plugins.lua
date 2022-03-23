@@ -200,11 +200,44 @@ local function init()
             }
         end,
     }
+    use {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        config = function()
+            require('nvim-treesitter.configs').setup {
+                textobjects = {
+                    select = {
+                        enable = true,
+
+                        -- Automatically jump forward to textobj, similar to targets.vim
+                        lookahead = true,
+
+                        keymaps = {
+                            -- You can use the capture groups defined in textobjects.scm
+                            ['af'] = '@function.outer',
+                            ['if'] = '@function.inner',
+                            ['ac'] = '@class.outer',
+                            ['ic'] = '@class.inner',
+                        },
+                    },
+                    swap = {
+                        enable = true,
+                        swap_next = {
+                            ['<leader>a'] = '@parameter.inner',
+                        },
+                        swap_previous = {
+                            ['<leader>A'] = '@parameter.inner',
+                        },
+                    },
+                },
+            }
+        end,
+    }
     use 'nvim-treesitter/playground'
     -- Colorschemes
     use {
         'marko-cerovac/material.nvim',
-        requires = { 'tjdevries/colorbuddy.nvim' },
+        requires = 'tjdevries/colorbuddy.nvim',
         config = function()
             vim.cmd 'colorscheme material'
             -- This highlight needs to load AFTER the colorscheme is set so that it isn't overwritten
