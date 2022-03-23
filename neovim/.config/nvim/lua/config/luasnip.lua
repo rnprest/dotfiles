@@ -100,6 +100,24 @@ ls.snippets = {
         }),
     },
     rust = {
+        -- implement display for a type
+        s(
+            'impldisplay',
+            fmt(
+                [[
+                impl fmt::Display for {} {{
+                    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {{
+                        write!(f, "{}", {})
+                    }}
+                }}
+                ]],
+                {
+                    i(1, 'type'),
+                    i(2),
+                    i(0),
+                }
+            )
+        ),
         -- adding a test case
         s(
             'test',
