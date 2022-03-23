@@ -329,7 +329,7 @@ local function init()
     use { 'vimwiki/vimwiki', branch = 'dev' }
     use {
         'nvim-neorg/neorg',
-        -- tag = '0.0.11',
+        tag = '0.0.11',
         requires = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' },
         config = function()
             require('neorg').setup {
