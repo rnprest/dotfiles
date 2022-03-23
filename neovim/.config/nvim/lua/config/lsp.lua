@@ -46,6 +46,7 @@ local on_attach = function(client, bufnr)
                 { '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
                 { '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
                 { '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>' },
+                { '<leader>hd', '<cmd>lua vim.lsp.buf.hover()<CR>' },
             },
         },
     }
