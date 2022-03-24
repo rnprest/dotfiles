@@ -223,10 +223,10 @@ local function init()
                     swap = {
                         enable = true,
                         swap_next = {
-                            ['<leader>a'] = '@parameter.inner',
+                            ['<C-N>'] = '@swappable',
                         },
                         swap_previous = {
-                            ['<leader>A'] = '@parameter.inner',
+                            ['<C-P>'] = '@swappable',
                         },
                     },
                 },
