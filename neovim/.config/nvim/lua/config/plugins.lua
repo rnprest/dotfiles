@@ -223,10 +223,10 @@ local function init()
                     swap = {
                         enable = true,
                         swap_next = {
-                            ['<C-N>'] = '@swappable',
+                            ['<leader>mn'] = '@swappable',
                         },
                         swap_previous = {
-                            ['<C-P>'] = '@swappable',
+                            ['<leader>mp'] = '@swappable',
                         },
                     },
                 },
