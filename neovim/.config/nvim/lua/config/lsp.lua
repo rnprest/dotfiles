@@ -12,7 +12,6 @@ local sources = {
             return { '--parser', params.ft }
         end,
     },
-    null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.terraform_fmt,
@@ -64,9 +63,11 @@ local on_attach = function(client, bufnr)
         )
     end
 
-    -- disable LSP formatting conflicts - only use null-ls for formatting
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    if client.name ~= 'rust_analyzer' then
+        -- disable LSP formatting conflicts - only use null-ls for formatting
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+    end
 end
 
 lsp_installer.on_server_ready(function(server)
