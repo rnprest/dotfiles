@@ -150,6 +150,7 @@ nest.applyKeymaps {
     {
         mode = 'v',
         {
+            { '<leader>r', [[:sno//g<left><left>]] },
             { 'J', [[:m '>+1<CR>gv=gv]] }, -- Moving text
             { 'K', [[:m '<-2<CR>gv=gv]] }, -- Moving text
             { 'rr', [[:lua require("config.telescope").refactors()<CR>]] },
