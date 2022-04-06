@@ -19,7 +19,7 @@ nest.applyKeymaps {
         {
             {
                 'lspinstall',
-                [[:LspInstall bashls dockerls gopls html jsonls pyright rust_analyzer sumneko_lua terraformls tsserver vimls yamlls<CR>]],
+                [[:LspInstall bashls dockerls gopls html jsonls pyright rust_analyzer sumneko_lua terraformls tsserver vimls yamlls sqls<CR>]],
             },
 
             -- Load harpoon with terraform files
