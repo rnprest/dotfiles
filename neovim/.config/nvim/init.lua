@@ -66,8 +66,3 @@ cmd 'filetype plugin on'
 vim.cmd [[
     command! -nargs=* TknMinglePipeline lua require'tekton'.start_mingle_pipeline(<f-args>)
 ]]
--------------------------------------------------------------------------------
--- vimwiki
--------------------------------------------------------------------------------
-g.vimwiki_list = { { path = '~/vimwiki/', syntax = 'markdown', ext = '.md' } }
-g.taskwiki_dont_fold = 'yes'
