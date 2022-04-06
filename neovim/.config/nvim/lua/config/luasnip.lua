@@ -81,7 +81,7 @@ local get_test_result = function(position)
     end, {})
 end
 
-ls.snippets = {
+ls.add_snippets(nil, {
     all = {
         s('sametest', fmt([[example: {}, function: {}]], { i(1), same(1) })),
         s(
@@ -190,4 +190,4 @@ ls.snippets = {
             )
         ),
     },
-}
+})
