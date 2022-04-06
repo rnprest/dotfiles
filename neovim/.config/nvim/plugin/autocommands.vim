@@ -53,12 +53,6 @@ fun! LspLocationList()
 endfun
 " -----------------------------------------------------------------------------
 
-" Update the vimwiki diary links
-augroup vimwikigroup
-    autocmd!
-    autocmd BufEnter diary.md VimwikiDiaryGenerateLinks
-augroup end
-
 " Compiling/sourcing
 augroup install_snippets
     autocmd!
@@ -117,7 +111,6 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * :lua vim.opt.relativenumber, vim.opt.number = true, false
   autocmd BufLeave,FocusLost,InsertEnter   * :lua vim.opt.relativenumber, vim.opt.number = false, true
 augroup END
-" Commenting out this because I don't want this to be on when I'm in my vimwiki
 " autocmd FileType markdown setlocal spell
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
