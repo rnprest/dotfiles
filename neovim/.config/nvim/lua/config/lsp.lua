@@ -61,6 +61,11 @@ local on_attach = function(client, bufnr)
             'CursorMoved',
             { buffer = 0, command = 'lua vim.lsp.buf.clear_references()', group = lsp }
         )
+        -- Format on save
+        vim.api.nvim_create_autocmd(
+            'BufWritePre',
+            { buffer = 0, command = 'lua vim.lsp.buf.formatting_sync()', group = lsp }
+        )
     end
 
     if client.name ~= 'rust_analyzer' then
