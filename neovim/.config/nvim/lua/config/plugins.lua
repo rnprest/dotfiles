@@ -325,8 +325,6 @@ local function init()
         'ThePrimeagen/harpoon',
         requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
     }
-    -- Task Warrior / Vim Wiki
-    use { 'vimwiki/vimwiki', branch = 'dev' }
     use {
         'nvim-neorg/neorg',
         tag = '0.0.11',
