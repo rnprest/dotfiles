@@ -54,12 +54,6 @@ endfun
 " -----------------------------------------------------------------------------
 
 " Compiling/sourcing
-augroup install_snippets
-    autocmd!
-    autocmd BufWritePost *.snip COQsnips compile
-augroup end
-
-" Compiling/sourcing
 augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile

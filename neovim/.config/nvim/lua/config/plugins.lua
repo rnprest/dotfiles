@@ -39,8 +39,6 @@ local function init()
     use 'tpope/vim-repeat' -- Repeat plugins with '.'
     use 'tpope/vim-surround' -- Surround words
     use 'wellle/targets.vim' -- Better text object movement
-    use 'drewtempelmeyer/palenight.vim' -- Palenight theme
-    use 'iamcco/markdown-preview.nvim' -- if on M1 mac, then need to 'yarn install && yarn upgrade' inside app directory
     -- Comments
     use {
         'numToStr/Comment.nvim',
@@ -363,24 +361,8 @@ local function init()
                             workspace = 'tasks',
                         },
                     },
-                    ['core.presenter'] = {
-                        config = {
-                            zen_mode = 'zen-mode',
-                        },
-                    },
                     ['core.norg.qol.toc'] = {},
                 },
-            }
-        end,
-    }
-    -- Lua
-    use {
-        'folke/zen-mode.nvim',
-        config = function()
-            require('zen-mode').setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
             }
         end,
     }
