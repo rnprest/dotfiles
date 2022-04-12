@@ -39,8 +39,6 @@ nest.applyKeymaps {
             },
             { 'dot', [[:lua require('config.telescope').search_dotfiles()<CR>]] },
             { 'f', ':lua vim.lsp.buf.formatting_sync()<CR>' }, -- Format file
-            { 'k', ':lnext<CR>zz' },
-            { 'j', ':lprev<CR>zz' },
             { 'q', ':call ToggleQFList(0)<CR>' },
             -- list worktrees
             { 'w', [[:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]] },
