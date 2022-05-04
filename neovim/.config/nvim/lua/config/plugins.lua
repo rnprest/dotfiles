@@ -382,8 +382,7 @@ local function init()
         requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
     }
     -- Worktrees
-    -- use({ 'ThePrimeagen/git-worktree.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
-    -- use 'ThePrimeagen/git-worktree.nvim'
+    use { 'ThePrimeagen/git-worktree.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
     -- Documentation
     use 'nanotee/luv-vimdocs'
     use 'milisims/nvim-luaref'

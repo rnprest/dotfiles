@@ -100,6 +100,7 @@ nest.applyKeymaps {
             },
         },
     },
+    { '<CR>', [[:lua require("harpoon.ui").toggle_quick_menu()<CR>]] },
     {
         '<C-',
         {
