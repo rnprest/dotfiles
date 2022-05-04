@@ -1,3 +1,4 @@
+-- vim.api.nvim_set_keymap('n', '<C-x>', require('dial.map').dec_normal(), { noremap = true })
 -----------------------------------------------------------------------------
 -- Mappings
 -----------------------------------------------------------------------------
@@ -84,6 +85,12 @@ nest.applyKeymaps {
                 {
                     { 'p', ':Git push<CR>' },
                     { 's', ':G<CR>' },
+                    -- RESOLVING MERGE CONFLICTS
+                    { 'd', ':Gvdiffsplit!<CR>' }, -- open the three way merge conflict
+                    -- do the below 2 remaps to pull from left and right
+                    { 'u', ':diffget //2<CR>' }, -- :Gdiff, pull in target (current branch) changes from left
+                    { 'h', ':diffget //3<CR>' }, -- :Gdiff, pull in merge changes from right
+                    -- once happy with middle working copy, do :Gwrite
                     { 'c', [[:lua require('config.telescope').git_branches()<CR>]] },
                 },
             },
