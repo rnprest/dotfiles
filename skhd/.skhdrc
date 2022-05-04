@@ -3,6 +3,7 @@ cmd - return : open -a iTerm
 alt - return : open -a "Google Chrome"
 alt - o : open -a "Microsoft Outlook"
 alt - t : open -a "Microsoft Teams"
+alt - d : open -a "Obsidian"
 
 # # focus window
 # alt - h : yabai -m window --focus west
