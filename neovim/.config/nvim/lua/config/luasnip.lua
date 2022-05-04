@@ -100,6 +100,8 @@ ls.add_snippets(nil, {
         }),
     },
     rust = {
+        -- Debug format
+        s('debug', { t '{:#?}' }),
         -- implement display for a type
         s(
             'impldisplay',
