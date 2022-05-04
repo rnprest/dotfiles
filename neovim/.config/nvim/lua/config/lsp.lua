@@ -33,22 +33,15 @@ require('fidget').setup {
 
 local on_attach = function(client, bufnr)
     require('lsp_signature').on_attach()
-    require('nest').applyKeymaps {
-        {
-            mode = 'n',
-            {
-                { '<leader>ca', '<cmd>Lspsaga code_action<CR>' },
-                { '<leader>dn', '<cmd>Lspsaga diagnostic_jump_next<CR>' },
-                { '<leader>dp', '<cmd>Lspsaga diagnostic_jump_prev<CR>' },
-                { '<leader>lr', ':LspRestart<CR>' },
-                { '<leader>cr', '<cmd>Lspsaga rename<CR>' },
-                { '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
-                { '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
-                { '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>' },
-                { '<leader>hd', '<cmd>lua vim.lsp.buf.hover()<CR>' },
-            },
-        },
-    }
+    vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>')
+    vim.keymap.set('n', '<leader>dn', '<cmd>Lspsaga diagnostic_jump_next<CR>')
+    vim.keymap.set('n', '<leader>dp', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
+    vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>')
+    vim.keymap.set('n', '<leader>cr', '<cmd>Lspsaga rename<CR>')
+    vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+    vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+    vim.keymap.set('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+    vim.keymap.set('n', '<leader>hd', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then

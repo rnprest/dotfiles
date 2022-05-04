@@ -30,16 +30,6 @@ local function init()
 
     use 'wbthomason/packer.nvim' -- Which came first? The chicken or the egg?
     use 'lewis6991/impatient.nvim' -- Improves startup time for neovim
-
-    ----------------------------------------------------------------------
-    --                              Remaps                              --
-    ----------------------------------------------------------------------
-    use {
-        'LionC/nest.nvim',
-        config = function()
-            require 'config.remaps'
-        end,
-    }
     ----------------------------------------------------------------------
     --                               Git                                --
     ----------------------------------------------------------------------
