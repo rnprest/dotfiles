@@ -66,6 +66,12 @@ cmd 'filetype plugin on'
 vim.cmd [[
     command! -nargs=* TknMinglePipeline lua require'tekton'.start_mingle_pipeline(<f-args>)
 ]]
+-------------------------------------------------------------------------------
+-- Special Search (:SS ^abc/def\[ghi\]x*y)
+-------------------------------------------------------------------------------
+-- vim.cmd [[
+--     command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '\')
+-- ]]
 
 --
 -- ▀███▀▀▀██▄
