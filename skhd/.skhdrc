@@ -1,5 +1,5 @@
 # open terminal, vsocde, and safari with shortcuts
-cmd - return : open -a iTerm
+# cmd - return : open -a iTerm
 alt - return : open -a "Google Chrome"
 alt - o : open -a "Microsoft Outlook"
 alt - t : open -a "Microsoft Teams"
