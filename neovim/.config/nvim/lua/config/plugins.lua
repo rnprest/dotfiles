@@ -169,7 +169,7 @@ local function init()
     ----------------------------------------------------------------------
     use {
         'hrsh7th/nvim-cmp',
-        branch = 'dev',
+        -- branch = 'dev',
         event = 'BufEnter',
         config = function()
             require('config.cmp').setup()
