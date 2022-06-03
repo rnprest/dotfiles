@@ -30,7 +30,7 @@ require('fidget').setup {
         relative = 'editor',
     },
 }
-
+local lsp_augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 local on_attach = function(client, bufnr)
     require('lsp_signature').on_attach()
     vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>')
@@ -44,17 +44,32 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>hd', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
     -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.document_highlight then
-        local lsp = vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
-        vim.api.nvim_create_autocmd(
-            'CursorHold',
-            { buffer = 0, command = 'lua vim.lsp.buf.document_highlight()', group = lsp }
-        )
-        vim.api.nvim_create_autocmd(
-            'CursorMoved',
-            { buffer = 0, command = 'lua vim.lsp.buf.clear_references()', group = lsp }
-        )
+    if client.supports_method 'textDocument/formatting' then
+        vim.api.nvim_clear_autocmds { group = lsp_augroup, buffer = bufnr }
+        vim.api.nvim_create_autocmd('CursorHold', {
+            group = lsp_augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.document_highlight()
+            end,
+        })
+        vim.api.nvim_create_autocmd('CursorMoved', {
+            group = lsp_augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.clear_references()
+            end,
+        })
         -- Format on save
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            group = lsp_augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format { bufnr = bufnr }
+            end,
+        })
+
+        -- local lsp = vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
         vim.api.nvim_create_autocmd('BufWritePre', { buffer = 0, command = 'lua vim.lsp.buf.format()', group = lsp })
     end
 
