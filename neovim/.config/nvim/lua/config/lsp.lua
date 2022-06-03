@@ -44,7 +44,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>hd', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
     -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
         local lsp = vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
         vim.api.nvim_create_autocmd(
             'CursorHold',
@@ -55,16 +55,13 @@ local on_attach = function(client, bufnr)
             { buffer = 0, command = 'lua vim.lsp.buf.clear_references()', group = lsp }
         )
         -- Format on save
-        vim.api.nvim_create_autocmd(
-            'BufWritePre',
-            { buffer = 0, command = 'lua vim.lsp.buf.formatting_sync()', group = lsp }
-        )
+        vim.api.nvim_create_autocmd('BufWritePre', { buffer = 0, command = 'lua vim.lsp.buf.format()', group = lsp })
     end
 
     if client.name ~= 'rust_analyzer' then
         -- disable LSP formatting conflicts - only use null-ls for formatting
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
+        client.server_capabilities.document_formatting = false
+        client.server_capabilities.document_range_formatting = false
     end
 end
 

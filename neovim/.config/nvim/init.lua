@@ -130,7 +130,7 @@ vim.api.nvim_set_keymap(
     [[:lua require('config.telescope').search_dotfiles()<CR>]],
     { silent = true, noremap = true }
 )
-vim.api.nvim_set_keymap('n', '<leader>f', ':lua vim.lsp.buf.formatting_sync()<CR>', { silent = true, noremap = true }) -- Format file
+vim.api.nvim_set_keymap('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>', { silent = true, noremap = true }) -- Format file
 vim.api.nvim_set_keymap('n', '<leader>q', ':call ToggleQFList(0)<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap(
     'n',
