@@ -19,6 +19,7 @@ augroup SpookyScarySkeletons
     autocmd BufNewFile *.c 0r ~/.config/nvim/templates/skeleton.c
     autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/skeleton.cpp
     autocmd BufNewFile *.java 0r ~/.config/nvim/templates/skeleton.java
+    autocmd BufNewFile *.py 0r ~/.config/nvim/templates/skeleton.py
     autocmd BufNewFile *.sh 0r ~/.config/nvim/templates/skeleton.sh
     autocmd BufNewFile main.rs 0r ~/.config/nvim/templates/skeleton.rs
 augroup END
