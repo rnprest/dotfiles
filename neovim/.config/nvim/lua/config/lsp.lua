@@ -1,5 +1,3 @@
-local lsp_installer = require 'nvim-lsp-installer'
-
 ----------------------------------------------------------------------
 --                     setup null-ls to format                      --
 ----------------------------------------------------------------------
@@ -16,6 +14,7 @@ local sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.terraform_fmt,
     null_ls.builtins.diagnostics.write_good,
+    null_ls.builtins.diagnostics.cfn_lint, -- if file contains "Resources" or "AWSTemplateFormatVersion"
 }
 null_ls.setup { sources = sources }
 
@@ -83,45 +82,60 @@ local on_attach = function(client, bufnr)
     end
 end
 
-lsp_installer.on_server_ready(function(server)
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+----------------------------------------------------------------------
+--                          lsp-installer                           --
+----------------------------------------------------------------------
+require('nvim-lsp-installer').setup {}
+local installed_servers = require('nvim-lsp-installer').get_installed_servers()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-    local opts = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
+local default_opts = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 
-    ----------------------------------------------------------------------
-    --               Integrating nvim-lsp-installer with                --
-    --                         rust-tools.nvim                          --
-    ----------------------------------------------------------------------
+for _, server in pairs(installed_servers) do
     if server.name == 'rust_analyzer' then
-        opts = {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            tools = {
-                inlay_hints = {
-                    -- prefix for parameter hints
-                    -- default: "<-"
-                    parameter_hints_prefix = '« ',
-                    -- prefix for all the other hints (type, chaining)
-                    -- default: "=>"
-                    other_hints_prefix = '» ',
+        default_opts.tools = {
+            inlay_hints = {
+                -- prefix for parameter hints
+                -- default: "<-"
+                parameter_hints_prefix = '« ',
+                -- prefix for all the other hints (type, chaining)
+                -- default: "=>"
+                other_hints_prefix = '» ',
+            },
+        }
+    elseif server.name == 'yamlls' then
+        default_opts.settings = {
+            ['yaml'] = {
+                customTags = {
+                    '!And sequence',
+                    '!Base64',
+                    '!Cidr',
+                    '!Condition',
+                    '!Equals sequence',
+                    '!FindInMap sequence',
+                    '!GetAZs',
+                    '!GetAtt',
+                    '!If sequence',
+                    '!ImportValue',
+                    '!Join sequence',
+                    '!Not sequence',
+                    '!Or sequence',
+                    '!Ref',
+                    '!Select sequence',
+                    '!Split sequence',
+                    '!Sub sequence',
+                    '!Sub',
                 },
             },
         }
-        -- Initialize the LSP via rust-tools instead
-        require('rust-tools').setup {
-            -- The "server" property provided in rust-tools setup function are the
-            -- settings rust-tools will provide to lspconfig during init.            --
-            -- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
-            -- with the user's own settings (opts).
-            server = vim.tbl_deep_extend('force', server:get_default_options(), opts),
-        }
-        server:attach_buffers()
-        -- Only if standalone support is needed
-        require('rust-tools').start_standalone_if_required()
-    else
-        server:setup(opts)
     end
-end)
+    -- default setup for all servers
+    require('lspconfig')[server.name].setup(default_opts)
+end
+
+-- TODO - this isn't showing my inlay hints :(
+require('rust-tools').setup { server = default_opts }
