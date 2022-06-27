@@ -137,5 +137,4 @@ for _, server in pairs(installed_servers) do
     require('lspconfig')[server.name].setup(default_opts)
 end
 
--- TODO - this isn't showing my inlay hints :(
 require('rust-tools').setup { server = default_opts }
