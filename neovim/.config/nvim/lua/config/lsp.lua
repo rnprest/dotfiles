@@ -141,7 +141,7 @@ for _, server in pairs(installed_servers) do
                     '!fn',
                 },
                 schemas = {
-                    ['https://raw.githubusercontent.com/awslabs/goformation/v4.18.2/schema/cloudformation.schema.json'] = '/*',
+                    ['https://raw.githubusercontent.com/awslabs/goformation/v4.18.2/schema/cloudformation.schema.json'] = 'cloudformation/*.template',
                 },
                 schemaStore = {
                     url = 'https://www.schemastore.org/api/json/catalog.json',
