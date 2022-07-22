@@ -151,6 +151,14 @@ local function init()
             }
         end,
     }
+    use {
+        'nvim-treesitter/nvim-treesitter-context',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        config = function()
+            vim.api.nvim_set_hl(0, 'TreesitterContext', { bg = '#3E5256' }) -- 5% lighter that CursorLine hl group
+        end,
+    }
+
     use 'nvim-treesitter/playground'
     ----------------------------------------------------------------------
     --                            Telescope                             --
