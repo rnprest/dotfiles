@@ -272,7 +272,14 @@ local function init()
     use 'wellle/targets.vim' -- Better text object movement
     use 'tpope/vim-repeat' -- Repeat plugins with '.'
     use 'tpope/vim-abolish' -- Coercion between snake_case, camelCase, etc. (crs & crc)
-    use 'tpope/vim-surround' -- Surround words
+    use {
+        'kylechui/nvim-surround',
+        config = function()
+            require('nvim-surround').setup {
+                -- Configuration here, or leave empty to use defaults
+            }
+        end,
+    }
     use {
         'windwp/nvim-autopairs',
         config = function()
