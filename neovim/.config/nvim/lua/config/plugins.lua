@@ -294,6 +294,12 @@ local function init()
     ----------------------------------------------------------------------
     --                        Text Manipulation                         --
     ----------------------------------------------------------------------
+    use { -- aligning text (<count>gl(L)<motion><char>)
+        'tommcdo/vim-lion',
+        config = function()
+            vim.cmd 'let b:lion_squeeze_spaces = 1'
+        end,
+    }
     use 'wellle/targets.vim' -- Better text object movement
     use 'tpope/vim-repeat' -- Repeat plugins with '.'
     use 'tpope/vim-abolish' -- Coercion between snake_case, camelCase, etc. (crs & crc)
