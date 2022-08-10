@@ -12,8 +12,6 @@ local sources = {
     },
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.terraform_fmt,
-    null_ls.builtins.diagnostics.write_good,
     null_ls.builtins.diagnostics.cfn_lint, -- if file contains "Resources" or "AWSTemplateFormatVersion"
 }
 null_ls.setup { sources = sources }
