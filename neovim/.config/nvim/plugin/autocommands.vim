@@ -64,7 +64,7 @@ augroup end
 augroup FileTypes
     autocmd!
     autocmd BufNewFile,BufRead *.deckspec set ft=yaml
-    autocmd BufNewFile,BufRead *.template set ft=yaml
+    " autocmd BufNewFile,BufRead *.template set ft=yaml
 augroup END
 
 " Only show the cursor line in the active buffer.
