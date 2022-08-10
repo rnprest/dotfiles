@@ -54,7 +54,7 @@ local function init()
     --                           LSP / Syntax                           --
     ----------------------------------------------------------------------
     use 'neovim/nvim-lspconfig'
-    use 'sheerun/vim-polyglot' -- Syntax and other support for almost every programming language
+    -- use 'sheerun/vim-polyglot' -- Syntax and other support for almost every programming language
     use {
         'williamboman/nvim-lsp-installer',
         event = 'BufEnter',
