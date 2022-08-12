@@ -72,6 +72,13 @@ vim.cmd [[
 vim.cmd [[
     command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '\')
 ]]
+-------------------------------------------------------------------------------
+-- Remove windows line endings (^M)
+-------------------------------------------------------------------------------
+vim.cmd [[
+    command! RemoveWindowsLineEndings :%s/\r//g
+]]
+-------------------------------------------------------------------------------
 
 --
 -- ▀███▀▀▀██▄
@@ -96,13 +103,15 @@ vim.api.nvim_set_keymap('n', 'gx', [[mzyiW:!open "<c-r><c-a>"<cr>`z]], { silent 
 vim.api.nvim_set_keymap(
     'n',
     '<leader>lspinstall',
-    [[:LspInstall bashls dockerls gopls html jsonls pyright rust_analyzer sumneko_lua terraformls tsserver vimls yamlls sqls<CR>]],
+    [[:LspInstall bashls dockerls gopls html jsonls pyright rust_analyzer sumneko_lua terraformls tsserver vimls yamlls sqls<CR>]]
+    ,
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>ht',
-    [[ :lua require("harpoon.ui").toggle_quick_menu()<CR>ggVGcmain.tf<ESC>oterraform.tfvars<ESC>ovariables.tf<ESC>obackend.tfvars<ESC> ]],
+    [[ :lua require("harpoon.ui").toggle_quick_menu()<CR>ggVGcmain.tf<ESC>oterraform.tfvars<ESC>ovariables.tf<ESC>obackend.tfvars<ESC> ]]
+    ,
     { silent = true, noremap = true }
 ) -- Load harpoon with terraform files
 vim.api.nvim_set_keymap(
@@ -114,14 +123,16 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>or',
-    [[ mz?resource "<CR>yi"Ohttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/<ESC>pbdf_dd`z ]],
+    [[ mz?resource "<CR>yi"Ohttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/<ESC>pbdf_dd`z ]]
+    ,
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap('n', '<leader>b', '%', { silent = true, noremap = true })
 vim.api.nvim_set_keymap(
     'n',
     '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
+    '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
+    ,
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
@@ -265,7 +276,8 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'v',
     '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
+    '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
+    ,
     { silent = true, noremap = true }
 )
 ----------------------------------------------------------------------
