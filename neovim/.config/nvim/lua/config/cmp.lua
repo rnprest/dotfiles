@@ -87,6 +87,7 @@ function M.setup()
             { name = 'path' },
             { name = 'cmdline' },
             { name = 'luasnip' }, -- For luasnip users.
+            { name = 'orgmode' },
         },
     }
 

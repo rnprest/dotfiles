@@ -22,7 +22,8 @@ g.mapleader = ','
 local options = {
     clipboard = 'unnamedplus',
     cmdheight = 2, -- Give more space for displaying messages.
-    conceallevel = 3, -- Removes square brackets from devicons
+    concealcursor = 'nc', -- conceal links for orgmode
+    conceallevel = 2, -- conceal links for orgmode
     encoding = 'UTF-8', -- Encoding
     expandtab = true, -- Turn tabs into spaces
     fileencoding = 'UTF-8', -- Encoding
@@ -157,9 +158,9 @@ vim.api.nvim_set_keymap(
 ) -- new worktree
 vim.api.nvim_set_keymap('n', '<leader>tb', ':Telescope file_browser<CR><ESC>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>x', ':w<CR>:source %<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>on', ':e ~/neorg/notes/index.norg<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>ot', ':e ~/neorg/tasks/index.norg<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>oi', ':e ~/neorg/tasks/inbox.norg<CR>', { silent = true, noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>on', ':e ~/neorg/notes/index.norg<CR>', { silent = true, noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>ot', ':e ~/neorg/tasks/index.norg<CR>', { silent = true, noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>oi', ':e ~/neorg/tasks/inbox.norg<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>yf', [[:let @+ = expand("%")<CR>]], { silent = true, noremap = true }) -- yank file name
 vim.api.nvim_set_keymap('n', '<leader>yp', [[:let @+ = expand("%:p")<CR>]], { silent = true, noremap = true }) -- yank file path
 vim.api.nvim_set_keymap(

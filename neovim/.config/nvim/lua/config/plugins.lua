@@ -98,22 +98,6 @@ local function init()
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function()
-            -- Additional parsers for Neorg (used to take notes)
-            local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
-            parser_configs.norg_meta = {
-                install_info = {
-                    url = 'https://github.com/nvim-neorg/tree-sitter-norg-meta',
-                    files = { 'src/parser.c' },
-                    branch = 'main',
-                },
-            }
-            parser_configs.norg_table = {
-                install_info = {
-                    url = 'https://github.com/nvim-neorg/tree-sitter-norg-table',
-                    files = { 'src/parser.c' },
-                    branch = 'main',
-                },
-            }
             require('nvim-treesitter.configs').setup {
                 ensure_installed = {
                     'go',
@@ -122,13 +106,11 @@ local function init()
                     'json',
                     'lua',
                     'make',
-                    'norg',
-                    'norg_meta',
-                    'norg_table',
                     'python',
                     'rust',
                     'toml',
                     'yaml',
+                    'org',
                 },
                 sync_install = false,
                 indent = {
@@ -136,7 +118,7 @@ local function init()
                 },
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = false,
+                    additional_vim_regex_highlighting = { 'org' },
                 },
             }
         end,
@@ -368,45 +350,14 @@ local function init()
     --                              Notes                               --
     ----------------------------------------------------------------------
     use {
-        'nvim-neorg/neorg',
-        tag = '0.0.11',
-        requires = { 'nvim-lua/plenary.nvim', 'nvim-neorg/neorg-telescope' },
+        'nvim-orgmode/orgmode',
+        requires = { 'nvim-treesitter/nvim-treesitter' },
         config = function()
-            require('neorg').setup {
-                load = {
-                    ['core.defaults'] = {},
-                    ['core.integrations.telescope'] = {},
-                    ['core.keybinds'] = {
-                        config = {
-                            neorg_leader = ',',
-                            hook = function(keybinds)
-                                keybinds.unmap('norg', 'i', '<C-l>')
-                            end,
-                        },
-                    },
-                    ['core.norg.concealer'] = {},
-                    ['core.norg.completion'] = {
-                        config = {
-                            engine = 'nvim-cmp',
-                        },
-                    },
-                    ['core.norg.dirman'] = {
-                        config = {
-                            workspaces = {
-                                notes = '~/neorg/notes',
-                                tasks = '~/neorg/tasks',
-                            },
-                            autodetect = true,
-                            autochdir = true,
-                        },
-                    },
-                    ['core.gtd.base'] = {
-                        config = {
-                            workspace = 'tasks',
-                        },
-                    },
-                    ['core.norg.qol.toc'] = {},
-                },
+            require('orgmode').setup_ts_grammar()
+            require('orgmode').setup {
+                org_agenda_files = { '~/notes/**/*' },
+                org_default_notes_file = '~/notes/org/refile.org',
+                win_split_mode = 'float',
             }
         end,
     }
