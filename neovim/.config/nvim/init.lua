@@ -123,6 +123,12 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
     'n',
+    '<leader>hm',
+    [[:lua require("harpoon.ui").toggle_quick_menu()<CR>]],
+    { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'n',
     '<leader>or',
     [[ mz?resource "<CR>yi"Ohttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/<ESC>pbdf_dd`z ]]
     ,
@@ -208,12 +214,6 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>gc',
     [[:lua require('config.telescope').git_branches()<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<CR>',
-    [[:lua require("harpoon.ui").toggle_quick_menu()<CR>]],
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap('n', '<C-k>', ':cnext<CR>zz', { silent = true, noremap = true })
