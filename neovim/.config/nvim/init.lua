@@ -266,6 +266,7 @@ vim.api.nvim_set_keymap('x', '<leader>ol', ':GBrowse<CR>', { silent = true, nore
 --                      Visual and Select Mode                      --
 ----------------------------------------------------------------------
 vim.api.nvim_set_keymap('v', '<leader>r', [[:sno//g<left><left>]], { silent = true, noremap = true })
+vim.api.nvim_set_keymap('v', '<leader>rr', [[:S//g<left><left>]], { silent = true, noremap = true })
 vim.api.nvim_set_keymap('v', 'J', [[:m '>+1<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
 vim.api.nvim_set_keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
 vim.api.nvim_set_keymap(
