@@ -52,7 +52,7 @@ vim.keymap.set('i', '<c-u>', require 'luasnip.extras.select_choice')
 ----------------------------------------------------------------------
 
 local s, i, t, c, f, d, sn =
-    ls.s, ls.insert_node, ls.text_node, ls.choice_node, ls.function_node, ls.dynamic_node, ls.sn
+ls.s, ls.insert_node, ls.text_node, ls.choice_node, ls.function_node, ls.dynamic_node, ls.sn
 local fmt = require('luasnip.extras.fmt').fmt
 local rep = require('luasnip.extras').rep
 
@@ -129,7 +129,7 @@ ls.add_snippets(nil, {
                 fn {}(){}{{
                     {}
                 }}
-            ]],
+            ]]   ,
                 {
                     i(1, 'testname'),
                     get_test_result(2),
@@ -188,6 +188,22 @@ ls.add_snippets(nil, {
                 {
                     i(1, 'ENV_VAR_NAME'),
                     rep(1),
+                }
+            )
+        ),
+    },
+    go = {
+        -- handle errors
+        s(
+            'iferr',
+            fmt(
+                [[
+                if err != nil {{
+                    return nil, err
+                }}{}
+                ]],
+                {
+                    i(0),
                 }
             )
         ),

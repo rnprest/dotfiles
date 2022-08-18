@@ -22,6 +22,7 @@ augroup SpookyScarySkeletons
     autocmd BufNewFile *.py 0r ~/.config/nvim/templates/skeleton.py
     autocmd BufNewFile *.sh 0r ~/.config/nvim/templates/skeleton.sh
     autocmd BufNewFile main.rs 0r ~/.config/nvim/templates/skeleton.rs
+    autocmd BufNewFile *.go 0r ~/.config/nvim/templates/skeleton.go
 augroup END
 " -----------------------------------------------------------------------------
 " QuickFix and Location (Local) lists
