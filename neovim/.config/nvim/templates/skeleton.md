@@ -35,4 +35,4 @@ command to run if program contains helper info
 
 ## Authors
 
-[Ryan Preston](mailto:<put_email_here>)
+[Ryan Preston](mailto:<put_email_here>?subject=Subject%20Goes%20Here)
