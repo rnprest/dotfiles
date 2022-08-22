@@ -23,6 +23,7 @@ augroup SpookyScarySkeletons
     autocmd BufNewFile *.sh 0r ~/.config/nvim/templates/skeleton.sh
     autocmd BufNewFile main.rs 0r ~/.config/nvim/templates/skeleton.rs
     autocmd BufNewFile *.go 0r ~/.config/nvim/templates/skeleton.go
+    autocmd BufNewFile readme.md 0r ~/.config/nvim/templates/skeleton.md
 augroup END
 " -----------------------------------------------------------------------------
 " QuickFix and Location (Local) lists
