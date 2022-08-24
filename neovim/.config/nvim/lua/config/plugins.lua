@@ -106,11 +106,12 @@ local function init()
                     'json',
                     'lua',
                     'make',
+                    'markdown',
+                    'org',
                     'python',
                     'rust',
                     'toml',
                     'yaml',
-                    'org',
                 },
                 sync_install = false,
                 indent = {
@@ -377,6 +378,11 @@ local function init()
     use { -- Code action menu with diffs
         'weilbith/nvim-code-action-menu',
         cmd = 'CodeActionMenu',
+    }
+    -- Call :FeMaco with cursor on a markdown code-block to edit with proper lsp
+    use {
+        'AckslD/nvim-FeMaco.lua',
+        config = 'require("femaco").setup()',
     }
 end
 
