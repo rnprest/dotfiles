@@ -46,6 +46,7 @@ local options = {
     softtabstop = 4, -- Use 4 spaces for a tab
     splitbelow = true, -- Open vertical splits BELOW current buffer
     splitright = true, -- Open horizontal splits RIGHT of current buffer
+    swapfile = false,
     tabstop = 4,
     termguicolors = true, -- Enable 24-bit true colors
     updatetime = 100, -- default updatetime 4000ms is not good for async update (vim/signify)
