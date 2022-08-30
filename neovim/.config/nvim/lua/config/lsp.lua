@@ -42,9 +42,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>hd', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
     -- Set autocommands conditional on server_capabilities
-    if client.supports_method 'textDocument/signatureHelp'
-        and client.supports_method 'textDocument/documentHighlight'
-    then
+    if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_clear_autocmds { group = lsp, buffer = bufnr }
         vim.api.nvim_create_autocmd('CursorHold', {
             group = lsp,
