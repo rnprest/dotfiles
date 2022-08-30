@@ -84,10 +84,10 @@ augroup custom_tabs
     autocmd BufReadPost * call TabsOrSpaces()
 augroup end
 
-" Automatically open help in VERTICAL split, instead of default horizontal
+" Automatically open help in new tab, instead of default horizontal
 augroup vimrc_help
   autocmd!
-  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd T | endif
 augroup END
 
 " Removes whitespace every time the file is saved

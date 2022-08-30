@@ -206,6 +206,12 @@ vim.api.nvim_set_keymap(
     [[:lua require('telescope.builtin').live_grep()<CR>]],
     { silent = true, noremap = true }
 )
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>th',
+    [[:lua require('telescope.builtin').help_tags({ layout_strategy = 'vertical' })<CR>]],
+    { silent = true, noremap = true }
+)
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gs', ':G<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit!<CR>', { silent = true, noremap = true }) -- open the three way merge conflict
