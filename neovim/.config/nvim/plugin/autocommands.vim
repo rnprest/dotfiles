@@ -1,60 +1,3 @@
-" Disable harpoon default keymap when in a norg buffer, so can use CR to follow links
-augroup NeorgHarpoon
-    autocmd!
-    autocmd BufEnter *.norg call nvim_set_keymap('n', '<CR>', '<CR>', {})
-    autocmd BufLeave *.norg call nvim_set_keymap('n', '<CR>', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {})
-augroup END
-" Use backspace to exit an entered file in neorg
-augroup NeorgBackspace
-    autocmd!
-    autocmd BufEnter *.norg call nvim_set_keymap('n', '<BS>', ':e ~/neorg/notes/index.norg<CR>', {})
-    autocmd BufLeave *.norg call nvim_set_keymap('n', '<BS>', '', {})
-augroup END
-
-" -----------------------------------------------------------------------------
-" Skeleton Files
-" -----------------------------------------------------------------------------
-augroup SpookyScarySkeletons
-    autocmd!
-    autocmd BufNewFile *.c 0r ~/.config/nvim/templates/skeleton.c
-    autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/skeleton.cpp
-    autocmd BufNewFile *.java 0r ~/.config/nvim/templates/skeleton.java
-    autocmd BufNewFile *.py 0r ~/.config/nvim/templates/skeleton.py
-    autocmd BufNewFile *.sh 0r ~/.config/nvim/templates/skeleton.sh
-    autocmd BufNewFile main.rs 0r ~/.config/nvim/templates/skeleton.rs
-    autocmd BufNewFile *.go 0r ~/.config/nvim/templates/skeleton.go
-    autocmd BufNewFile readme.md 0r ~/.config/nvim/templates/skeleton.md
-augroup END
-" -----------------------------------------------------------------------------
-" QuickFix and Location (Local) lists
-" -----------------------------------------------------------------------------
-let g:config_local_list = 0
-let g:config_global_list = 0
-
-fun! ToggleQFList(global)
-    if a:global
-        if g:config_global_list == 1
-            let g:config_global_list = 0
-            cclose
-        else
-            let g:config_global_list = 1
-            copen
-        end
-    else
-        if g:config_local_list == 1
-            let g:config_local_list = 0
-            lclose
-        else
-            let g:config_local_list = 1
-            lopen
-        end
-    endif
-endfun
-
-fun! LspLocationList()
-    lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
-endfun
-" -----------------------------------------------------------------------------
 
 " Compiling/sourcing
 augroup packer_user_config
@@ -90,32 +33,14 @@ augroup vimrc_help
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd T | endif
 augroup END
 
-" Removes whitespace every time the file is saved
-augroup FixDisgustingWhitespace
-    autocmd!
-    autocmd BufWritePre * %s/\s\+$//e
-augroup END
-
-
 " Restore last cursor position and marks on open
 autocmd BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
       \ |   exe "normal! g`\""
       \ | endif
 
-" Switch between line number styles when switching modes
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * :lua vim.opt.relativenumber, vim.opt.number = true, false
-  autocmd BufLeave,FocusLost,InsertEnter   * :lua vim.opt.relativenumber, vim.opt.number = false, true
-augroup END
 " autocmd FileType markdown setlocal spell
 autocmd Filetype gitcommit setlocal spell textwidth=72
-
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 200})
-augroup END
 
 function TabsOrSpaces()
     " Determines whether to use spaces or tabs on the current buffer.

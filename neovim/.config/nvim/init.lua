@@ -320,3 +320,131 @@ vim.api.nvim_set_keymap('n', 'ga', [[:Tabularize /]], { silent = true, noremap =
 vim.api.nvim_set_keymap('v', 'ga', [[:Tabularize /]], { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', 'ga:', [[:Tabularize /:\zs<CR>]], { silent = true, noremap = true })
 vim.api.nvim_set_keymap('v', 'ga:', [[:Tabularize /:\zs<CR>]], { silent = true, noremap = true })
+
+----------------------------------------------------------------------
+--                           Autocommands                           --
+----------------------------------------------------------------------
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+----------------------------------------------------------------------
+--                          Skeleton Files                          --
+----------------------------------------------------------------------
+local skeleton_group = augroup('SpookyScarySkeletons', {})
+autocmd('BufNewFile', {
+    group = skeleton_group,
+    pattern = '*.c',
+    callback = function()
+        cmd '0r ~/.config/nvim/templates/skeleton.c'
+    end,
+})
+autocmd('BufNewFile', {
+    group = skeleton_group,
+    pattern = '*.cpp',
+    callback = function()
+        cmd '0r ~/.config/nvim/templates/skeleton.cpp'
+    end,
+})
+autocmd('BufNewFile', {
+    group = skeleton_group,
+    pattern = '*.java',
+    callback = function()
+        cmd '0r ~/.config/nvim/templates/skeleton.java'
+    end,
+})
+autocmd('BufNewFile', {
+    group = skeleton_group,
+    pattern = '*.py',
+    callback = function()
+        cmd '0r ~/.config/nvim/templates/skeleton.py'
+    end,
+})
+autocmd('BufNewFile', {
+    group = skeleton_group,
+    pattern = '*.sh',
+    callback = function()
+        cmd '0r ~/.config/nvim/templates/skeleton.sh'
+    end,
+})
+autocmd('BufNewFile', {
+    group = skeleton_group,
+    pattern = 'main.rs',
+    callback = function()
+        cmd '0r ~/.config/nvim/templates/skeleton.rs'
+    end,
+})
+autocmd('BufNewFile', {
+    group = skeleton_group,
+    pattern = '*.go',
+    callback = function()
+        cmd '0r ~/.config/nvim/templates/skeleton.go'
+    end,
+})
+autocmd('BufNewFile', {
+    group = skeleton_group,
+    pattern = 'readme.md',
+    callback = function()
+        cmd '0r ~/.config/nvim/templates/skeleton.md'
+    end,
+})
+
+----------------------------------------------------------------------
+--         Switch between line number styles when switching         --
+--                              modes                               --
+----------------------------------------------------------------------
+local numbertoggle_group = augroup('numbertoggle', {})
+
+autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' }, {
+    group = numbertoggle_group,
+    pattern = '*',
+    callback = function()
+        opt.relativenumber = true
+        opt.number = false
+    end,
+})
+autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
+    group = numbertoggle_group,
+    pattern = '*',
+    callback = function()
+        opt.relativenumber = false
+        opt.number = true
+    end,
+})
+
+----------------------------------------------------------------------
+--              QuickFix List (toggle open and close)               --
+----------------------------------------------------------------------
+g.config_global_list = 0
+vim.api.nvim_create_user_command('ToggleQFList', function()
+    if g.config_global_list == 1 then
+        g.config_global_list = 0
+        cmd 'cclose'
+    else
+        g.config_global_list = 1
+        cmd 'copen'
+    end
+end, {})
+
+----------------------------------------------------------------------
+--                          Highlight Yank                          --
+----------------------------------------------------------------------
+local yank_group = augroup('yank', {})
+autocmd('TextYankPost', {
+    group = yank_group,
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank {
+            higroup = 'IncSearch',
+            timeout = 200,
+        }
+    end,
+})
+
+----------------------------------------------------------------------
+--         Removes whitespace every time the file is saved          --
+----------------------------------------------------------------------
+local formatting_group = augroup('formatting', {})
+autocmd('BufWritePre', {
+    group = formatting_group,
+    pattern = '*',
+    command = '%s/\\s\\+$//e',
+})
