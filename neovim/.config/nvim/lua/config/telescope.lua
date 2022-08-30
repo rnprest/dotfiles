@@ -33,6 +33,7 @@ require('telescope').load_extension 'fzy_native'
 require('telescope').load_extension 'file_browser'
 require('telescope').load_extension 'ui-select'
 require('telescope').load_extension 'git_worktree'
+require('telescope').load_extension 'env'
 
 local M = {}
 M.search_dotfiles = function()

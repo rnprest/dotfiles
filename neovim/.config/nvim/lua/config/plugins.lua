@@ -180,6 +180,8 @@ local function init()
     }
     use { 'nvim-telescope/telescope-ui-select.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
     use { 'nvim-telescope/telescope-file-browser.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
+    use { 'ThePrimeagen/git-worktree.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
+    use { 'LinArcX/telescope-env.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
     ----------------------------------------------------------------------
     --                           Autocomplete                           --
     ----------------------------------------------------------------------
@@ -369,8 +371,6 @@ local function init()
         'ThePrimeagen/harpoon',
         requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
     }
-    -- Worktrees
-    use { 'ThePrimeagen/git-worktree.nvim', requires = { 'nvim-telescope/telescope.nvim' } }
     -- Documentation
     use 'nanotee/luv-vimdocs'
     use 'milisims/nvim-luaref'
