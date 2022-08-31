@@ -314,6 +314,8 @@ vim.api.nvim_set_keymap('n', 'ga', [[:Tabularize /]], { silent = true, noremap =
 vim.api.nvim_set_keymap('v', 'ga', [[:Tabularize /]], { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', 'ga:', [[:Tabularize /:\zs<CR>]], { silent = true, noremap = true })
 vim.api.nvim_set_keymap('v', 'ga:', [[:Tabularize /:\zs<CR>]], { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<C-f>', [[[s1z=<c-o>]], { silent = true, noremap = true }) -- Fix spelling mistakes
+vim.api.nvim_set_keymap('i', '<C-f>', [[<c-g>u<Esc>[s1z=`]a<c-g>u]], { silent = true, noremap = true }) -- Fix spelling mistakes
 
 ----------------------------------------------------------------------
 --                           Autocommands                           --
