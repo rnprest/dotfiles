@@ -39,9 +39,6 @@ autocmd BufReadPost *
       \ |   exe "normal! g`\""
       \ | endif
 
-" autocmd FileType markdown setlocal spell
-autocmd Filetype gitcommit setlocal spell textwidth=72
-
 function TabsOrSpaces()
     " Determines whether to use spaces or tabs on the current buffer.
     if getfsize(bufname("%")) > 256000

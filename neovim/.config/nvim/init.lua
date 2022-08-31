@@ -444,3 +444,23 @@ autocmd('BufWritePre', {
     pattern = '*',
     command = '%s/\\s\\+$//e',
 })
+
+----------------------------------------------------------------------
+--            Set spellcheck for markdown and gitcommit             --
+----------------------------------------------------------------------
+local spellcheck_group = augroup('spellcheck', {})
+autocmd('FileType', {
+    group = spellcheck_group,
+    pattern = 'markdown',
+    callback = function()
+        opt.spell = true
+    end,
+})
+autocmd('FileType', {
+    group = spellcheck_group,
+    pattern = 'gitcommit',
+    callback = function()
+        opt.spell = true
+        opt.textwidth = 72
+    end,
+})
