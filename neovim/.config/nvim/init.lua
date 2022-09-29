@@ -156,7 +156,7 @@ vim.api.nvim_set_keymap(
     [[:lua require('config.telescope').search_dotfiles()<CR>]],
     { silent = true, noremap = true }
 )
-vim.api.nvim_set_keymap('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>', { silent = true, noremap = true }) -- Format file
+vim.api.nvim_set_keymap('n', '<leader>f', ':lua vim.lsp.buf.format({ timeout_ms = 5000 })<CR>', { silent = true, noremap = true }) -- Format file
 vim.api.nvim_set_keymap(
     'n',
     '<leader>w',
