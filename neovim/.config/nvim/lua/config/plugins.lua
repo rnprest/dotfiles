@@ -125,36 +125,6 @@ local function init()
         end,
     }
     use {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        requires = 'nvim-treesitter/nvim-treesitter',
-        config = function()
-            require('nvim-treesitter.configs').setup {
-                textobjects = {
-                    select = {
-                        enable = true,
-                        lookahead = true,
-                        keymaps = {
-                            -- see after/queries/<language>/textobjects.scm for more capture groups
-                            ['af'] = '@function.outer',
-                            ['if'] = '@function.inner',
-                            ['ac'] = '@class.outer',
-                            ['ic'] = '@class.inner',
-                        },
-                    },
-                    swap = {
-                        enable = true,
-                        swap_next = {
-                            ['<leader>mn'] = '@swappable',
-                        },
-                        swap_previous = {
-                            ['<leader>mp'] = '@swappable',
-                        },
-                    },
-                },
-            }
-        end,
-    }
-    use {
         'nvim-treesitter/nvim-treesitter-context',
         requires = 'nvim-treesitter/nvim-treesitter',
         config = function()
