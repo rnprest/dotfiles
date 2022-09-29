@@ -105,6 +105,7 @@ vim.cmd [[
 ----------------------------------------------------------------------
 --                           Normal Mode                            --
 ----------------------------------------------------------------------
+-- vim.api.nvim_set_keymap('n', '<C-LeftMouse>', '', { silent = true, noremap = true }) -- Conflicted with wezterm opening links
 vim.api.nvim_set_keymap('n', 'j', 'gj', { silent = true, noremap = true }) -- Move by one line
 vim.api.nvim_set_keymap('n', 'k', 'gk', { silent = true, noremap = true }) -- Move by one line
 vim.api.nvim_set_keymap('n', 'Y', 'yg_', { silent = true, noremap = true }) -- Yank til end of line
