@@ -137,6 +137,8 @@ local function init()
         end,
     }
 
+    use 'Afourcat/treesitter-terraform-doc.nvim' -- open terraform docs for current resource/data block
+
     use 'nvim-treesitter/playground'
     ----------------------------------------------------------------------
     --                            Telescope                             --
