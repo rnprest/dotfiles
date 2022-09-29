@@ -207,5 +207,7 @@ ls.add_snippets(nil, {
                 }
             )
         ),
+        -- print the contents of a variable
+        s('print', fmt([[ log.Printf("{} = %v", {}) ]], { i(1, 'variable_name'), rep(1) })),
     },
 })
