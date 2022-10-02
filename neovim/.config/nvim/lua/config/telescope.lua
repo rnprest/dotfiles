@@ -56,25 +56,13 @@ end
 --------------------------------------------------------------------------------
 -- Refactoring
 --------------------------------------------------------------------------------
-local function refactor(prompt_bufnr)
-    local content = require('telescope.actions.state').get_selected_entry(prompt_bufnr)
-    require('telescope.actions').close(prompt_bufnr)
-    require('refactoring').refactor(content.value)
-end
+-- load refactoring Telescope extension
+require("telescope").load_extension("refactoring")
 
-M.refactors = function()
-    require('telescope.pickers').new({}, {
-        prompt_title = 'refactors',
-        finder = require('telescope.finders').new_table {
-            results = require('refactoring').get_refactors(),
-        },
-        sorter = require('telescope.config').values.generic_sorter {},
-        attach_mappings = function(_, map)
-            map('i', '<CR>', refactor)
-            map('n', '<CR>', refactor)
-            return true
-        end,
-    }):find()
-end
-
-return M
+-- remap to open the Telescope refactoring menu in visual mode
+vim.api.nvim_set_keymap(
+	"v",
+	"<leader>rr",
+	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+	{ noremap = true }
+)
