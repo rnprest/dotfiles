@@ -120,10 +120,10 @@ end
 ----------------------------------------------------------------------
 --                              Mason                               --
 ----------------------------------------------------------------------
-require("mason").setup({})
-require("mason-lspconfig").setup({})
+require('mason').setup {}
+require('mason-lspconfig').setup {}
 
-local installed_servers = require("mason-lspconfig").get_installed_servers()
+local installed_servers = require('mason-lspconfig').get_installed_servers()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
@@ -191,7 +191,7 @@ for _, server in pairs(installed_servers) do
         }
     end
     -- default setup for all servers
-    require('lspconfig')[server.name].setup(default_opts)
+    require('lspconfig')[server].setup(default_opts)
 end
 
 require('rust-tools').setup { server = default_opts }
