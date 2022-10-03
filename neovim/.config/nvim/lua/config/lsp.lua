@@ -105,10 +105,12 @@ local on_attach = function(client, bufnr)
 end
 
 ----------------------------------------------------------------------
---                          lsp-installer                           --
+--                              Mason                               --
 ----------------------------------------------------------------------
-require('nvim-lsp-installer').setup {}
-local installed_servers = require('nvim-lsp-installer').get_installed_servers()
+require("mason").setup({})
+require("mason-lspconfig").setup({})
+
+local installed_servers = require("mason-lspconfig").get_installed_servers()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
