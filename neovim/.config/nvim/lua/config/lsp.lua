@@ -73,8 +73,6 @@ vim.api.nvim_create_autocmd('CursorMoved', {
 })
 ----------------------------------------------------------------------
 
-local lsp = vim.api.nvim_create_augroup('lsp_references', {})
-local formatting = vim.api.nvim_create_augroup('lsp_formatting', {})
 local on_attach = function(client, bufnr)
     require('lsp_signature').on_attach()
     vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>')
