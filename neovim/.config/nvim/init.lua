@@ -115,12 +115,6 @@ vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true, noremap = true }) --
 vim.api.nvim_set_keymap('n', 'gx', [[mzyiW:!open "<c-r><c-a>"<cr>`z]], { silent = true, noremap = true }) -- Use gx to open URL under cursor (won't work with hashtags)
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>lspinstall',
-    [[:LspInstall bashls dockerls gopls html jsonls pyright rust_analyzer sumneko_lua terraformls tsserver vimls yamlls sqls<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
     '<leader>ht',
     [[ :lua require("harpoon.ui").toggle_quick_menu()<CR>ggVGcmain.tf<ESC>oterraform.tfvars<ESC>ovariables.tf<ESC>obackend.tfvars<ESC> ]],
     { silent = true, noremap = true }

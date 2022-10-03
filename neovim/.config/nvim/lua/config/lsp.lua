@@ -125,7 +125,23 @@ end
 --                              Mason                               --
 ----------------------------------------------------------------------
 require('mason').setup {}
-require('mason-lspconfig').setup {}
+require('mason-lspconfig').setup {
+    ensure_installed = {
+        'bashls',
+        'dockerls',
+        'gopls',
+        'html',
+        'jsonls',
+        'pyright',
+        'rust_analyzer',
+        'sumneko_lua',
+        'terraformls',
+        'tsserver',
+        'vimls',
+        'yamlls',
+        'sqls',
+    },
+}
 
 local installed_servers = require('mason-lspconfig').get_installed_servers()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
