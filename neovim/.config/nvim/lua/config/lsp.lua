@@ -27,6 +27,48 @@ require('fidget').setup {
         relative = 'editor',
     },
 }
+
+-- Format on save
+vim.api.nvim_create_augroup('formatting', {})
+vim.api.nvim_create_autocmd('BufWritePre', {
+    group = 'formatting',
+    callback = function()
+        vim.lsp.buf.format()
+    end,
+})
+
+----------------------------------------------------------------------
+--        Highlight references to the current word you're on        --
+----------------------------------------------------------------------
+function BufferLspSupportsHighlighting()
+    local lsps = vim.lsp.get_active_clients()
+
+    for _, client in pairs(lsps or {}) do
+        if client.server_capabilities.documentHighlightProvider then
+            return true
+        end
+    end
+
+    return false
+end
+
+vim.api.nvim_create_augroup('highlight', {})
+vim.api.nvim_create_autocmd('CursorHold', {
+    group = 'highlight',
+    callback = function()
+        if BufferLspSupportsHighlighting() then
+            vim.lsp.buf.document_highlight()
+        end
+    end,
+})
+vim.api.nvim_create_autocmd('CursorMoved', {
+    group = 'highlight',
+    callback = function()
+        vim.lsp.buf.clear_references()
+    end,
+})
+----------------------------------------------------------------------
+
 local lsp = vim.api.nvim_create_augroup('lsp_references', {})
 local formatting = vim.api.nvim_create_augroup('lsp_formatting', {})
 local on_attach = function(client, bufnr)
@@ -40,35 +82,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
     vim.keymap.set('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
     vim.keymap.set('n', '<leader>hd', '<cmd>lua vim.lsp.buf.hover()<CR>')
-
-    -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_clear_autocmds { group = lsp, buffer = bufnr }
-        vim.api.nvim_create_autocmd('CursorHold', {
-            group = lsp,
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.document_highlight()
-            end,
-        })
-        vim.api.nvim_create_autocmd('CursorMoved', {
-            group = lsp,
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.clear_references()
-            end,
-        })
-    end
-
-    -- if client.supports_method 'textDocument/formatting' then
-    -- Format on save
-    vim.api.nvim_create_autocmd('BufWritePre', {
-        group = formatting,
-        buffer = bufnr,
-        callback = function()
-            vim.lsp.buf.format()
-        end,
-    })
 
     if client.name ~= 'rust_analyzer' then
         -- disable LSP formatting conflicts - only use null-ls for formatting
