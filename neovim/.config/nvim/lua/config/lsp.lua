@@ -16,6 +16,10 @@ local sources = {
 }
 null_ls.setup { sources = sources }
 
+----------------------------------------------------------------------
+--          fidget shows status of LSPs while initializing          --
+--                            (eyecandy)                            --
+----------------------------------------------------------------------
 require('fidget').setup {
     text = {
         spinner = 'moon',
