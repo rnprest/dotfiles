@@ -54,12 +54,12 @@ local function init()
     --                           LSP / Syntax                           --
     ----------------------------------------------------------------------
     use 'neovim/nvim-lspconfig'
-    use({
-        "williamboman/mason.nvim",
-        after = "cmp-nvim-lsp",
-        requires = { "williamboman/mason-lspconfig.nvim" },
+    use {
+        'williamboman/mason.nvim',
+        after = 'cmp-nvim-lsp',
+        requires = { 'williamboman/mason-lspconfig.nvim' },
         config = "require('config.lsp')",
-    })
+    }
     use 'tami5/lspsaga.nvim'
     use 'ray-x/lsp_signature.nvim'
     use 'simrat39/rust-tools.nvim' -- Inlay-Hints for rust
@@ -89,7 +89,11 @@ local function init()
     ----------------------------------------------------------------------
     --                            Formatting                            --
     ----------------------------------------------------------------------
-    use 'jose-elias-alvarez/null-ls.nvim'
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+    }
+
     ----------------------------------------------------------------------
     --                            Treesitter                            --
     ----------------------------------------------------------------------
