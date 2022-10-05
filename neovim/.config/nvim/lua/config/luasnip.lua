@@ -199,14 +199,33 @@ ls.add_snippets(nil, {
             fmt(
                 [[
                 if err != nil {{
-                    return nil, err
-                }}{}
+                    log.Fatalf("Error: %v", err)
+                }}
+                {}
                 ]],
                 {
                     i(0),
                 }
             )
         ),
+
+        s(
+            'range',
+            fmt(
+
+                [[
+                for _, {} := range {} {{
+                    {}
+                }}
+                ]],
+                {
+                    i(1),
+                    i(2),
+                    i(0),
+                }
+            )
+        ),
+
         -- print the contents of a variable
         s('print', fmt([[ log.Printf("{} = %v", {}) ]], { i(1, 'variable_name'), rep(1) })),
     },
