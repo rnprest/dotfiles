@@ -132,13 +132,6 @@ vim.api.nvim_set_keymap(
     [[:lua require("harpoon.ui").toggle_quick_menu()<CR>]],
     { silent = true, noremap = true }
 )
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>or',
-    [[ mz?resource "<CR>yi"Ohttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/<ESC>pbdf_dd`z ]]
-    ,
-    { silent = true, noremap = true }
-)
 vim.api.nvim_set_keymap('n', '<leader>b', '%', { silent = true, noremap = true })
 vim.api.nvim_set_keymap(
     'n',
