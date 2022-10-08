@@ -1,5 +1,5 @@
 .DS_Store
 .luarc.json # lua lsp generates this (sumneko)
-.packer_compiled.lua
+packer_compiled.lua
 
 gitlinker.lua
