@@ -201,7 +201,8 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>pw',
-    [[:lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>]],
+    [[:lua require("telescope").extensions.live_grep_args.live_grep_raw({ default_text = vim.fn.expand("<cword>")})<CR>]]
+    ,
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
