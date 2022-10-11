@@ -45,7 +45,7 @@ return require('packer').startup {
             end,
             cond = function()
                 local fn = vim.fn
-                local gitlinker_path = '/Users/rpreston/dotfiles/neovim/.config/nvim/lua/config/gitlinker.lua'
+                local gitlinker_path = '~/dotfiles/neovim/.config/nvim/lua/config/gitlinker.lua'
                 if fn.empty(fn.glob(gitlinker_path)) > 0 then
                     vim.notify(
                         [[

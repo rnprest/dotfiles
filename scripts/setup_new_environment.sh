@@ -15,32 +15,21 @@ echo "Installing Homebrew and formulae/casks"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 pushd ~/dotfiles/Homebrew/
 brew bundle
-brew services start skhd
 popd
 
 ###############################################################################
 # Stow
 ###############################################################################
-echo "Stowing neovim, skhd, and personal"
+echo "Stowing neovim, ripgrep, wezterm, and personal"
 # Remove gitconfig because it will be overwritten by personal
 rm ~/.gitconfig
 pushd ~/dotfiles/
-stow neovim skhd personal
-popd
-
-###############################################################################
-# Neovim LSPs
-###############################################################################
-echo "Installing language servers"
-pushd ~/dotfiles/scripts/
-./install_LSPs.sh
+stow neovim ripgrep wezterm personal
 popd
 
 ###############################################################################
 # Neovim
 ###############################################################################
-echo "Installing neovim and running :PackerInstall"
+echo "Installing neovim and setting it up"
 pip3 install neovim
-cargo install stylua # For formatting .lua files
-# Install plugins
-nvim ~/dotfiles/neovim/.config/nvim/lua/config/plugins.lua +PackerInstall
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
