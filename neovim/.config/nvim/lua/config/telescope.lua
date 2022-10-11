@@ -5,6 +5,8 @@ require('telescope').load_extension 'git_worktree'
 require('telescope').load_extension 'env'
 
 local actions = require 'telescope.actions'
+local lga_actions = require 'telescope-live-grep-args.actions'
+
 require('telescope').setup {
     defaults = {
         file_sorter = require('telescope.sorters').get_fzy_sorter,
@@ -30,6 +32,15 @@ require('telescope').setup {
         ['ui-select'] = {
             require('telescope.themes').get_dropdown {
                 -- even more opts
+            },
+        },
+        live_grep_args = {
+            auto_quoting = true, -- enable/disable auto-quoting
+            mappings = { -- extend mappings
+                i = {
+                    -- quote prompt and add a glob for a filetype
+                    ['<C-k>'] = lga_actions.quote_prompt { postfix = ' -g "*.' },
+                },
             },
         },
     },

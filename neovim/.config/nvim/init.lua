@@ -207,7 +207,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>ps',
-    [[:lua require('telescope.builtin').live_grep()<CR>]],
+    [[:lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]],
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
