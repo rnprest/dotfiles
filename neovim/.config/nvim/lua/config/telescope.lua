@@ -1,3 +1,9 @@
+require('telescope').load_extension 'fzy_native'
+require('telescope').load_extension 'file_browser'
+require('telescope').load_extension 'ui-select'
+require('telescope').load_extension 'git_worktree'
+require('telescope').load_extension 'env'
+
 local actions = require 'telescope.actions'
 require('telescope').setup {
     defaults = {
@@ -29,12 +35,6 @@ require('telescope').setup {
     },
 }
 
-require('telescope').load_extension 'fzy_native'
-require('telescope').load_extension 'file_browser'
-require('telescope').load_extension 'ui-select'
-require('telescope').load_extension 'git_worktree'
-require('telescope').load_extension 'env'
-
 local M = {}
 M.search_dotfiles = function()
     require('telescope.builtin').git_files {
@@ -57,14 +57,14 @@ end
 -- Refactoring
 --------------------------------------------------------------------------------
 -- load refactoring Telescope extension
-require("telescope").load_extension("refactoring")
+require('telescope').load_extension 'refactoring'
 
 -- remap to open the Telescope refactoring menu in visual mode
 vim.api.nvim_set_keymap(
-	"v",
-	"<leader>rr",
-	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-	{ noremap = true }
+    'v',
+    '<leader>rr',
+    "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+    { noremap = true }
 )
 
 return M
