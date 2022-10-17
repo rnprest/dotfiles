@@ -142,8 +142,7 @@ require('mason-lspconfig').setup {
 }
 
 local installed_servers = require('mason-lspconfig').get_installed_servers()
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local default_opts = {
     on_attach = on_attach,
