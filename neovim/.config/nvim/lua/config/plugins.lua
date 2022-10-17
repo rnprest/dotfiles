@@ -402,7 +402,16 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
         -- Call :FeMaco with cursor on a markdown code-block to edit with proper lsp
         use {
             'AckslD/nvim-FeMaco.lua',
-            config = 'require("femaco").setup()',
+            config = function()
+                require('femaco').setup()
+            end,
+        }
+        -- call :S3Edit to edit an s3 file, and re-upload it on bufwrite
+        use {
+            'kiran94/s3edit.nvim',
+            config = function()
+                require('s3edit').setup()
+            end,
         }
 
         -- Automatically set up your configuration after cloning packer.nvim
