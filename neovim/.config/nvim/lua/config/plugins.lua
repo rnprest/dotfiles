@@ -76,6 +76,12 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
                 return true
             end,
         }
+        use {
+            'f-person/git-blame.nvim',
+            config = function()
+                vim.g.gitblame_date_format = '%r'
+            end,
+        }
         ----------------------------------------------------------------------
         --                           LSP / Syntax                           --
         ----------------------------------------------------------------------
@@ -249,6 +255,11 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
                 vim.cmd 'highlight LspReferenceText gui=NONE guibg=#464B5D'
             end,
         }
+        -- Only load this plugin in quickfix windows
+        use {
+            'kevinhwang91/nvim-bqf',
+            ft = 'qf',
+        }
         ----------------------------------------------------------------------
         --                            Statusline                            --
         ----------------------------------------------------------------------
@@ -413,6 +424,40 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
                 require('s3edit').setup()
             end,
         }
+        -- Databases
+        use 'tpope/vim-dadbod'
+        use {
+            'kristijanhusak/vim-dadbod-ui',
+            config = function()
+                vim.g.db_ui_env_variable_url = 'DATABASE_URL'
+                vim.g.db_ui_env_variable_name = 'DATABASE_NAME'
+            end,
+        }
+        use {
+            'kristijanhusak/vim-dadbod-completion',
+            config = function()
+                local database = vim.api.nvim_create_augroup('database', {})
+                vim.api.nvim_create_autocmd('FileType', {
+                    group = database,
+                    pattern = { '*.sql', '*.mysql', '*.plsql' }, -- sql,mysql,plsql
+                    callback = function()
+                        require('config.cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
+                    end,
+                })
+            end,
+        }
+        -- just absolutely glorious filesystem editing
+        use {
+            'elihunter173/dirbuf.nvim',
+            config = function()
+                require('dirbuf').setup {
+                    sort_order = 'directories_first',
+                }
+            end,
+        }
+
+        -- json file stuff
+        use 'gennaro-tedesco/nvim-jqx'
 
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
