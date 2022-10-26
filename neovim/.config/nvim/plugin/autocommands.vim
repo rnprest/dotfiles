@@ -10,7 +10,7 @@ augroup FileTypes
     autocmd!
     autocmd BufNewFile,BufRead *.deckspec set ft=yaml
     autocmd BufNewFile,BufRead *.har set ft=json
-    " autocmd BufNewFile,BufRead *.template set ft=yaml
+    autocmd BufNewFile,BufRead *.tfvars set ft=hcl
 augroup END
 
 " Only show the cursor line in the active buffer.
