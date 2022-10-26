@@ -79,6 +79,9 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
         use {
             'f-person/git-blame.nvim',
             config = function()
+                vim.g.gitblame_set_extmark_options = {
+                    hl_mode = 'combine',
+                }
                 vim.g.gitblame_date_format = '%r'
             end,
         }
