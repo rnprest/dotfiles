@@ -68,7 +68,9 @@ vim.api.nvim_create_autocmd('CursorHold', {
 vim.api.nvim_create_autocmd('CursorMoved', {
     group = 'highlight',
     callback = function()
-        vim.lsp.buf.clear_references()
+        if BufferLspSupportsHighlighting() then
+            vim.lsp.buf.clear_references()
+        end
     end,
 })
 ----------------------------------------------------------------------
