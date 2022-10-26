@@ -112,6 +112,7 @@ vim.cmd [[
 vim.api.nvim_set_keymap('n', 'j', 'gj', { silent = true, noremap = true }) -- Move by one line
 vim.api.nvim_set_keymap('n', 'k', 'gk', { silent = true, noremap = true }) -- Move by one line
 vim.api.nvim_set_keymap('n', 'Y', 'yg_', { silent = true, noremap = true }) -- Yank til end of line
+vim.api.nvim_set_keymap('v', 'y', 'ygv<Esc>', { silent = true, noremap = true }) -- Move cursor to bottom after yank (can quickly paste)
 vim.api.nvim_set_keymap('n', 'J', 'mzJ`z', { silent = true, noremap = true }) -- Keep screen centered
 vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { silent = true, noremap = true }) -- Keep screen centered
 vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true, noremap = true }) -- Keep screen centered
@@ -218,6 +219,7 @@ vim.api.nvim_set_keymap(
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gP', ':Git push -f<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gs', ':G<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit!<CR>', { silent = true, noremap = true }) -- open the three way merge conflict
 vim.api.nvim_set_keymap('n', '<leader>gu', ':diffget //2<CR>', { silent = true, noremap = true }) -- :Gdiff, pull in target (current branch) changes from left
