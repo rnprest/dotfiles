@@ -21,6 +21,17 @@ end
 
 function M.setup()
     cmp.setup {
+        -- Don't show completion menu when on an empty line
+        enabled = function()
+            local curline = vim.api.nvim_get_current_line()
+            local line_is_just_whitespace = vim.fn.empty(vim.fn.matchstr(curline, [[^\s*$]]))
+
+            if line_is_just_whitespace == 0 or curline == '' then
+                return false
+            else
+                return true
+            end
+        end,
         ----------------------------------------------------------------------
         --                  add borders to completion menu                  --
         ----------------------------------------------------------------------
