@@ -284,12 +284,6 @@ vim.api.nvim_set_keymap('v', 'J', [[:m '>+1<CR>gv=gv]], { silent = true, noremap
 vim.api.nvim_set_keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
 vim.api.nvim_set_keymap(
     'v',
-    'rr',
-    [[:lua require("config.telescope").refactors()<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'v',
     '<leader>of',
     '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
     ,
