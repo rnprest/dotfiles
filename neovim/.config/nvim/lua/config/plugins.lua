@@ -462,6 +462,25 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
         -- json file stuff
         use 'gennaro-tedesco/nvim-jqx'
 
+        -- Screenshots
+        use {
+            'krivahtoo/silicon.nvim',
+            run = './install.sh',
+            config = function()
+                require('silicon').setup {
+                    font = 'Iosevka Nerd Font Mono=20',
+                    background = '#ffffff',
+                    line_number = true,
+                    shadow = {
+                        blur_radius = 7.0,
+                    },
+                    pad_horiz = 20,
+                    pad_vert = 20,
+                }
+                vim.keymap.set('v', '<leader>ss', [[:Silicon<CR>]])
+            end,
+        }
+
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
         if packer_bootstrap then
