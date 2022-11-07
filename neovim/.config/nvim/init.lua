@@ -307,6 +307,8 @@ vim.api.nvim_set_keymap('v', '<C-W>', '<C-W><C-W>', { silent = true, noremap = t
 vim.api.nvim_set_keymap('n', '<C-f>', [[[s1z=<c-o>]], { silent = true, noremap = true }) -- Fix spelling mistakes
 vim.api.nvim_set_keymap('i', '<C-f>', [[<c-g>u<Esc>[s1z=`]a<c-g>u]], { silent = true, noremap = true }) -- Fix spelling mistakes
 vim.api.nvim_set_keymap('n', '<leader>jp', ':%!jq<CR>', { silent = true, noremap = true }) -- prettify json
+vim.api.nvim_set_keymap('v', '<leader>jp', ':%!jq<CR>', { silent = true, noremap = true }) -- prettify json
+vim.api.nvim_set_keymap('n', '<leader>jm', ':%!jq -c<CR>', { silent = true, noremap = true }) -- minify json
 vim.api.nvim_set_keymap('v', '<leader>jm', ':%!jq -c<CR>', { silent = true, noremap = true }) -- minify json
 ----------------------------------------------------------------------
 --                           Autocommands                           --
