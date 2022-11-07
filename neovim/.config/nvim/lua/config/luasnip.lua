@@ -102,6 +102,8 @@ ls.add_snippets(nil, {
     rust = {
         -- Debug format
         s('debug', { t '{:#?}' }),
+        -- print the contents of a variable
+        s('print', fmt([[ println!("{} = {{:#?}}", &{}); ]], { i(1, 'variable_name'), rep(1) })),
         -- implement display for a type
         s(
             'impldisplay',
@@ -153,6 +155,18 @@ ls.add_snippets(nil, {
                     c(1, { t '    use super::*;', t '' }),
                     i(0),
                 }
+            )
+        ),
+        -- populate a mod.rs file
+        s(
+            'mod.rs',
+            fmt(
+                [[
+                mod {};
+
+                pub use {}::*;
+                ]],
+                { i(1, '<name of the rust file in this module>'), rep(1) }
             )
         ),
     },
