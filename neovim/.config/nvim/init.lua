@@ -219,6 +219,12 @@ vim.api.nvim_set_keymap(
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>gfp',
+    ':!git push -u origin $(git symbolic-ref --short HEAD)<CR>',
+    { silent = true, noremap = true }
+) -- 'git first push'
 vim.api.nvim_set_keymap('n', '<leader>gP', ':Git push -f<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gs', ':G<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit!<CR>', { silent = true, noremap = true }) -- open the three way merge conflict
