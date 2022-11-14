@@ -393,7 +393,7 @@ autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' }, {
     pattern = '*',
     callback = function()
         opt.relativenumber = true
-        opt.number = false
+        opt.number = true
     end,
 })
 autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
