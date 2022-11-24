@@ -459,8 +459,7 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
             end,
         }
 
-        -- json file stuff
-        use 'gennaro-tedesco/nvim-jqx'
+        use 'gennaro-tedesco/nvim-peekup' -- "" to view and save registers
 
         -- Screenshots
         use {
@@ -478,6 +477,15 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
                     pad_vert = 20,
                 }
                 vim.keymap.set('v', '<leader>ss', [[:Silicon<CR>]])
+            end,
+        }
+
+        -- Creating merge requests
+        use {
+            'rnprest/merge-request.nvim',
+            requires = 'nvim-lua/plenary.nvim',
+            config = function()
+                require('merge-request').setup()
             end,
         }
 
