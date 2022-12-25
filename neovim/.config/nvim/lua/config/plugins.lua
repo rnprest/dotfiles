@@ -528,6 +528,14 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
                 require('merge-request').setup()
             end,
         }
+        use {
+            'rnprest/snip-lookup.nvim',
+            requires = { 'nvim-telescope/telescope.nvim' },
+            run = './install.sh',
+            config = function()
+                require('snip-lookup').setup()
+            end,
+        }
 
         -- use {
         --     '~/personal/plugins/snip-lookup.nvim',
