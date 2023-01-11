@@ -96,30 +96,29 @@ function M.setup()
             { name = 'nvim_lua' },
             { name = 'buffer' },
             { name = 'path' },
-            { name = 'cmdline' },
+            -- { name = 'cmdline' },
             { name = 'luasnip' }, -- For luasnip users.
-            { name = 'orgmode' },
         },
     }
 
     ----------------------------------------------------------------------
     --                           cmp-cmdline                            --
     ----------------------------------------------------------------------
-    -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline('/', {
-        sources = {
-            { name = 'buffer' },
-        },
-    })
+    -- -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+    -- cmp.setup.cmdline('/', {
+    --     sources = {
+    --         { name = 'buffer' },
+    --     },
+    -- })
 
-    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline(':', {
-        sources = cmp.config.sources({
-            { name = 'path' },
-        }, {
-            { name = 'cmdline' },
-        }),
-    })
+    -- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    -- cmp.setup.cmdline(':', {
+    --     sources = cmp.config.sources({
+    --         { name = 'path' },
+    --     }, {
+    --         { name = 'cmdline' },
+    --     }),
+    -- })
 end
 
 return M

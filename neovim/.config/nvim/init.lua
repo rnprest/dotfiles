@@ -171,9 +171,6 @@ vim.api.nvim_set_keymap(
 ) -- new worktree
 vim.api.nvim_set_keymap('n', '<leader>tb', ':Telescope file_browser<CR><ESC>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>x', ':w<CR>:source %<CR>', { silent = true, noremap = true })
--- vim.api.nvim_set_keymap('n', '<leader>on', ':e ~/neorg/notes/index.norg<CR>', { silent = true, noremap = true })
--- vim.api.nvim_set_keymap('n', '<leader>ot', ':e ~/neorg/tasks/index.norg<CR>', { silent = true, noremap = true })
--- vim.api.nvim_set_keymap('n', '<leader>oi', ':e ~/neorg/tasks/inbox.norg<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>yf', [[:let @+ = expand("%")<CR>]], { silent = true, noremap = true }) -- yank file name
 vim.api.nvim_set_keymap('n', '<leader>yp', [[:let @+ = expand("%:p")<CR>]], { silent = true, noremap = true }) -- yank file path
 vim.api.nvim_set_keymap(
@@ -219,6 +216,10 @@ vim.api.nvim_set_keymap(
     [[:lua require('telescope.builtin').help_tags({ layout_strategy = 'vertical' })<CR>]],
     { silent = true, noremap = true }
 )
+vim.api.nvim_set_keymap('n', '<leader>gl', ':Git log --oneline<CR>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gr', ':Git rebase -i <cword><CR>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>g-', ':Git stash<CR>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>g+', ':Git stash pop<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap(
     'n',

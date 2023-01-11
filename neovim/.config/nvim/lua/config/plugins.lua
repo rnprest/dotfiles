@@ -196,7 +196,7 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
         }
         use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
         use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
-        use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }
+        -- use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }
         use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
         use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
         ----------------------------------------------------------------------
@@ -249,6 +249,23 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
             'marko-cerovac/material.nvim',
             requires = 'tjdevries/colorbuddy.nvim',
             config = function()
+                require('material').setup {
+                    contrast = {
+                        floating_windows = true, -- Enable contrast for floating windows
+                    },
+                    plugins = { -- Uncomment the plugins that you use to highlight them
+                        'gitsigns',
+                        'lspsaga',
+                        'nvim-cmp',
+                        'nvim-web-devicons',
+                        'telescope',
+                    },
+                    disable = {
+                        background = false, -- Prevent the theme from setting the background (NeoVim then uses your terminal background)
+                    },
+                }
+                --Lua:
+                vim.g.material_style = 'ocean'
                 vim.cmd 'colorscheme material'
                 -- This highlight needs to load AFTER the colorscheme is set so that it isn't overwritten
                 vim.cmd 'highlight CursorLineNr guifg=#fb801a'
@@ -475,19 +492,52 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
                     },
                     pad_horiz = 20,
                     pad_vert = 20,
+                    window_controls = false,
                 }
                 vim.keymap.set('v', '<leader>ss', [[:Silicon<CR>]])
             end,
         }
 
         -- Creating merge requests
+        -- use {
+        --     'rnprest/merge-request.nvim',
+        --     requires = 'nvim-lua/plenary.nvim',
+        --     config = function()
+        --         require('merge-request').setup()
+        --     end,
+        -- }
+
         use {
-            'rnprest/merge-request.nvim',
+            'rnprest/snip-lookup.nvim',
+            requires = { 'nvim-telescope/telescope.nvim' },
+            run = './install.sh',
+            config = function()
+                require('snip-lookup').setup {
+                    config_file = '~/snippets/snippets.yaml',
+                }
+            end,
+        }
+
+        ----------------------------------------------------------------------
+        --                               WIP                                --
+        ----------------------------------------------------------------------
+        use {
+            '~/personal/plugins/merge-request.nvim',
             requires = 'nvim-lua/plenary.nvim',
             config = function()
                 require('merge-request').setup()
             end,
         }
+
+        -- use {
+        --     '~/personal/plugins/snip-lookup.nvim',
+        --     run = './build.sh',
+        --     config = function()
+        --         require('snip-lookup').setup {
+        --             config_file = '~/snippets/snippets.yaml',
+        --         }
+        --     end,
+        -- }
 
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins

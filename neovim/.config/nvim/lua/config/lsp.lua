@@ -84,7 +84,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>cr', '<cmd>Lspsaga rename<CR>')
     vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
     vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-    vim.keymap.set('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+    -- vim.keymap.set('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>') -- I never use this...
     vim.keymap.set('n', '<leader>hd', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
     if client.name ~= 'rust_analyzer' then
