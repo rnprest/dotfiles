@@ -498,14 +498,13 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
             end,
         }
 
-        -- Creating merge requests
-        -- use {
-        --     'rnprest/merge-request.nvim',
-        --     requires = 'nvim-lua/plenary.nvim',
-        --     config = function()
-        --         require('merge-request').setup()
-        --     end,
-        -- }
+        use {
+            'rnprest/merge-request.nvim',
+            requires = 'nvim-lua/plenary.nvim',
+            config = function()
+                require('merge-request').setup()
+            end,
+        }
 
         use {
             'rnprest/snip-lookup.nvim',
@@ -517,35 +516,6 @@ Hey there! I see you've cloned my repo (and the plugins I use) - but haven't con
                 }
             end,
         }
-
-        ----------------------------------------------------------------------
-        --                               WIP                                --
-        ----------------------------------------------------------------------
-        use {
-            '~/personal/plugins/merge-request.nvim',
-            requires = 'nvim-lua/plenary.nvim',
-            config = function()
-                require('merge-request').setup()
-            end,
-        }
-        use {
-            'rnprest/snip-lookup.nvim',
-            requires = { 'nvim-telescope/telescope.nvim' },
-            run = './install.sh',
-            config = function()
-                require('snip-lookup').setup()
-            end,
-        }
-
-        -- use {
-        --     '~/personal/plugins/snip-lookup.nvim',
-        --     run = './build.sh',
-        --     config = function()
-        --         require('snip-lookup').setup {
-        --             config_file = '~/snippets/snippets.yaml',
-        --         }
-        --     end,
-        -- }
 
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
