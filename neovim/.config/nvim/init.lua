@@ -1,14 +1,7 @@
-local ok = pcall(require, 'impatient')
-
-if not ok then
-    require('config.plugins').sync()
-end
------------------------------------------------------------------------------
 -- Additional Settings
 -----------------------------------------------------------------------------
 require 'config'
 require 'config.globals'
--- require 'config.ts-fix'
 -----------------------------------------------------------------------------
 -- Helpers
 -----------------------------------------------------------------------------
@@ -16,8 +9,6 @@ local g, opt, cmd = vim.g, vim.opt, vim.cmd
 -----------------------------------------------------------------------------
 -- Settings
 -----------------------------------------------------------------------------
-g.mapleader = ','
------------------
 local options = {
     clipboard = 'unnamedplus',
     cmdheight = 2, -- Give more space for displaying messages.
@@ -118,37 +109,7 @@ vim.api.nvim_set_keymap('n', 'J', 'mzJ`z', { silent = true, noremap = true }) --
 vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { silent = true, noremap = true }) -- Keep screen centered
 vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true, noremap = true }) -- Keep screen centered
 vim.api.nvim_set_keymap('n', 'gx', [[mzyiW:!open "<c-r><c-a>"<cr>`z]], { silent = true, noremap = true }) -- Use gx to open URL under cursor (won't work with hashtags)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>ht',
-    [[ :lua require("harpoon.ui").toggle_quick_menu()<CR>ggVGcmain.tf<ESC>oterraform.tfvars<ESC>ovariables.tf<ESC>obackend.tfvars<ESC> ]],
-    { silent = true, noremap = true }
-) -- Load harpoon with terraform files
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>hh',
-    [[:lua require("harpoon.mark").add_file()<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>hm',
-    [[:lua require("harpoon.ui").toggle_quick_menu()<CR>]],
-    { silent = true, noremap = true }
-)
 vim.api.nvim_set_keymap('n', '<leader>b', '%', { silent = true, noremap = true })
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>dot',
-    [[:lua require('config.telescope').search_dotfiles()<CR>]],
-    { silent = true, noremap = true }
-)
 vim.api.nvim_set_keymap(
     'n',
     '<leader>f',
@@ -157,117 +118,24 @@ vim.api.nvim_set_keymap(
 ) -- Format file
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>w',
-    [[:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]],
+    '<leader>of',
+    '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
+    ,
     { silent = true, noremap = true }
-) -- list worktrees
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>nw',
-    [[:lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>]],
-    { silent = true, noremap = true }
-) -- new worktree
-vim.api.nvim_set_keymap('n', '<leader>tb', ':Telescope file_browser<CR><ESC>', { silent = true, noremap = true })
+)
 vim.api.nvim_set_keymap('n', '<leader><leader>x', ':w<CR>:source %<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>yf', [[:let @+ = expand("%")<CR>]], { silent = true, noremap = true }) -- yank file name
 vim.api.nvim_set_keymap('n', '<leader>yp', [[:let @+ = expand("%:p")<CR>]], { silent = true, noremap = true }) -- yank file path
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>da',
-    [[:lua require("refactoring").debug.printf({below = false})<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>db',
-    [[:lua require("refactoring").debug.printf({below = true})<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>pb',
-    [[:lua require('telescope.builtin').buffers()<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>pf',
-    [[:lua require('telescope.builtin').git_files()<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>pw',
-    [[:lua require("telescope").extensions.live_grep_args.live_grep_raw({ default_text = vim.fn.expand("<cword>")})<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>ps',
-    [[:lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>th',
-    [[:lua require('telescope.builtin').help_tags({ layout_strategy = 'vertical' })<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap('n', '<leader>gl', ':Git log --oneline<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gr', ':Git rebase -i <cword><CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>g-', ':Git stash<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>g+', ':Git stash pop<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gfp',
     ':!git push -u origin $(git symbolic-ref --short HEAD)<CR>',
     { silent = true, noremap = true }
 ) -- 'git first push'
-vim.api.nvim_set_keymap('n', '<leader>gP', ':Git push -f<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gs', ':G<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gd', ':Gvdiffsplit!<CR>', { silent = true, noremap = true }) -- open the three way merge conflict
-vim.api.nvim_set_keymap('n', '<leader>gu', ':diffget //2<CR>', { silent = true, noremap = true }) -- :Gdiff, pull in target (current branch) changes from left
-vim.api.nvim_set_keymap('n', '<leader>gh', ':diffget //3<CR>', { silent = true, noremap = true }) -- :Gdiff, pull in merge changes from right
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>gc',
-    [[:lua require('config.telescope').git_branches()<CR>]],
-    { silent = true, noremap = true }
-)
+
 vim.api.nvim_set_keymap('n', '<C-k>', ':cnext<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', ':cprev<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-q>', ':ToggleQFList<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<C-h>', [[:lua require("harpoon.ui").nav_file(1)<CR>]], {
-    silent = true,
-    noremap = true,
-})
-vim.api.nvim_set_keymap('n', '<C-t>', [[:lua require("harpoon.ui").nav_file(2)<CR>]], {
-    silent = true,
-    noremap = true,
-})
-vim.api.nvim_set_keymap('n', '<C-n>', [[:lua require("harpoon.ui").nav_file(3)<CR>]], {
-    silent = true,
-    noremap = true,
-})
-vim.api.nvim_set_keymap('n', '<C-s>', [[:lua require("harpoon.ui").nav_file(4)<CR>]], {
-    silent = true,
-    noremap = true,
-})
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-g>',
-    [[:lua require("harpoon.term").gotoTerminal(1)<CR>]],
-    { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-c>',
-    [[:lua require("harpoon.term").gotoTerminal(2)<CR>]],
-    { silent = true, noremap = true }
-)
--- { 'c>', [[:lua require("harpoon.term").sendCommand(1, "cargo run\n")<CR>]] },
--- { 'c>', [[:lua require("harpoon.term").sendCommand(1, "semgrep --config semgrep.yaml\n")<CR>]] },
 ----------------------------------------------------------------------
 --                           Insert Mode                            --
 ----------------------------------------------------------------------
@@ -278,10 +146,6 @@ vim.api.nvim_set_keymap('i', ',', ',<c-g>u', { silent = true, noremap = true }) 
 vim.api.nvim_set_keymap('i', '.', '.<c-g>u', { silent = true, noremap = true }) -- Undo break points
 vim.api.nvim_set_keymap('i', '?', '?<c-g>u', { silent = true, noremap = true }) -- Undo break points
 ----------------------------------------------------------------------
---                           Visual Mode                            --
-----------------------------------------------------------------------
-vim.api.nvim_set_keymap('x', '<leader>ol', ':GBrowse<CR>', { silent = true, noremap = true }) --  Open line(s)
-----------------------------------------------------------------------
 --                      Visual and Select Mode                      --
 ----------------------------------------------------------------------
 vim.api.nvim_set_keymap('v', '<leader>r', [[:sno//g<left><left>]], { silent = true, noremap = true })
@@ -290,7 +154,8 @@ vim.api.nvim_set_keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { silent = true, noremap
 vim.api.nvim_set_keymap(
     'v',
     '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
+    '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
+    ,
     { silent = true, noremap = true }
 )
 ----------------------------------------------------------------------
