@@ -8,7 +8,7 @@ end
 -----------------------------------------------------------------------------
 require 'config'
 require 'config.globals'
-require 'config.ts-fix'
+-- require 'config.ts-fix'
 -----------------------------------------------------------------------------
 -- Helpers
 -----------------------------------------------------------------------------
@@ -121,8 +121,7 @@ vim.api.nvim_set_keymap('n', 'gx', [[mzyiW:!open "<c-r><c-a>"<cr>`z]], { silent 
 vim.api.nvim_set_keymap(
     'n',
     '<leader>ht',
-    [[ :lua require("harpoon.ui").toggle_quick_menu()<CR>ggVGcmain.tf<ESC>oterraform.tfvars<ESC>ovariables.tf<ESC>obackend.tfvars<ESC> ]]
-    ,
+    [[ :lua require("harpoon.ui").toggle_quick_menu()<CR>ggVGcmain.tf<ESC>oterraform.tfvars<ESC>ovariables.tf<ESC>obackend.tfvars<ESC> ]],
     { silent = true, noremap = true }
 ) -- Load harpoon with terraform files
 vim.api.nvim_set_keymap(
@@ -141,8 +140,7 @@ vim.api.nvim_set_keymap('n', '<leader>b', '%', { silent = true, noremap = true }
 vim.api.nvim_set_keymap(
     'n',
     '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
-    ,
+    '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
@@ -200,8 +198,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>pw',
-    [[:lua require("telescope").extensions.live_grep_args.live_grep_raw({ default_text = vim.fn.expand("<cword>")})<CR>]]
-    ,
+    [[:lua require("telescope").extensions.live_grep_args.live_grep_raw({ default_text = vim.fn.expand("<cword>")})<CR>]],
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
@@ -293,8 +290,7 @@ vim.api.nvim_set_keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { silent = true, noremap
 vim.api.nvim_set_keymap(
     'v',
     '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
-    ,
+    '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
     { silent = true, noremap = true }
 )
 ----------------------------------------------------------------------
