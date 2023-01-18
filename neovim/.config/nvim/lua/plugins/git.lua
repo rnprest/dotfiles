@@ -43,6 +43,9 @@ return {
 		config = function()
 			require 'config.gitlinker'
 		end,
+		keys = {
+			{ '<leader>of' },
+		},
 		cond = function()
 			local fn = vim.fn
 			local gitlinker_path = '~/dotfiles/neovim/.config/nvim/lua/config/gitlinker.lua'

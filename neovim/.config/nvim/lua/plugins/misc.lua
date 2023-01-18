@@ -105,6 +105,7 @@ return {
                 sort_order = 'directories_first',
             }
         end,
+        cmd = 'Dirbuf',
     },
 
     -- Screenshots
@@ -123,8 +124,10 @@ return {
                 pad_vert = 20,
                 window_controls = false,
             }
-            vim.keymap.set('v', '<leader>ss', [[:Silicon<CR>]])
         end,
+        keys = {
+            { '<leader>ss', ':Silicon<CR>', silent = true, noremap = true, mode = 'v' },
+        },
     },
 
     {
@@ -133,6 +136,9 @@ return {
         config = function()
             require('merge-request').setup()
         end,
+        keys = {
+            { '<leader>mr' },
+        },
     },
 
     {
@@ -144,5 +150,9 @@ return {
                 config_file = '~/snippets/snippets.yaml',
             }
         end,
+        keys = {
+            { '<leader>sl' },
+            { '<leader>esl' },
+        },
     },
 }
