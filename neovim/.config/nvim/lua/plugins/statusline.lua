@@ -13,6 +13,7 @@ return {
     { -- Statusline
         'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons' },
+        event = 'VeryLazy',
         config = function()
             local lualine = require 'lualine'
             local gps = require 'nvim-gps'

@@ -9,7 +9,6 @@ return {
             { '<leader>gp', ':Git push<CR>', silent = true, noremap = true },
             { '<leader>gP', ':Git push -f<CR>', silent = true, noremap = true },
             { '<leader>gs', ':G<CR>', silent = true, noremap = true },
-            { '<leader>gd', ':Gvdiffsplit!<CR>', silent = true, noremap = true }, -- open the three way merge conflict
             { '<leader>gu', ':diffget //2<CR>', silent = true, noremap = true }, -- :Gdiff, pull in target (current branch) changes from left
             { '<leader>gh', ':diffget //3<CR>', silent = true, noremap = true }, -- :Gdiff, pull in merge changes from right
             -- other modes
