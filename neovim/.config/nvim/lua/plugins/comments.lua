@@ -16,6 +16,10 @@ return {
         config = function()
             require('nvim-comment-frame').setup()
         end,
+        keys = {
+            '<leader>cf',
+            '<leader>cm',
+        },
     },
 
     {
@@ -25,6 +29,7 @@ return {
                 enabled = true,
             }
         end,
+        cmd = 'Neogen',
         dependencies = 'nvim-treesitter/nvim-treesitter',
     },
 }

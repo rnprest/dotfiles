@@ -44,7 +44,7 @@ return {
             require 'config.gitlinker'
         end,
         keys = {
-            { '<leader>of' },
+            '<leader>of',
         },
         cond = function()
             local fn = vim.fn

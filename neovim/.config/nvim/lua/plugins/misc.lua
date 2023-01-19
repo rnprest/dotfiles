@@ -137,7 +137,7 @@ return {
             require('merge-request').setup()
         end,
         keys = {
-            { '<leader>mr' },
+            '<leader>mr',
         },
     },
 
@@ -151,8 +151,8 @@ return {
             }
         end,
         keys = {
-            { '<leader>sl' },
-            { '<leader>esl' },
+            '<leader>sl',
+            '<leader>esl',
         },
     },
 }
