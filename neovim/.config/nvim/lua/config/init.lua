@@ -15,4 +15,10 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
-require('lazy').setup 'plugins'
+require('lazy').setup {
+    {
+        import = 'plugins',
+        checker = { enabled = true }, -- auto-check for updates for plugins
+        defaults = { lazy = true }, -- lazy-load all plugins
+    },
+}
