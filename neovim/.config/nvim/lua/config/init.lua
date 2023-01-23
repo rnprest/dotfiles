@@ -18,7 +18,6 @@ vim.g.maplocalleader = ','
 require('lazy').setup {
     {
         import = 'plugins',
-        checker = { enabled = true }, -- auto-check for updates for plugins
         defaults = { lazy = true }, -- lazy-load all plugins
     },
 }
