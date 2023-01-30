@@ -149,8 +149,8 @@ vim.api.nvim_set_keymap('i', '?', '?<c-g>u', { silent = true, noremap = true }) 
 --                      Visual and Select Mode                      --
 ----------------------------------------------------------------------
 vim.api.nvim_set_keymap('v', '<leader>r', [[:sno//g<left><left>]], { silent = true, noremap = true })
-vim.api.nvim_set_keymap('v', 'J', [[:m '>+1<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
-vim.api.nvim_set_keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
+-- vim.api.nvim_set_keymap('v', 'J', [[:m '>+1<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
+-- vim.api.nvim_set_keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
 vim.api.nvim_set_keymap(
     'v',
     '<leader>of',
@@ -173,7 +173,7 @@ vim.api.nvim_set_keymap('v', '_', '^', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-W>', '<C-W><C-W>', { silent = true, noremap = true }) -- rotate through splits
 vim.api.nvim_set_keymap('i', '<C-W>', '<C-W><C-W>', { silent = true, noremap = true }) -- rotate through splits
 vim.api.nvim_set_keymap('v', '<C-W>', '<C-W><C-W>', { silent = true, noremap = true }) -- rotate through splits
-vim.api.nvim_set_keymap('n', '<C-f>', [[[s1z=<c-o>]], { silent = true, noremap = true }) -- Fix spelling mistakes
+-- vim.api.nvim_set_keymap('n', '<C-f>', [[[s1z=<c-o>]], { silent = true, noremap = true }) -- Fix spelling mistakes
 vim.api.nvim_set_keymap('i', '<C-f>', [[<c-g>u<Esc>[s1z=`]a<c-g>u]], { silent = true, noremap = true }) -- Fix spelling mistakes
 vim.api.nvim_set_keymap('n', '<leader>jp', ':%!jq<CR>', { silent = true, noremap = true }) -- prettify json
 vim.api.nvim_set_keymap('v', '<leader>jp', ':%!jq<CR>', { silent = true, noremap = true }) -- prettify json
