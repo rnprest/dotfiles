@@ -113,12 +113,12 @@ return {
                     'impldisplay',
                     fmt(
                         [[
-                impl fmt::Display for {} {{
-                    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {{
-                        write!(f, "{}", {})
-                    }}
-                }}
-                ]]       ,
+                        impl fmt::Display for {} {{
+                            fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {{
+                                write!(f, "{}", {})
+                            }}
+                        }}
+                        ]],
                         {
                             i(1, 'type'),
                             i(2),
@@ -131,11 +131,11 @@ return {
                     'test',
                     fmt(
                         [[
-                #[test]
-                fn {}(){}{{
-                    {}
-                }}
-            ]]           ,
+                        #[test]
+                        fn {}(){}{{
+                            {}
+                        }}
+                        ]],
                         {
                             i(1, 'testname'),
                             get_test_result(2),
@@ -148,13 +148,13 @@ return {
                     'modtest',
                     fmt(
                         [[
-                #[cfg(test)]
-                mod test {{
-                {}
+                        #[cfg(test)]
+                        mod test {{
+                        {}
 
-                    {}
-                }}
-                ]]       ,
+                            {}
+                        }}
+                        ]],
                         {
                             c(1, { t '    use super::*;', t '' }),
                             i(0),
@@ -166,10 +166,10 @@ return {
                     'mod.rs',
                     fmt(
                         [[
-                mod {};
+                        mod {};
 
-                pub use {}::*;
-                ]]       ,
+                        pub use {}::*;
+                        ]],
                         { i(1, '<name of the rust file in this module>'), rep(1) }
                     )
                 ),
@@ -198,11 +198,11 @@ return {
                     'varexists',
                     fmt(
                         [[
-                if [ -z ${} ]; then
-                    echo "Please set the {} env var in your shell"
-                    exit 1
-                fi
-                ]]       ,
+                        if [ -z ${} ]; then
+                            echo "Please set the {} env var in your shell"
+                            exit 1
+                        fi
+                        ]],
                         {
                             i(1, 'ENV_VAR_NAME'),
                             rep(1),
@@ -216,11 +216,11 @@ return {
                     'iferr',
                     fmt(
                         [[
-                if err != nil {{
-                    log.Fatalf("Error: %v", err)
-                }}
-                {}
-                ]]       ,
+                        if err != nil {{
+                            log.Fatalf("Error: %v", err)
+                        }}
+                        {}
+                        ]],
                         {
                             i(0),
                         }
@@ -230,16 +230,40 @@ return {
                 s(
                     'range',
                     fmt(
-
                         [[
-                for _, {} := range {} {{
-                    {}
-                }}
-                ]]       ,
+                        for _, {} := range {} {{
+                            {}
+                        }}
+                        ]],
                         {
                             i(1),
                             i(2),
                             i(0),
+                        }
+                    )
+                ),
+
+                s(
+                    'gofunc',
+                    fmt(
+                        [[
+                        var wg = &sync.WaitGroup{{}}
+                        for _, {} := range {} {{
+                            wg.Add(1)
+                            go func ({} {}) {{
+                                {}
+                                wg.Done()
+                            }}({})
+                        }}
+                        wg.Wait()
+                        ]],
+                        {
+                            i(1),
+                            i(2),
+                            rep(1),
+                            i(3),
+                            i(0),
+                            rep(1),
                         }
                     )
                 ),
