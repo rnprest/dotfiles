@@ -148,11 +148,12 @@ return {
                     'lua_ls',
                     'pyright',
                     'rust_analyzer',
-                    'terraformls',
+                    'sqls',
+                    -- 'terraformls', -- wait for https://github.com/williamboman/mason.nvim/issues/1001 to be fixed
+                    'tflint',
                     'tsserver',
                     'vimls',
                     'yamlls',
-                    'sqls',
                 },
             }
 
