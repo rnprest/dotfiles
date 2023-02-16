@@ -4,7 +4,6 @@ return {
         build = ':TSUpdate',
         dependencies = {
             'nvim-treesitter/nvim-treesitter-context',
-            'Afourcat/treesitter-terraform-doc.nvim', -- open terraform docs for current resource/data block
             'nvim-treesitter/playground',
         },
         config = function()

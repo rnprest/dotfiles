@@ -125,10 +125,6 @@ return {
                     end
                 end
 
-                -- This registers the user command "OpenDoc"
-                require('treesitter-terraform-doc').setup()
-                vim.keymap.set('n', '<leader>od', '<cmd>OpenDoc<CR>')
-
                 vim.api.nvim_create_autocmd('BufWritePre', {
                     pattern = { '*.go' },
                     callback = function()
