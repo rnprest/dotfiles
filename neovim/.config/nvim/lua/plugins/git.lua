@@ -54,4 +54,37 @@ return {
             return true
         end,
     },
+
+    {
+        'aaronhallaert/advanced-git-search.nvim',
+        config = function()
+            require('telescope').load_extension 'advanced_git_search'
+            vim.api.nvim_create_user_command(
+                'DiffCommitLine',
+                "lua require('telescope').extensions.advanced_git_search.diff_commit_line()",
+                { range = true }
+            )
+        end,
+
+        keys = {
+            {
+                '<leader>dcf',
+                [[:lua require('telescope').extensions.advanced_git_search.diff_commit_file()<CR>]],
+                silent = true,
+                noremap = true,
+            },
+            {
+                '<leader>dcl',
+                ':DiffCommitLine<CR>',
+                mode = 'v',
+                silent = true,
+                noremap = true,
+            },
+        },
+        dependencies = {
+            'nvim-telescope/telescope.nvim',
+            -- to show diff splits and open commits in browser
+            'tpope/vim-fugitive',
+        },
+    },
 }
