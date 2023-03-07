@@ -119,8 +119,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
-    ,
+    '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
     { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap('n', '<leader><leader>x', ':w<CR>:source %<CR>', { silent = true, noremap = true })
@@ -147,8 +146,7 @@ vim.api.nvim_set_keymap('v', '<leader>r', [[:sno//g<left><left>]], { silent = tr
 vim.api.nvim_set_keymap(
     'v',
     '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
-    ,
+    '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
     { silent = true, noremap = true }
 )
 ----------------------------------------------------------------------
