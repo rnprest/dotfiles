@@ -126,13 +126,6 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap('n', '<leader><leader>x', ':w<CR>:source %<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>yf', [[:let @+ = expand("%")<CR>]], { silent = true, noremap = true }) -- yank file name
 vim.api.nvim_set_keymap('n', '<leader>yp', [[:let @+ = expand("%:p")<CR>]], { silent = true, noremap = true }) -- yank file path
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>gfp',
-    ':!git push -u origin $(git symbolic-ref --short HEAD)<CR>',
-    { silent = true, noremap = true }
-) -- 'git first push'
-
 vim.api.nvim_set_keymap('n', '<C-k>', ':cnext<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', ':cprev<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-q>', ':ToggleQFList<CR>', { silent = true, noremap = true })
