@@ -43,25 +43,6 @@ return {
     },
 
     {
-        'ruifm/gitlinker.nvim',
-        dependencies = 'nvim-lua/plenary.nvim',
-        config = function()
-            require 'config.gitlinker'
-        end,
-        keys = {
-            '<leader>of',
-        },
-        cond = function()
-            local fn = vim.fn
-            local gitlinker_path = '~/dotfiles/neovim/.config/nvim/lua/config/gitlinker.lua'
-            if fn.empty(fn.glob(gitlinker_path)) > 0 then
-                return false
-            end
-            return true
-        end,
-    },
-
-    {
         'aaronhallaert/advanced-git-search.nvim',
         config = function()
             require('telescope').load_extension 'advanced_git_search'
