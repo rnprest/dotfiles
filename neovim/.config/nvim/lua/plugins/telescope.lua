@@ -20,7 +20,7 @@ local M = {
             noremap = true,
         },
         {
-            '<leader>gc',
+            '<leader>gb',
             function()
                 return require('plugins.telescope').git_branches()
             end,

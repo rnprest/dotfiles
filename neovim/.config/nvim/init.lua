@@ -39,6 +39,7 @@ local options = {
     swapfile = false,
     tabstop = 4,
     termguicolors = true, -- Enable 24-bit true colors
+    textwidth = 80,
     updatetime = 100, -- default updatetime 4000ms is not good for async update (vim/signify)
     wrap = false, -- Disable soft wrapping
 }
@@ -47,15 +48,15 @@ for k, v in pairs(options) do
 end
 
 opt.formatoptions = opt.formatoptions
-    - 'a' -- Auto formatting is BAD.
-    - 't' -- Don't auto format my code. I got linters for that.
     + 'c' -- In general, I like it when comments respect textwidth
-    + 'q' -- Allow formatting comments w/ gq
-    - 'o' -- O and o, don't continue comments
-    + 'r' -- But do continue when pressing enter.
-    + 'n' -- Indent past the formatlistpat, not underneath it.
     + 'j' -- Auto-remove comments if possible.
+    + 'n' -- Indent past the formatlistpat, not underneath it.
+    + 'q' -- Allow formatting comments w/ gq
+    + 'r' -- But do continue when pressing enter.
     - '2' -- I'm not in gradeschool anymore
+    - 'a' -- Auto formatting is BAD.
+    - 'o' -- O and o, don't continue comments
+    - 't' -- Don't auto format my code. I got linters for that.
 -------------------------------------------------------------------------------
 -- Color settings
 -------------------------------------------------------------------------------
@@ -140,7 +141,7 @@ vim.api.nvim_set_keymap('i', '?', '?<c-g>u', { silent = true, noremap = true }) 
 ----------------------------------------------------------------------
 --                      Visual and Select Mode                      --
 ----------------------------------------------------------------------
-vim.api.nvim_set_keymap('v', '<leader>r', [[:sno//g<left><left>]], { silent = true, noremap = true })
+vim.api.nvim_set_keymap('v', '<leader>r', [[:sno//ge<left><left><left>]], { silent = true, noremap = true })
 -- vim.api.nvim_set_keymap('v', 'J', [[:m '>+1<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
 -- vim.api.nvim_set_keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
 vim.api.nvim_set_keymap(
