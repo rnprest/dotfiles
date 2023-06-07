@@ -104,8 +104,8 @@ return {
             require('dirbuf').setup {
                 sort_order = 'directories_first',
             }
+            vim.cmd 'command E Dirbuf'
         end,
-        cmd = 'Dirbuf',
     },
 
     -- Screenshots
@@ -155,4 +155,6 @@ return {
             '<leader>esl',
         },
     },
+
+    'tpope/vim-dadbod',
 }

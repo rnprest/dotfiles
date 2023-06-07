@@ -97,7 +97,7 @@ return {
                 vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>')
                 vim.keymap.set('n', '<leader>dn', '<cmd>Lspsaga diagnostic_jump_next<CR>')
                 vim.keymap.set('n', '<leader>dp', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
-                vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>')
+                vim.keymap.set('n', '<leader>ls', ':LspStop<CR>')
                 vim.keymap.set('n', '<leader>cr', '<cmd>Lspsaga rename<CR>')
                 vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
                 vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
