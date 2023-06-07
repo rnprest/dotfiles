@@ -20,7 +20,6 @@ return {
             ----------------------------------------------------------------------
             local null_ls = require 'null-ls'
             local sources = {
-                null_ls.builtins.formatting.black,
                 -- Tell prettier to just use whatever the buf says it's ft is
                 null_ls.builtins.formatting.prettier.with {
                     extra_args = function(params)
