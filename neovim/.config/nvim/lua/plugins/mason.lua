@@ -21,6 +21,7 @@ return {
             local null_ls = require 'null-ls'
             local sources = {
                 -- Tell prettier to just use whatever the buf says it's ft is
+                null_ls.builtins.formatting.black,
                 null_ls.builtins.formatting.prettier.with {
                     extra_args = function(params)
                         return { '--parser', params.ft }
@@ -147,7 +148,7 @@ return {
                     'lua_ls',
                     'pyright',
                     'rust_analyzer',
-                    'sqls',
+                    'sqlls',
                     -- 'terraformls', -- wait for https://github.com/williamboman/mason.nvim/issues/1001 to be fixed
                     'tflint',
                     'tsserver',

@@ -111,6 +111,7 @@ vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { silent = true, noremap = true }) --
 vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true, noremap = true }) -- Keep screen centered
 vim.api.nvim_set_keymap('n', 'gx', [[mzyiW:!open "<c-r><c-a>"<cr>`z]], { silent = true, noremap = true }) -- Use gx to open URL under cursor (won't work with hashtags)
 vim.api.nvim_set_keymap('n', '<leader>b', '%', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>tf', ':!terraform fmt .<CR>', { silent = true, noremap = true }) -- Format file
 vim.api.nvim_set_keymap(
     'n',
     '<leader>f',

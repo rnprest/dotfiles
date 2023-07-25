@@ -14,6 +14,7 @@ return {
                 silent = true,
                 noremap = true,
             },
+            { '<leader>mr', ':!git mr<CR>',     silent = true, noremap = true },
             { '<leader>gs', ':G<CR>',           silent = true, noremap = true },
             { '<leader>gu', ':diffget //2<CR>', silent = true, noremap = true }, -- :Gdiff, pull in target (current branch) changes from left
             { '<leader>gh', ':diffget //3<CR>', silent = true, noremap = true }, -- :Gdiff, pull in merge changes from right
