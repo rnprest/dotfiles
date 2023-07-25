@@ -7,11 +7,8 @@ return {
 
     -- Show breadcrumbs in statusline
     {
-        'SmiteshP/nvim-gps',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        config = function()
-            require('nvim-gps').setup()
-        end,
+        'SmiteshP/nvim-navic',
+        dependencies = { 'neovim/nvim-lspconfig' },
     },
 
     { -- Statusline
@@ -20,7 +17,7 @@ return {
         event = 'VeryLazy',
         config = function()
             local lualine = require 'lualine'
-            local gps = require 'nvim-gps'
+            local navic = require 'nvim-navic'
 
             -- Color table for highlights
             -- stylua: ignore
@@ -168,8 +165,8 @@ return {
             }
 
             ins_left {
-                gps.get_location,
-                cond = gps.is_available,
+                navic.get_location,
+                cond = navic.is_available,
             }
 
             -- Insert mid section. You can make any number of sections in neovim :)
