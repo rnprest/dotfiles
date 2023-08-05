@@ -6,7 +6,7 @@ These are all of the files and settings that make my development environment as 
 
 ![isn't she beautiful?](images/neovim_config.png)
 
-## Structure
+### Structure
 
 I use [stow](https://www.gnu.org/software/stow/manual/stow.html) to manage my
 dots, which is a symlink farm manager. Stow originated as a solution for
@@ -23,49 +23,159 @@ dotfiles folder — symlinking the contents to my $HOME directory.
 Neovim expects its config files to be located in $HOME/.config/nvim/<files>,
 hence the nested appearance of that folder.
 
-## What's with the 'personal' folder?
+# dotfiles/neovim/.config/nvim
 
-That's a git
-[submodule](https://www.atlassian.com/git/tutorials/git-submodule). It's just
-another git repo _within_ this one. I have mine set as a **private** repo so
-that I can still manage any sensitive dots (my `.gitconfig`) the same way as my
-other files (i.e. cloning this repo and running `stow personal`)
+<a href="https://dotfyle.com/rnprest/dotfiles-neovim-config-nvim"><img src="https://dotfyle.com/rnprest/dotfiles-neovim-config-nvim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/rnprest/dotfiles-neovim-config-nvim"><img src="https://dotfyle.com/rnprest/dotfiles-neovim-config-nvim/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/rnprest/dotfiles-neovim-config-nvim"><img src="https://dotfyle.com/rnprest/dotfiles-neovim-config-nvim/badges/plugin-manager?style=flat" /></a>
 
-## New Environment Setup
+## Install Instructions
 
-1. Create an ssh key and add it to your github
-   - ssh-keygen -t ed25519 -C "your_email@example.com"
-   - pbcopy < ~/.ssh/id_ed25519.pub
-   - If you want to separate your personal and work SSH configs, then you can do so by:
-     - Creating a `~/.ssh/config` file with
-     ```
-     # Gitlab ssh for work (btw indentation not required)
-     Host work
-     	User git
-     	HostName <your work hostname>
-     	Port <your work port>
-     	IdentityFile ~/.ssh/id_ed25519-work <recreate an ssh key and name it whatever>
-     ```
-   - You can also separate your personal and work gitconfigs:
-     - Add an includeIf block to your main .gitconfig
-     ```
-     [user]
-     	name = <your name>
-     	email = <your email>
-     [core]
-     	excludesFile = /Users/rnprest/.gitignore
-     [includeIf "gitdir:~/work/"]
-     	path = ~/.gitconfig-work
-     ```
-2. Clone this repo into your `$HOME` directory
-3. cd inside and run `git submodule init; git submodule update`
-4. run the [setup_new_environment.sh](https://github.com/rnprest/dotfiles/blob/main/scripts/setup_new_environment.sh) script
-   - This has 4 parts:
-     - Changes mac settings using [mac_settings.sh](https://github.com/rnprest/dotfiles/blob/main/scripts/mac_settings.sh)
-     - Installs homebrew and various formulae/casks
-     - Stows the neovim, ripgrep, wezterm, and personal directories
-     - Installs and configures neovim
-   - Feel free to take out or tweak the commands in this script to your liking
+> Install requires Neovim 0.9+. Always review the code before installing a configuration.
+
+Clone the repository and install the plugins:
+
+```sh
+git clone git@github.com:rnprest/dotfiles ~/.config/rnprest/dotfiles
+NVIM_APPNAME=rnprest/dotfiles/neovim/.config/nvim nvim --headless +"Lazy! sync" +qa
+```
+
+Open Neovim with this config:
+
+```sh
+NVIM_APPNAME=rnprest/dotfiles/neovim/.config/nvim nvim
+```
+
+## Plugins
+
+### bars-and-lines
+
+- [SmiteshP/nvim-navic](https://dotfyle.com/plugins/SmiteshP/nvim-navic)
+
+### color
+
+- [NvChad/nvim-colorizer.lua](https://dotfyle.com/plugins/NvChad/nvim-colorizer.lua)
+
+### colorscheme
+
+- [marko-cerovac/material.nvim](https://dotfyle.com/plugins/marko-cerovac/material.nvim)
+
+### colorscheme-creation
+
+- [tjdevries/colorbuddy.nvim](https://dotfyle.com/plugins/tjdevries/colorbuddy.nvim)
+
+### comment
+
+- [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
+- [danymat/neogen](https://dotfyle.com/plugins/danymat/neogen)
+- [s1n7ax/nvim-comment-frame](https://dotfyle.com/plugins/s1n7ax/nvim-comment-frame)
+
+### completion
+
+- [simrat39/rust-tools.nvim](https://dotfyle.com/plugins/simrat39/rust-tools.nvim)
+- [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
+
+### editing-support
+
+- [monaqa/dial.nvim](https://dotfyle.com/plugins/monaqa/dial.nvim)
+- [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
+- [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
+
+### file-explorer
+
+- [kiran94/s3edit.nvim](https://dotfyle.com/plugins/kiran94/s3edit.nvim)
+- [elihunter173/dirbuf.nvim](https://dotfyle.com/plugins/elihunter173/dirbuf.nvim)
+
+### fuzzy-finder
+
+- [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
+
+### git
+
+- [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
+- [aaronhallaert/advanced-git-search.nvim](https://dotfyle.com/plugins/aaronhallaert/advanced-git-search.nvim)
+- [f-person/git-blame.nvim](https://dotfyle.com/plugins/f-person/git-blame.nvim)
+
+### icon
+
+- [kyazdani42/nvim-web-devicons](https://dotfyle.com/plugins/kyazdani42/nvim-web-devicons)
+
+### lsp
+
+- [jose-elias-alvarez/null-ls.nvim](https://dotfyle.com/plugins/jose-elias-alvarez/null-ls.nvim)
+- [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
+- [weilbith/nvim-code-action-menu](https://dotfyle.com/plugins/weilbith/nvim-code-action-menu)
+- [ray-x/lsp_signature.nvim](https://dotfyle.com/plugins/ray-x/lsp_signature.nvim)
+- [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
+
+### lsp-installer
+
+- [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
+
+### markdown-and-latex
+
+- [AckslD/nvim-FeMaco.lua](https://dotfyle.com/plugins/AckslD/nvim-FeMaco.lua)
+
+### marks
+
+- [ThePrimeagen/harpoon](https://dotfyle.com/plugins/ThePrimeagen/harpoon)
+
+### nvim-dev
+
+- [nanotee/luv-vimdocs](https://dotfyle.com/plugins/nanotee/luv-vimdocs)
+- [milisims/nvim-luaref](https://dotfyle.com/plugins/milisims/nvim-luaref)
+- [nvim-lua/popup.nvim](https://dotfyle.com/plugins/nvim-lua/popup.nvim)
+- [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
+
+### plugin-manager
+
+- [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
+
+### quickfix
+
+- [kevinhwang91/nvim-bqf](https://dotfyle.com/plugins/kevinhwang91/nvim-bqf)
+
+### register
+
+- [gennaro-tedesco/nvim-peekup](https://dotfyle.com/plugins/gennaro-tedesco/nvim-peekup)
+
+### snippet
+
+- [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
+
+### statusline
+
+- [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
+
+### syntax
+
+- [kylechui/nvim-surround](https://dotfyle.com/plugins/kylechui/nvim-surround)
+- [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
+
+### utility
+
+- [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
+
+## Language Servers
+
+- bashls
+- dockerls
+- gopls
+- html
+- jsonls
+- lua_ls
+- pyright
+- rust_analyzer
+- sqlls
+- terraformls
+- tflint
+- tsserver
+- vimls
+- yamlls
+
+This readme was generated by [Dotfyle](https://dotfyle.com)
+
+---
 
 Font:
 
