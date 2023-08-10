@@ -157,4 +157,12 @@ return {
     },
 
     'tpope/vim-dadbod',
+
+    {
+        'nvim-pack/nvim-spectre',
+        dependencies = 'nvim-lua/plenary.nvim',
+        keys = {
+            { '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', silent = true, noremap = true, mode = 'n' },
+        },
+    },
 }

@@ -1,3 +1,5 @@
+local actions = require 'telescope.actions'
+
 local M = {
     'nvim-telescope/telescope.nvim',
     dependencies = {
@@ -75,6 +77,14 @@ local M = {
             silent = true,
             noremap = true,
         },
+        {
+            '<leader>t:',
+            function()
+                return require('telescope.builtin').command_history()
+            end,
+            silent = true,
+            noremap = true,
+        },
     },
     config = function()
         local actions = require 'telescope.actions'
@@ -146,7 +156,6 @@ end
 M.git_branches = function()
     require('telescope.builtin').git_branches {
         attach_mappings = function(_, map)
-            local actions = require 'telescope.actions'
             map('i', '<c-d>', actions.git_delete_branch)
             map('n', '<c-d>', actions.git_delete_branch)
             return true
