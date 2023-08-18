@@ -3,3 +3,4 @@
 packer_compiled.lua
 
 gitlinker.lua
+macros.lua

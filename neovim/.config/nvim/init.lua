@@ -2,6 +2,7 @@
 -----------------------------------------------------------------------------
 require 'config'
 require 'config.globals'
+require 'config.macros'
 -----------------------------------------------------------------------------
 -- Helpers
 -----------------------------------------------------------------------------
@@ -130,6 +131,17 @@ vim.api.nvim_set_keymap('n', '<leader>yp', [[:let @+ = expand("%:p")<CR>]], { si
 vim.api.nvim_set_keymap('n', '<C-k>', ':cnext<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', ':cprev<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-q>', ':ToggleQFList<CR>', { silent = true, noremap = true })
+----------------------------------------------------------------------
+--                              Macros                              --
+----------------------------------------------------------------------
+-- Remove empty lines from visual selection
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>mw',
+    [[gv:g/^$/d
+    ]],
+    { silent = true, noremap = true }
+)
 ----------------------------------------------------------------------
 --                           Insert Mode                            --
 ----------------------------------------------------------------------
