@@ -66,12 +66,6 @@ cmd 'syntax enable'
 cmd 'syntax sync fromstart'
 cmd 'filetype plugin on'
 -------------------------------------------------------------------------------
--- Tekton Pipeline
--------------------------------------------------------------------------------
-vim.cmd [[
-    command! -nargs=* TknMinglePipeline lua require'tekton'.start_mingle_pipeline(<f-args>)
-]]
--------------------------------------------------------------------------------
 -- Special Search (:SS ^abc/def\[ghi\]x*y)
 -------------------------------------------------------------------------------
 vim.cmd [[

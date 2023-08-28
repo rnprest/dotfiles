@@ -1,21 +1,34 @@
 return {
     'wellle/targets.vim', -- Better text object movement
     'tpope/vim-repeat', -- Repeat plugins with '.',
-    'tpope/vim-abolish', -- Coercion between snake_case, camelCase, etc. (crs & crc)
+
+    {
+        'johmsalas/text-case.nvim',
+        config = function()
+            require('textcase').setup()
+        end,
+        keys = {
+            {
+                'crc',
+                [[ :lua require('textcase').current_word('to_camel_case')<CR> ]],
+                silent = true,
+                noremap = true,
+                mode = 'n',
+            },
+            {
+                'crs',
+                [[ :lua require('textcase').current_word('to_snake_case')<CR> ]],
+                silent = true,
+                noremap = true,
+                mode = 'n',
+            },
+        },
+    },
 
     { -- aligning text (<count>gl(L)<motion><char>)
         'tommcdo/vim-lion',
         config = function()
             vim.cmd 'let b:lion_squeeze_spaces = 1'
-        end,
-    },
-
-    {
-        'kylechui/nvim-surround',
-        config = function()
-            require('nvim-surround').setup {
-                -- Configuration here, or leave empty to use defaults
-            }
         end,
     },
 
