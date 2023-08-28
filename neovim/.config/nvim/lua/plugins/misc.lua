@@ -165,4 +165,18 @@ return {
             { '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', silent = true, noremap = true, mode = 'n' },
         },
     },
+
+    {
+        'echasnovski/mini.nvim',
+        version = false,
+        config = function()
+            require('mini.surround').setup {
+                mappings = {
+                    replace = 'sc',
+                },
+            }
+            require('mini.operators').setup()
+            -- require('mini.completion').setup()
+        end,
+    },
 }
