@@ -22,6 +22,13 @@ return {
                 noremap = true,
                 mode = 'n',
             },
+            {
+                'crp',
+                [[ :lua require('textcase').current_word('to_pascal_case')<CR> ]],
+                silent = true,
+                noremap = true,
+                mode = 'n',
+            },
         },
     },
 
