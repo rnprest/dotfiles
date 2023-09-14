@@ -15,24 +15,15 @@ return {
         'williamboman/mason.nvim',
         dependencies = { 'williamboman/mason-lspconfig.nvim' },
         config = function()
-            ----------------------------------------------------------------------
-            --                     setup null-ls to format                      --
-            ----------------------------------------------------------------------
-            local null_ls = require 'null-ls'
-            local sources = {
-                -- Tell prettier to just use whatever the buf says it's ft is
-                null_ls.builtins.formatting.black,
-                null_ls.builtins.formatting.prettier.with {
-                    extra_args = function(params)
-                        return { '--parser', params.ft }
-                    end,
+            require('conform').setup {
+                formatters_by_ft = {
+                    lua = { 'stylua' },
+                    python = { 'isort', 'black' }, -- Conform will run multiple formatters sequentially
+                    rust = { 'rustfmt' },
+                    shell = { 'beautysh' },
+                    yaml = { 'yamlfmt' },
                 },
-                null_ls.builtins.formatting.beautysh,
-                null_ls.builtins.formatting.stylua,
-                null_ls.builtins.diagnostics.cfn_lint, -- if file contains "Resources" or "AWSTemplateFormatVersion"
             }
-            null_ls.setup { sources = sources }
-
             ----------------------------------------------------------------------
             --          fidget shows status of LSPs while initializing          --
             --                            (eyecandy)                            --
@@ -53,8 +44,12 @@ return {
             vim.api.nvim_create_augroup('formatOnSave', {})
             vim.api.nvim_create_autocmd('BufWritePre', {
                 group = 'formatOnSave',
-                callback = function()
-                    vim.lsp.buf.format()
+                callback = function(args)
+                    if vim.g.disable_autoformat == true then
+                        return
+                    else
+                        require('conform').format { bufnr = args.buf }
+                    end
                 end,
             })
 
@@ -97,7 +92,11 @@ return {
                 vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>')
                 vim.keymap.set('n', '<leader>dn', '<cmd>Lspsaga diagnostic_jump_next<CR>')
                 vim.keymap.set('n', '<leader>dp', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
-                vim.keymap.set('n', '<leader>ls', ':LspStop<CR>')
+                vim.keymap.set('n', '<leader>ls', function(args)
+                    -- :LspStop<CR>'
+                    vim.cmd 'LspStop'
+                    vim.g.disable_autoformat = true
+                end)
                 vim.keymap.set('n', '<leader>cr', '<cmd>Lspsaga rename<CR>')
                 vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
                 vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
