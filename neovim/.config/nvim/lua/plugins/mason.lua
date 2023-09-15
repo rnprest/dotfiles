@@ -106,7 +106,7 @@ return {
                 vim.keymap.set('n', '<leader>hd', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
                 if client.name ~= 'rust_analyzer' then
-                    -- disable LSP formatting conflicts - only use null-ls for formatting
+                    -- disable LSP formatting conflicts - only use conform.nvim for formatting
                     client.server_capabilities.document_formatting = false
                     client.server_capabilities.document_range_formatting = false
                 end
