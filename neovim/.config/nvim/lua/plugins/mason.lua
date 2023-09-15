@@ -57,7 +57,9 @@ return {
             --        Highlight references to the current word you're on        --
             ----------------------------------------------------------------------
             function BufferLspSupportsHighlighting()
-                local lsps = vim.lsp.get_active_clients()
+                local lsps = vim.lsp.get_active_clients {
+                    bufnr = 0,
+                }
 
                 for _, client in pairs(lsps or {}) do
                     if client.server_capabilities.documentHighlightProvider then
@@ -69,7 +71,7 @@ return {
             end
 
             vim.api.nvim_create_augroup('highlight', {})
-            vim.api.nvim_create_autocmd('CursorHold', {
+            vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold' }, {
                 group = 'highlight',
                 callback = function()
                     if BufferLspSupportsHighlighting() then
@@ -77,7 +79,7 @@ return {
                     end
                 end,
             })
-            vim.api.nvim_create_autocmd('CursorMoved', {
+            vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorMoved' }, {
                 group = 'highlight',
                 callback = function()
                     if BufferLspSupportsHighlighting() then
