@@ -1,0 +1,6 @@
+formatter:
+  type: basic
+  scan_folded_as_literal: true
+  retain_line_breaks: true
+
+# /* vim: set filetype=yaml : */
