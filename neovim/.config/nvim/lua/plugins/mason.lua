@@ -20,7 +20,7 @@ return {
                     lua = { 'stylua' },
                     python = { 'isort', 'black' }, -- Conform will run multiple formatters sequentially
                     rust = { 'rustfmt' },
-                    shell = { 'beautysh' },
+                    ['sh'] = { 'shfmt' },
                     yaml = { 'yamlfmt' },
                 },
             }
@@ -48,7 +48,7 @@ return {
                     if vim.g.disable_autoformat == true then
                         return
                     else
-                        require('conform').format { bufnr = args.buf }
+                        require('conform').format { bufnr = args.buf, lsp_fallback = true }
                     end
                 end,
             })
@@ -94,7 +94,7 @@ return {
                 vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>')
                 vim.keymap.set('n', '<leader>dn', '<cmd>Lspsaga diagnostic_jump_next<CR>')
                 vim.keymap.set('n', '<leader>dp', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
-                vim.keymap.set('n', '<leader>ls', function(args)
+                vim.keymap.set('n', '<leader>ls', function()
                     -- :LspStop<CR>'
                     vim.cmd 'LspStop'
                     vim.g.disable_autoformat = true
