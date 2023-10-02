@@ -17,13 +17,24 @@ return {
         config = function()
             require('conform').setup {
                 formatters_by_ft = {
-                    lua = { 'stylua' },
-                    python = { 'isort', 'black' }, -- Conform will run multiple formatters sequentially
-                    rust = { 'rustfmt' },
                     ['sh'] = { 'shfmt' },
+                    go = { 'gofumpt' },
+                    json = { 'jq' },
+                    lua = { 'stylua' },
+                    markdown = { 'mdformat' },
+                    python = { 'ruff', 'isort', 'black' }, -- Conform will run multiple formatters sequentially
+                    rust = { 'rustfmt' },
+                    sql = { 'sql_formatter' },
+                    terraform = { 'terraform_fmt' },
                     yaml = { 'yamlfmt' },
                 },
             }
+            -- Setup sql_formatter (default doesn't work)
+            require('conform.formatters.sql_formatter').command = 'npx'
+            require('conform.formatters.sql_formatter').args = function()
+                local args = { 'sql-formatter' }
+                return args
+            end
             ----------------------------------------------------------------------
             --          fidget shows status of LSPs while initializing          --
             --                            (eyecandy)                            --
@@ -48,7 +59,7 @@ return {
                     if vim.g.disable_autoformat == true then
                         return
                     else
-                        require('conform').format { bufnr = args.buf, lsp_fallback = true }
+                        require('conform').format { bufnr = args.buf, timeout_ms = 5000 }
                     end
                 end,
             })
