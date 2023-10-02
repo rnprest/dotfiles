@@ -166,7 +166,7 @@ return {
                     'pyright',
                     'rust_analyzer',
                     'sqlls',
-                    -- 'terraformls', -- wait for https://github.com/williamboman/mason.nvim/issues/1001 to be fixed
+                    'terraformls',
                     'tflint',
                     'tsserver',
                     'vimls',
