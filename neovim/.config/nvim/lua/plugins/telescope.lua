@@ -83,6 +83,14 @@ local M = {
             silent = true,
             noremap = true,
         },
+        {
+            '<leader>dqf',
+            function()
+                return require('telescope.builtin').diagnostics()
+            end,
+            silent = true,
+            noremap = true,
+        },
     },
     config = function()
         local actions = require 'telescope.actions'

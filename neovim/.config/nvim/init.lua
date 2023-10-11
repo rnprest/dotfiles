@@ -118,6 +118,8 @@ vim.api.nvim_set_keymap('n', '<leader>yp', [[:let @+ = expand("%:p")<CR>]], { si
 vim.api.nvim_set_keymap('n', '<C-k>', ':cnext<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', ':cprev<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-q>', ':ToggleQFList<CR>', { silent = true, noremap = true })
+-- Run go file
+vim.api.nvim_set_keymap('n', '<leader>rg', ':!go run .<CR>', { silent = true, noremap = true })
 ----------------------------------------------------------------------
 --                              Macros                              --
 ----------------------------------------------------------------------
@@ -162,7 +164,14 @@ vim.keymap.set('n', '<leader>f', function()
     if vim.g.disable_autoformat == true then
         return
     else
-        require('conform').format { bufnr = 0, timeout_ms = 5000 }
+        -- Format cloudformation templates
+        local extension = vim.fn.expand '%:e'
+        if extension == 'template' then
+            local filename = vim.fn.expand '%'
+            vim.cmd('!rain fmt -w' .. ' ' .. filename)
+        else
+            require('conform').format { bufnr = 0, timeout_ms = 5000 }
+        end
     end
 end)
 vim.keymap.set('v', '<leader>f', function()
@@ -378,3 +387,27 @@ vim.api.nvim_create_autocmd('InsertCharPre', {
         vim.api.nvim_input("<Esc>m'" .. row + 1 .. 'gg' .. col + 1 .. "|if<Esc>`'la")
     end,
 })
+
+----------------------------------------------------------------------
+--                    Persist folds within files                    --
+----------------------------------------------------------------------
+vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
+    pattern = { '*.*' },
+    desc = 'save view (folds), when closing file',
+    command = 'mkview',
+})
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+    pattern = { '*.*' },
+    desc = 'load view (folds), when opening file',
+    command = 'silent! loadview',
+})
+
+----------------------------------------------------------------------
+--               Redirect command output into buffer                --
+----------------------------------------------------------------------
+vim.api.nvim_create_user_command('Redir', function(ctx)
+    local lines = vim.split(vim.api.nvim_exec(ctx.args, true), '\n', { plain = true })
+    vim.cmd 'new'
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+    vim.opt_local.modified = false
+end, { nargs = '+', complete = 'command' })
