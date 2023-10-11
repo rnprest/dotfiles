@@ -183,7 +183,7 @@ return {
             }
 
             for _, server in pairs(installed_servers) do
-                if server.name == 'rust_analyzer' then
+                if server == 'rust_analyzer' then
                     default_opts.tools = {
                         inlay_hints = {
                             -- prefix for parameter hints
@@ -194,24 +194,28 @@ return {
                             other_hints_prefix = '» ',
                         },
                     }
-                elseif server.name == 'yamlls' then
+                elseif server == 'yamlls' then
                     default_opts.settings = {
-                        ['yaml'] = {
+                        yaml = {
                             customTags = {
                                 '!And sequence',
                                 '!And',
                                 '!Base64',
+                                '!Cidr sequence',
                                 '!Cidr',
                                 '!Condition',
                                 '!Equals sequence',
                                 '!Equals',
                                 '!FindInMap sequence',
+                                '!FindInMap',
                                 '!GetAZs',
                                 '!GetAtt',
                                 '!If sequence',
                                 '!If',
+                                '!ImportValue sequence',
                                 '!ImportValue',
                                 '!Join sequence',
+                                '!Join',
                                 '!Not sequence',
                                 '!Not',
                                 '!Or sequence',
