@@ -22,7 +22,7 @@ return {
                     json = { 'jq' },
                     lua = { 'stylua' },
                     markdown = { 'mdformat' },
-                    python = { 'ruff', 'isort', 'black' }, -- Conform will run multiple formatters sequentially
+                    python = { 'ruff_fix', 'ruff_format' }, -- Conform will run multiple formatters sequentially
                     rust = { 'rustfmt' },
                     sql = { 'sql_formatter' },
                     terraform = { 'terraform_fmt' },
@@ -163,7 +163,7 @@ return {
                     'html',
                     'jsonls',
                     'lua_ls',
-                    'pyright',
+                    'ruff_lsp',
                     'rust_analyzer',
                     'sqlls',
                     'terraformls',

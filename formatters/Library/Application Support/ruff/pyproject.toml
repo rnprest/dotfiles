@@ -1,0 +1,12 @@
+[tool.ruff.lint]
+select = [
+  # pycodestyle
+  "E",
+  # Pyflakes
+  "F",
+  # isort
+  "I",
+]
+
+# Avoid enforcing line-length violations (`E501`)
+ignore = ["E501"]
