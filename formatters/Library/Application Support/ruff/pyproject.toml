@@ -8,5 +8,16 @@ select = [
   "I",
 ]
 
-# Avoid enforcing line-length violations (`E501`)
-ignore = ["E501"]
+ignore = [
+  # Avoid enforcing line-length violations (`E501`)
+  "E501",
+  # ----------------------------------------------
+  # Recommended to disable if using Ruff to format
+  # indentation-with-invalid-multiple
+  "E111",
+  # indentation-with-invalid-multiple-comment
+  "E114",
+  # over-indented
+  "E117",
+  # ----------------------------------------------
+]
