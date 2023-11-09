@@ -118,6 +118,7 @@ vim.api.nvim_set_keymap('n', '<leader>yp', [[:let @+ = expand("%:p")<CR>]], { si
 vim.api.nvim_set_keymap('n', '<C-k>', ':cnext<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', ':cprev<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-q>', ':ToggleQFList<CR>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<C-l>', ':ToggleLList<CR>', { silent = true, noremap = true })
 -- Run go file
 vim.api.nvim_set_keymap('n', '<leader>rg', ':!go run .<CR>', { silent = true, noremap = true })
 ----------------------------------------------------------------------
@@ -294,6 +295,20 @@ vim.api.nvim_create_user_command('ToggleQFList', function()
     else
         g.config_global_list = 1
         cmd 'copen'
+    end
+end, {})
+
+----------------------------------------------------------------------
+--              Location List (toggle open and close)               --
+----------------------------------------------------------------------
+g.config_location_list = 0
+vim.api.nvim_create_user_command('ToggleLList', function()
+    if g.config_location_list == 1 then
+        g.config_location_list = 0
+        cmd 'lclose'
+    else
+        g.config_location_list = 1
+        cmd 'lopen'
     end
 end, {})
 
