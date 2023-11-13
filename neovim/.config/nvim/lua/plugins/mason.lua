@@ -102,7 +102,7 @@ return {
 
             local on_attach = function(client, bufnr)
                 require('lsp_signature').on_attach()
-                vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>')
+                vim.keymap.set('n', '<leader>ca', '<cmd>CodeActionMenu<CR>')
                 vim.keymap.set('n', '<leader>dn', '<cmd>Lspsaga diagnostic_jump_next<CR>')
                 vim.keymap.set('n', '<leader>dp', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
                 vim.keymap.set('n', '<leader>ls', function()

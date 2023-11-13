@@ -99,12 +99,11 @@ return {
 
     -- just absolutely glorious filesystem editing
     {
-        'elihunter173/dirbuf.nvim',
+        'stevearc/oil.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            require('dirbuf').setup {
-                sort_order = 'directories_first',
-            }
-            vim.cmd 'command E Dirbuf'
+            require('oil').setup()
+            vim.cmd 'command E Oil --float'
         end,
     },
 
