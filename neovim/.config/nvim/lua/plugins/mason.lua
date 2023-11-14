@@ -40,14 +40,10 @@ return {
             --                            (eyecandy)                            --
             ----------------------------------------------------------------------
             require('fidget').setup {
-                text = {
-                    spinner = 'moon',
-                },
-                align = {
-                    bottom = true,
-                },
-                window = {
-                    relative = 'editor',
+                progress = {
+                    display = {
+                        progress_icon = { pattern = 'moon', period = 1 },
+                    },
                 },
             }
 

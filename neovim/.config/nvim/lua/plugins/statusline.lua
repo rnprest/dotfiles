@@ -1,8 +1,6 @@
 return {
     {
         'j-hui/fidget.nvim',
-        tag = 'legacy',
-        event = 'LspAttach',
     },
 
     -- Show breadcrumbs in statusline
