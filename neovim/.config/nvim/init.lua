@@ -260,6 +260,13 @@ autocmd('BufNewFile', {
         cmd '0r ~/.config/nvim/templates/skeleton.md'
     end,
 })
+autocmd('BufNewFile', {
+    group = skeleton_group,
+    pattern = 'justfile',
+    callback = function()
+        cmd '0r ~/.config/nvim/templates/skeleton.justfile'
+    end,
+})
 
 ----------------------------------------------------------------------
 --         Switch between line number styles when switching         --
