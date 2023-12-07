@@ -134,6 +134,13 @@ local M = {
                         },
                     },
                 },
+                advanced_git_search = {
+                    telescope_theme = {
+                        diff_commit_file = {
+                            layout_config = { width = 0.8, height = 0.9 },
+                        },
+                    },
+                },
             },
         }
 
