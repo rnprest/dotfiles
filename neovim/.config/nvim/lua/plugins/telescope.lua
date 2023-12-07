@@ -28,12 +28,6 @@ local M = {
             noremap = true,
         },
         {
-            '<leader><leader>f',
-            ':Telescope file_browser<CR><ESC>',
-            silent = true,
-            noremap = true,
-        },
-        {
             '<leader>pb',
             function()
                 return require('telescope.builtin').buffers()
@@ -45,6 +39,14 @@ local M = {
             '<leader>pf',
             function()
                 return require('telescope.builtin').git_files()
+            end,
+            silent = true,
+            noremap = true,
+        },
+        {
+            '<leader><leader>f',
+            function()
+                return require('telescope.builtin').find_files()
             end,
             silent = true,
             noremap = true,
