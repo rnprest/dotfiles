@@ -114,7 +114,7 @@ return {
         config = function()
             require('silicon').setup {
                 font = 'Iosevka Nerd Font Mono=20',
-                background = '#ffffff',
+                background = '#00000000',
                 line_number = true,
                 shadow = {
                     blur_radius = 7.0,
