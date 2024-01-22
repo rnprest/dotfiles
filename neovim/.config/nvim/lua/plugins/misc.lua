@@ -97,16 +97,6 @@ return {
         end,
     },
 
-    -- just absolutely glorious filesystem editing
-    {
-        'stevearc/oil.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require('oil').setup()
-            vim.cmd 'command E Oil --float'
-        end,
-    },
-
     -- Screenshots
     {
         'krivahtoo/silicon.nvim',
@@ -175,7 +165,12 @@ return {
                 },
             }
             require('mini.operators').setup()
-            -- require('mini.completion').setup()
+            require('mini.files').setup {
+                mappings = {
+                    synchronize = '<CR>',
+                },
+            }
+            vim.cmd 'command E lua MiniFiles.open()'
         end,
     },
 }
