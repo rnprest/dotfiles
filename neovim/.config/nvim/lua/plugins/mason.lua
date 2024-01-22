@@ -27,12 +27,19 @@ return {
                     sql = { 'sql_formatter' },
                     terraform = { 'terraform_fmt' },
                     yaml = { 'yamlfmt' },
+                    cs = { 'csharpier' },
                 },
             }
             -- Setup sql_formatter (default doesn't work)
             require('conform.formatters.sql_formatter').command = 'npx'
             require('conform.formatters.sql_formatter').args = function()
                 local args = { 'sql-formatter' }
+                return args
+            end
+            -- Setup csharpier (default doesn't work)
+            require('conform.formatters.csharpier').command = 'dotnet'
+            require('conform.formatters.csharpier').args = function()
+                local args = { 'csharpier' }
                 return args
             end
             ----------------------------------------------------------------------
