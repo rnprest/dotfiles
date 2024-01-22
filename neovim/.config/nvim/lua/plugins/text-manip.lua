@@ -29,6 +29,13 @@ return {
                 noremap = true,
                 mode = 'n',
             },
+            {
+                'cr-',
+                [[ :lua require('textcase').current_word('to_dash_case')<CR> ]],
+                silent = true,
+                noremap = true,
+                mode = 'n',
+            },
         },
     },
 
