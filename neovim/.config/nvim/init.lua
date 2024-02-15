@@ -430,6 +430,31 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 })
 
 ----------------------------------------------------------------------
+--                            FileTypes                             --
+----------------------------------------------------------------------
+local filetype_group = augroup('FileTypes', {})
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+    group = filetype_group,
+    pattern = '*.template',
+    command = 'set ft=yaml',
+})
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+    group = filetype_group,
+    pattern = '*.har',
+    command = 'set ft=json',
+})
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+    group = filetype_group,
+    pattern = '*.tfvars',
+    command = 'set ft=hcl',
+})
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+    group = filetype_group,
+    pattern = 'justfile',
+    command = 'set ft=make',
+})
+
+----------------------------------------------------------------------
 --               Redirect command output into buffer                --
 ----------------------------------------------------------------------
 vim.api.nvim_create_user_command('Redir', function(ctx)
