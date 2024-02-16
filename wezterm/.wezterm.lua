@@ -22,13 +22,14 @@ return {
     --                              Remaps                              --
     ----------------------------------------------------------------------
     keys = {
-        { key = '+',         mods = 'CMD',   action = act.IncreaseFontSize }, -- see 'adjust_window_size_when_changing_font_size'
-        { key = '-',         mods = 'CMD',   action = act.DecreaseFontSize }, -- see 'adjust_window_size_when_changing_font_size'
-        { key = '0',         mods = 'CMD',   action = act.ResetFontSize }, -- see 'adjust_window_size_when_changing_font_size'
-        { key = 'q',         mods = 'CMD',   action = act.CloseCurrentPane { confirm = false } },
-        { key = 'C',         mods = 'CMD',   action = act.CopyTo 'ClipboardAndPrimarySelection' },
-        { key = 'UpArrow',   mods = 'SHIFT', action = act.ScrollToPrompt( -1) },
+        { key = '+', mods = 'CMD', action = act.IncreaseFontSize }, -- see 'adjust_window_size_when_changing_font_size'
+        { key = '-', mods = 'CMD', action = act.DecreaseFontSize }, -- see 'adjust_window_size_when_changing_font_size'
+        { key = '0', mods = 'CMD', action = act.ResetFontSize }, -- see 'adjust_window_size_when_changing_font_size'
+        { key = 'q', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
+        { key = 'C', mods = 'CMD', action = act.CopyTo 'ClipboardAndPrimarySelection' },
+        { key = 'UpArrow', mods = 'SHIFT', action = act.ScrollToPrompt(-1) },
         { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollToPrompt(1) },
+        { key = 'F14', mods = '', action = wezterm.action.Nop },
     },
     ----------------------------------------------------------------------
     --                            Hyperlinks                            --
