@@ -1,6 +1,7 @@
 return {
     'wellle/targets.vim', -- Better text object movement
     'tpope/vim-repeat', -- Repeat plugins with '.',
+    'tpope/vim-abolish',
 
     {
         'johmsalas/text-case.nvim',
