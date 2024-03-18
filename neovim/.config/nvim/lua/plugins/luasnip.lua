@@ -54,9 +54,8 @@ return {
         ----------------------------------------------------------------------
         --                             Snippets                             --
         ----------------------------------------------------------------------
-
         local s, i, t, c, f, d, sn =
-        ls.s, ls.insert_node, ls.text_node, ls.choice_node, ls.function_node, ls.dynamic_node, ls.sn
+            ls.s, ls.insert_node, ls.text_node, ls.choice_node, ls.function_node, ls.dynamic_node, ls.sn
         local fmt = require('luasnip.extras.fmt').fmt
         local rep = require('luasnip.extras').rep
 
