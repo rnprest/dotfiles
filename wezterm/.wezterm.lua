@@ -11,6 +11,7 @@ return {
     --                       Background Settings                        --
     ----------------------------------------------------------------------
     window_background_opacity = 0.75,
+    macos_window_background_blur = 20,
     hide_tab_bar_if_only_one_tab = true,
     window_padding = {
         -- Feels weird to have no left padding :/
