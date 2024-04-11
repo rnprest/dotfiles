@@ -28,22 +28,56 @@ return {
     },
     {
         'CopilotC-Nvim/CopilotChat.nvim',
-        branch = 'canary',
+        version = 'v2.3.0',
         dependencies = {
+            'nvim-telescope/telescope.nvim', -- for telescope integration
             'github/copilot.vim', -- or github/copilot.vim
             'nvim-lua/plenary.nvim', -- for curl, log wrapper
         },
         opts = {
             prompts = prompts,
             auto_follow_cursor = false, -- Don't follow the cursor after getting response
-            show_help = true, -- Show help in virtual text
+            show_help = false, -- Show help in virtual text
             debug = false, -- Enable debugging
-            close = 'q', -- Close chat
-            reset = '<C-l>', -- Clear the chat buffer
-            complete = '<Tab>', -- Change to insert mode and press tab to get the completion
-            submit_prompt = '<CR>', -- Submit question to Copilot Chat
-            accept_diff = 'ga', -- Accept the diff
-            show_diff = 'gd', -- Show the diff
+            mappings = {
+                -- Use tab for completion
+                complete = {
+                    detail = 'Use @<Tab> or /<Tab> for options.',
+                    insert = '<Tab>',
+                },
+                -- Close the chat
+                close = {
+                    normal = 'q',
+                    insert = '<C-c>',
+                },
+                -- Reset the chat buffer
+                reset = {
+                    normal = '<C-l>',
+                    insert = '<C-l>',
+                },
+                -- Submit the prompt to Copilot
+                submit_prompt = {
+                    normal = '<CR>',
+                    insert = '<C-CR>',
+                },
+                -- Accept the diff
+                accept_diff = {
+                    normal = 'ga',
+                    insert = 'ga',
+                },
+                -- Show the diff
+                show_diff = {
+                    normal = 'gd',
+                },
+                -- Show the prompt
+                show_system_prompt = {
+                    normal = 'gmp',
+                },
+                -- Show the user selection
+                show_user_selection = {
+                    normal = 'gms',
+                },
+            },
         },
         event = 'VeryLazy',
         config = function(_, opts)
@@ -82,7 +116,8 @@ return {
             vim.keymap.set('n', '<leader>ad', '<cmd>CopilotChatDebugInfo<cr>', { silent = true, noremap = true })
             vim.keymap.set('n', '<leader>af', '<cmd>CopilotChatFixDiagnostic<cr>', { silent = true, noremap = true })
             vim.keymap.set('n', '<leader>al', '<cmd>CopilotChatReset<cr>', { silent = true, noremap = true })
-            vim.keymap.set('n', '<leader>ac', '<cmd>CopilotChatInline<cr>', { silent = true, noremap = true })
+            vim.keymap.set('n', '<leader>ai', '<cmd>CopilotChatInline<cr>', { silent = true, noremap = true })
+            vim.keymap.set('n', '<leader>ac', '<cmd>CopilotChatCommitStaged<cr>', { silent = true, noremap = true })
         end,
     },
 }
