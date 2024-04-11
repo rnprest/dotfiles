@@ -16,21 +16,21 @@ return {
         end,
     },
 
-    {
-        'NvChad/nvim-colorizer.lua',
-        event = 'BufReadPre',
-        opts = {
-            filetypes = { '*', '!lazy' },
-            buftype = { '*', '!prompt', '!nofile' },
-            user_default_options = {
-                names = false, -- "Name" codes like Blue
-                RRGGBBAA = true, -- #RRGGBBAA hex codes
-                rgb_fn = true, -- CSS rgb() and rgba() functions
-                hsl_fn = true, -- CSS hsl() and hsla() functions
-                css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-            },
-        },
-    },
+    -- {
+    --     'NvChad/nvim-colorizer.lua',
+    --     event = 'BufReadPre',
+    --     opts = {
+    --         filetypes = { '*', '!lazy' },
+    --         buftype = { '*', '!prompt', '!nofile' },
+    --         user_default_options = {
+    --             names = false, -- "Name" codes like Blue
+    --             RRGGBBAA = true, -- #RRGGBBAA hex codes
+    --             rgb_fn = true, -- CSS rgb() and rgba() functions
+    --             hsl_fn = true, -- CSS hsl() and hsla() functions
+    --             css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+    --         },
+    --     },
+    -- },
 
     -- Only load this plugin in quickfix windows
     {

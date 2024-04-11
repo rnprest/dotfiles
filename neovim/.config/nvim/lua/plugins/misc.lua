@@ -172,6 +172,34 @@ return {
                 },
             }
             vim.cmd 'command E lua MiniFiles.open()'
+
+            ----------------------------------------------------------------------
+            --                        Highlight Patterns                        --
+            ----------------------------------------------------------------------
+            local hipatterns = require 'mini.hipatterns'
+            local words = { red = '#ff0000', green = '#00ff00', blue = '#0000ff' }
+            local word_color_group = function(_, match)
+                local hex = words[match]
+                if hex == nil then
+                    return nil
+                end
+                return hipatterns.compute_hex_color_group(hex, 'bg')
+            end
+            hipatterns.setup {
+                highlighters = {
+                    fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+                    hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
+                    todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
+                    note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+                    hex_color = hipatterns.gen_highlighter.hex_color(),
+                    word_color = { pattern = '%S+', group = word_color_group },
+                    trailing_whitespace = { pattern = '%f[%s]%s*$', group = 'Error' },
+                },
+            }
+            ----------------------------------------------------------------------
+            require('mini.ai').setup {
+                search_method = 'cover_or_nearest',
+            }
         end,
     },
 }
