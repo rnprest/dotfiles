@@ -235,7 +235,7 @@ return {
                                 '!fn',
                             },
                             schemas = {
-                                ['https://raw.githubusercontent.com/awslabs/goformation/v4.18.2/schema/cloudformation.schema.json'] = 'cloudformation/*.template',
+                                ['https://raw.githubusercontent.com/awslabs/goformation/v7.14.4/schema/cloudformation.schema.json'] = 'cloudformation/*.template',
                             },
                             schemaStore = {
                                 url = 'https://www.schemastore.org/api/json/catalog.json',
