@@ -100,7 +100,8 @@ return {
     -- Screenshots
     {
         'krivahtoo/silicon.nvim',
-        build = './install.sh build',
+        -- build = './install.sh build',
+        build = './install.sh',
         config = function()
             require('silicon').setup {
                 font = 'Iosevka Nerd Font Mono=20',
