@@ -12,9 +12,20 @@ local M = {
     },
     keys = {
         {
-            '<leader>dot',
+            '<leader>dotf',
             function()
                 return require('plugins.telescope').search_dotfiles()
+            end,
+            silent = true,
+            noremap = true,
+        },
+        {
+            '<leader>dots',
+            function()
+                require('telescope.builtin').live_grep {
+                    prompt_title = '< search nvim config >',
+                    cwd = vim.fn.stdpath 'config',
+                }
             end,
             silent = true,
             noremap = true,
