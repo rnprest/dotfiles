@@ -58,6 +58,8 @@ opt.formatoptions = opt.formatoptions
     - 'a' -- Auto formatting is BAD.
     - 'o' -- O and o, don't continue comments
     - 't' -- Don't auto format my code. I got linters for that.
+
+vim.opt.undofile = true -- persist undo history between sessions
 -------------------------------------------------------------------------------
 -- Color settings
 -------------------------------------------------------------------------------
