@@ -457,6 +457,21 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     pattern = 'justfile',
     command = 'set ft=make',
 })
+-- Use treesitter syntax highlighting for helm files
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+    group = filetype_group,
+    pattern = '*.yaml',
+    callback = function(ev)
+        local filepath = ev.file
+        if string.match(filepath, '/helm/') then
+            if vim.endswith(filepath, 'values.yaml') or vim.endswith(filepath, 'Chart.yaml') then
+                vim.cmd 'set ft=yaml'
+                return
+            end
+            vim.cmd 'set ft=helm'
+        end
+    end,
+})
 
 ----------------------------------------------------------------------
 --               Redirect command output into buffer                --
