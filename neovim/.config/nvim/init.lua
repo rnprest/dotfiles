@@ -2,8 +2,10 @@
 -----------------------------------------------------------------------------
 require 'config'
 require 'config.globals'
-local macros_path = vim.fn.stdpath 'config' .. '/lua/config/macros.lua'
-if vim.fn.filereadable(macros_path) == 1 then
+
+-- File(s) from gitignore
+local config_path = vim.fn.stdpath 'config' .. '/lua/config/'
+if vim.fn.filereadable(config_path .. 'macros.lua') == 1 then
     require 'config.macros'
 end
 
