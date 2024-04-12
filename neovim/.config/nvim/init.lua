@@ -112,12 +112,6 @@ vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { silent = true, noremap = true }) --
 vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true, noremap = true }) -- Keep screen centered
 vim.api.nvim_set_keymap('n', 'gx', [[mzyiW:!open "<c-r><c-a>"<cr>`z]], { silent = true, noremap = true }) -- Use gx to open URL under cursor (won't work with hashtags)
 vim.api.nvim_set_keymap('n', '<leader>b', '%', { silent = true, noremap = true })
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
-    { silent = true, noremap = true }
-)
 vim.api.nvim_set_keymap('n', '<leader><leader>x', ':w<CR>:source %<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>yf', [[:let @+ = expand("%")<CR>]], { silent = true, noremap = true }) -- yank file name
 vim.api.nvim_set_keymap('n', '<leader>yp', [[:let @+ = expand("%:p")<CR>]], { silent = true, noremap = true }) -- yank file path
@@ -155,12 +149,6 @@ vim.api.nvim_set_keymap('v', '<leader>sr', [[:s//ge<left><left><left>]], { silen
 vim.api.nvim_set_keymap('v', '<leader>R', [[:S//ge<left><left><left>]], { silent = true, noremap = true })
 -- vim.api.nvim_set_keymap('v', 'J', [[:m '>+1<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
 -- vim.api.nvim_set_keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { silent = true, noremap = true }) -- Moving text
-vim.api.nvim_set_keymap(
-    'v',
-    '<leader>of',
-    '<CMD>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
-    { silent = true, noremap = true }
-)
 ----------------------------------------------------------------------
 --                          Terminal Mode                           --
 ----------------------------------------------------------------------
