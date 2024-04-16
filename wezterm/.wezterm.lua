@@ -1,5 +1,14 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
+
+----------------------------------------------------------------------
+--                    Toggle Term inside Neovim                     --
+----------------------------------------------------------------------
+local function is_nvim(pane)
+    local process_name = pane:get_foreground_process_info().name
+    return process_name == 'nvim'
+end
+
 return {
     ----------------------------------------------------------------------
     --                          Font Settings                           --
@@ -26,11 +35,52 @@ return {
         { key = '+', mods = 'CMD', action = act.IncreaseFontSize }, -- see 'adjust_window_size_when_changing_font_size'
         { key = '-', mods = 'CMD', action = act.DecreaseFontSize }, -- see 'adjust_window_size_when_changing_font_size'
         { key = '0', mods = 'CMD', action = act.ResetFontSize }, -- see 'adjust_window_size_when_changing_font_size'
-        { key = 'q', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
+        { key = 'q', mods = 'CMD', action = act.CloseCurrentTab { confirm = false } },
         { key = 'C', mods = 'CMD', action = act.CopyTo 'ClipboardAndPrimarySelection' },
         { key = 'UpArrow', mods = 'SHIFT', action = act.ScrollToPrompt(-1) },
         { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollToPrompt(1) },
         { key = 'F14', mods = '', action = wezterm.action.Nop },
+        -- Toggle a term in a bottom split
+        {
+            key = 'g',
+            mods = 'CTRL',
+            action = wezterm.action_callback(function(window, pane)
+                local tab = window:active_tab()
+                -- Split to terminal pane if in neovim (and create term pane if not already there)
+                if is_nvim(pane) then
+                    -- if only one pane, split it
+                    if (#tab:panes()) == 1 then
+                        pane:split { direction = 'Bottom' }
+                    else
+                        -- if multiple panes, then i've already split before and need to switch back to it
+                        local term_pane = nil
+                        for _, p in ipairs(tab:panes()) do
+                            if not is_nvim(p) then
+                                term_pane = p
+                                break
+                            end
+                        end
+                        if term_pane then
+                            term_pane:activate()
+                            tab:set_zoomed(false)
+                        end
+                    end
+                else
+                    -- if not nvim, then switch to nvim
+                    local vim_pane = nil
+                    for _, p in ipairs(tab:panes()) do
+                        if is_nvim(p) then
+                            vim_pane = p
+                            break
+                        end
+                    end
+                    if vim_pane then
+                        vim_pane:activate()
+                        tab:set_zoomed(true)
+                    end
+                end
+            end),
+        },
     },
     ----------------------------------------------------------------------
     --                            Hyperlinks                            --
