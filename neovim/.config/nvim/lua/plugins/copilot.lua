@@ -118,6 +118,12 @@ return {
             vim.keymap.set('n', '<leader>al', '<cmd>CopilotChatReset<cr>', { silent = true, noremap = true })
             vim.keymap.set('n', '<leader>ai', '<cmd>CopilotChatInline<cr>', { silent = true, noremap = true })
             vim.keymap.set('n', '<leader>ac', '<cmd>CopilotChatCommitStaged<cr>', { silent = true, noremap = true })
+            vim.keymap.set('n', '<leader>ab', function()
+                local input = vim.fn.input 'Quick Chat: '
+                if input ~= '' then
+                    require('CopilotChat').ask(input, { selection = require('CopilotChat.select').buffer })
+                end
+            end, { silent = true, noremap = true })
         end,
     },
 }

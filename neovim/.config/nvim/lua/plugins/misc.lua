@@ -56,22 +56,6 @@ return {
                 silent = true,
                 noremap = true,
             },
-            {
-                '<C-g>',
-                function()
-                    return require('harpoon.term').gotoTerminal(1)
-                end,
-                silent = true,
-                noremap = true,
-            },
-            {
-                '<C-c>',
-                function()
-                    return require('harpoon.term').gotoTerminal(2)
-                end,
-                silent = true,
-                noremap = true,
-            },
         },
     },
 
@@ -191,6 +175,7 @@ return {
                     hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
                     todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
                     note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+                    info = { pattern = '%f[%w]()INFO()%f[%W]', group = 'MiniHipatternsNote' },
                     hex_color = hipatterns.gen_highlighter.hex_color(),
                     word_color = { pattern = '%S+', group = word_color_group },
                     trailing_whitespace = { pattern = '%f[%s]%s*$', group = 'Error' },

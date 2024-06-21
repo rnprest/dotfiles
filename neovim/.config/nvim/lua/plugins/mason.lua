@@ -62,6 +62,10 @@ return {
                     if vim.g.disable_autoformat == true then
                         return
                     else
+                        local extension = vim.fn.expand '%:e'
+                        if extension == 'template' then -- Only manually format cfn templates
+                            return
+                        end
                         require('conform').format { bufnr = args.buf, timeout_ms = 5000 }
                     end
                 end,
@@ -233,6 +237,8 @@ return {
                                 '!Sub sequence',
                                 '!Sub',
                                 '!fn',
+                                '!reference',
+                                '!reference sequence',
                             },
                             schemas = {
                                 ['https://raw.githubusercontent.com/awslabs/goformation/v7.14.4/schema/cloudformation.schema.json'] = 'cloudformation/*.template',
