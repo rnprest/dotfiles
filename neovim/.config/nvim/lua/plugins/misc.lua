@@ -138,6 +138,20 @@ return {
         keys = {
             { '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', silent = true, noremap = true, mode = 'n' },
         },
+        config = function()
+            require('spectre').setup {
+                replace_engine = {
+                    ['sed'] = {
+                        cmd = 'sed',
+                        args = {
+                            '-i',
+                            '',
+                            '-E',
+                        },
+                    },
+                },
+            }
+        end,
     },
 
     {
