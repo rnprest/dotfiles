@@ -83,24 +83,32 @@ return {
 
     -- Screenshots
     {
-        'krivahtoo/silicon.nvim',
-        -- build = './install.sh build',
-        build = './install.sh',
-        config = function()
-            require('silicon').setup {
-                font = 'Iosevka Nerd Font Mono=20',
-                background = '#00000000',
-                line_number = true,
-                shadow = {
-                    blur_radius = 7.0,
-                },
-                pad_horiz = 20,
-                pad_vert = 20,
-                window_controls = false,
-            }
-        end,
+        'michaelrommel/nvim-silicon',
+        lazy = true,
+        cmd = 'Silicon',
+        main = 'nvim-silicon',
+        opts = {
+            line_offset = 1,
+            theme = 'material',
+            font = 'Iosevka Nerd Font Mono=20',
+            background = '#00000000',
+            no_line_number = false,
+            shadow_blur_radius = 7,
+            gobble = true,
+            pad_horiz = 20,
+            pad_vert = 20,
+            no_window_controls = true,
+        },
         keys = {
-            { '<leader>ss', ':Silicon<CR>', silent = true, noremap = true, mode = 'v' },
+            {
+                '<leader>ss',
+                function()
+                    require('nvim-silicon').clip()
+                end,
+                silent = true,
+                noremap = true,
+                mode = 'v',
+            },
         },
     },
 
