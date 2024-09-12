@@ -2,14 +2,6 @@ return {
     'onsails/lspkind-nvim', -- Adds symbols to lsp completion menu
 
     {
-        'weilbith/nvim-code-action-menu',
-        config = function()
-            vim.g.code_action_menu_show_details = false
-        end,
-        cmd = 'CodeActionMenu',
-    },
-
-    {
         'kyazdani42/nvim-web-devicons',
         config = function()
             require('nvim-web-devicons').setup()

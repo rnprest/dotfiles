@@ -49,6 +49,7 @@ local options = {
     textwidth = 80,
     updatetime = 100, -- default updatetime 4000ms is not good for async update (vim/signify)
     wrap = false, -- Disable soft wrapping
+    undofile = true, -- persist undo history between sessions
 }
 for k, v in pairs(options) do
     opt[k] = v
@@ -65,7 +66,6 @@ opt.formatoptions = opt.formatoptions
     - 'o' -- O and o, don't continue comments
     - 't' -- Don't auto format my code. I got linters for that.
 
-vim.opt.undofile = true -- persist undo history between sessions
 -------------------------------------------------------------------------------
 -- Color settings
 -------------------------------------------------------------------------------
