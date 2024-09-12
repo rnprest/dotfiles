@@ -91,7 +91,7 @@ return {
             line_offset = 1,
             theme = 'material',
             font = 'Iosevka Nerd Font Mono=20',
-            background = '#00000000',
+            background = '#FFFFFF00',
             no_line_number = false,
             shadow_blur_radius = 7,
             gobble = true,
