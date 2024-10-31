@@ -21,15 +21,4 @@ return {
             '<leader>cm',
         },
     },
-
-    {
-        'danymat/neogen',
-        config = function()
-            require('neogen').setup {
-                enabled = true,
-            }
-        end,
-        cmd = 'Neogen',
-        dependencies = 'nvim-treesitter/nvim-treesitter',
-    },
 }

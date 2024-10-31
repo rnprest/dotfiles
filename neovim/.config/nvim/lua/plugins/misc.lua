@@ -1,9 +1,5 @@
 return {
-    'gennaro-tedesco/nvim-peekup', -- "" to view and save registers
     -- Documentation
-    'nanotee/luv-vimdocs',
-    'milisims/nvim-luaref',
-
     {
         'ThePrimeagen/harpoon',
         dependencies = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
@@ -57,28 +53,6 @@ return {
                 noremap = true,
             },
         },
-    },
-
-    -- TODO: Try remaping to this instead of lsp codeaction (remap to :lua CodeActionMenu<CR>)
-    { -- Code action menu with diffs
-        'weilbith/nvim-code-action-menu',
-        cmd = 'CodeActionMenu',
-    },
-
-    -- Call :FeMaco with cursor on a markdown code-block to edit with proper lsp
-    {
-        'AckslD/nvim-FeMaco.lua',
-        config = function()
-            require('femaco').setup()
-        end,
-    },
-
-    -- call :S3Edit to edit an s3 file, and re-upload it on bufwrite
-    {
-        'kiran94/s3edit.nvim',
-        config = function()
-            require('s3edit').setup()
-        end,
     },
 
     -- Screenshots

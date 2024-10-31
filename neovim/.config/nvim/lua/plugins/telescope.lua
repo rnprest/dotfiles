@@ -8,7 +8,6 @@ local M = {
         'nvim-telescope/telescope-file-browser.nvim',
         'nvim-telescope/telescope-live-grep-args.nvim',
         'ThePrimeagen/git-worktree.nvim',
-        'LinArcX/telescope-env.nvim',
     },
     keys = {
         {
@@ -159,7 +158,6 @@ local M = {
         require('telescope').load_extension 'file_browser'
         require('telescope').load_extension 'ui-select'
         require('telescope').load_extension 'git_worktree'
-        require('telescope').load_extension 'env'
         require('telescope').load_extension 'refactoring'
 
         -- remap to open the Telescope refactoring menu in visual mode
