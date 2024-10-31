@@ -169,7 +169,7 @@ return {
                     'sqlls',
                     'terraformls',
                     'tflint',
-                    'tsserver',
+                    'ts_ls',
                     'vimls',
                     'yamlls',
                 },
