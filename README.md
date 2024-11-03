@@ -64,25 +64,20 @@ NVIM_APPNAME=rnprest/dotfiles/neovim/.config/nvim nvim
 
 ### comment
 
-- [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
-- [danymat/neogen](https://dotfyle.com/plugins/danymat/neogen)
 - [s1n7ax/nvim-comment-frame](https://dotfyle.com/plugins/s1n7ax/nvim-comment-frame)
+- [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
 
 ### completion
 
-- [simrat39/rust-tools.nvim](https://dotfyle.com/plugins/simrat39/rust-tools.nvim)
 - [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
+- [simrat39/rust-tools.nvim](https://dotfyle.com/plugins/simrat39/rust-tools.nvim)
 
 ### editing-support
 
-- [monaqa/dial.nvim](https://dotfyle.com/plugins/monaqa/dial.nvim)
 - [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
+- [monaqa/dial.nvim](https://dotfyle.com/plugins/monaqa/dial.nvim)
+- [johmsalas/text-case.nvim](https://dotfyle.com/plugins/johmsalas/text-case.nvim)
 - [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
-
-### file-explorer
-
-- [kiran94/s3edit.nvim](https://dotfyle.com/plugins/kiran94/s3edit.nvim)
-- [stevearc/oil.nvim](https://dotfyle.com/plugins/stevearc/oil.nvim)
 
 ### formatting
 
@@ -94,28 +89,25 @@ NVIM_APPNAME=rnprest/dotfiles/neovim/.config/nvim nvim
 
 ### git
 
-- [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
-- [aaronhallaert/advanced-git-search.nvim](https://dotfyle.com/plugins/aaronhallaert/advanced-git-search.nvim)
 - [f-person/git-blame.nvim](https://dotfyle.com/plugins/f-person/git-blame.nvim)
+- [aaronhallaert/advanced-git-search.nvim](https://dotfyle.com/plugins/aaronhallaert/advanced-git-search.nvim)
+- [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
 
 ### icon
 
 - [kyazdani42/nvim-web-devicons](https://dotfyle.com/plugins/kyazdani42/nvim-web-devicons)
+- [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
 
 ### lsp
 
-- [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
-- [weilbith/nvim-code-action-menu](https://dotfyle.com/plugins/weilbith/nvim-code-action-menu)
-- [ray-x/lsp_signature.nvim](https://dotfyle.com/plugins/ray-x/lsp_signature.nvim)
 - [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
+- [nvimdev/lspsaga.nvim](https://dotfyle.com/plugins/nvimdev/lspsaga.nvim)
+- [ray-x/lsp_signature.nvim](https://dotfyle.com/plugins/ray-x/lsp_signature.nvim)
+- [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 
 ### lsp-installer
 
 - [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
-
-### markdown-and-latex
-
-- [AckslD/nvim-FeMaco.lua](https://dotfyle.com/plugins/AckslD/nvim-FeMaco.lua)
 
 ### marks
 
@@ -123,10 +115,8 @@ NVIM_APPNAME=rnprest/dotfiles/neovim/.config/nvim nvim
 
 ### nvim-dev
 
-- [nanotee/luv-vimdocs](https://dotfyle.com/plugins/nanotee/luv-vimdocs)
-- [milisims/nvim-luaref](https://dotfyle.com/plugins/milisims/nvim-luaref)
-- [nvim-lua/popup.nvim](https://dotfyle.com/plugins/nvim-lua/popup.nvim)
 - [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
+- [nvim-lua/popup.nvim](https://dotfyle.com/plugins/nvim-lua/popup.nvim)
 
 ### plugin-manager
 
@@ -136,13 +126,14 @@ NVIM_APPNAME=rnprest/dotfiles/neovim/.config/nvim nvim
 
 - [kevinhwang91/nvim-bqf](https://dotfyle.com/plugins/kevinhwang91/nvim-bqf)
 
-### register
+### search
 
-- [gennaro-tedesco/nvim-peekup](https://dotfyle.com/plugins/gennaro-tedesco/nvim-peekup)
+- [nvim-pack/nvim-spectre](https://dotfyle.com/plugins/nvim-pack/nvim-spectre)
 
 ### snippet
 
 - [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
+- [rafamadriz/friendly-snippets](https://dotfyle.com/plugins/rafamadriz/friendly-snippets)
 
 ### statusline
 
@@ -155,6 +146,7 @@ NVIM_APPNAME=rnprest/dotfiles/neovim/.config/nvim nvim
 ### utility
 
 - [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
+- [michaelrommel/nvim-silicon](https://dotfyle.com/plugins/michaelrommel/nvim-silicon)
 - [echasnovski/mini.nvim](https://dotfyle.com/plugins/echasnovski/mini.nvim)
 
 ## Language Servers
@@ -170,7 +162,6 @@ NVIM_APPNAME=rnprest/dotfiles/neovim/.config/nvim nvim
 - sqlls
 - terraformls
 - tflint
-- tsserver
 - vimls
 - yamlls
 
