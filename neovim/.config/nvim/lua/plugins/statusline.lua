@@ -45,6 +45,10 @@ return {
                     local gitdir = vim.fn.finddir('.git', filepath .. ';')
                     return gitdir and #gitdir > 0 and #gitdir < #filepath
                 end,
+                any_linters_running = function()
+                    local linters = require('lint').get_running()
+                    return #linters > 0
+                end,
             }
 
             -- Config
@@ -194,6 +198,16 @@ return {
                 end,
                 icon = ' LSP:',
                 color = { fg = '#ffffff', gui = 'bold' },
+            }
+            ins_left {
+                -- Linter name
+                function()
+                    local linters = require('lint').get_running()
+                    return table.concat(linters, ', ')
+                end,
+                icon = '| Linter:',
+                color = { fg = '#ffffff', gui = 'bold' },
+                cond = conditions.any_linters_running,
             }
 
             -- Add components to right sections
