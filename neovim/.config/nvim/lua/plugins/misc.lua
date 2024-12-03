@@ -96,6 +96,25 @@ return {
     --         '<leader>mr',
     --     },
     -- },
+    {
+        'folke/snacks.nvim',
+        priority = 1000,
+        lazy = false,
+        ---@type snacks.Config
+        opts = {
+            terminal = { enabled = true },
+        },
+        keys = {
+            {
+                '<c-g>',
+                function()
+                    Snacks.terminal()
+                end,
+                desc = 'Toggle Terminal',
+                mode = { 'n', 'i', 't' },
+            },
+        },
+    },
 
     {
         'rnprest/snip-lookup.nvim',
