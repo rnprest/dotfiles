@@ -86,16 +86,6 @@ return {
         },
     },
 
-    -- {
-    --     'rnprest/merge-request.nvim',
-    --     dependencies = 'nvim-lua/plenary.nvim',
-    --     config = function()
-    --         require('merge-request').setup()
-    --     end,
-    --     keys = {
-    --         '<leader>mr',
-    --     },
-    -- },
     {
         'folke/snacks.nvim',
         priority = 1000,
