@@ -24,12 +24,5 @@ echo "Stowing neovim, ripgrep, wezterm, and personal"
 # Remove gitconfig because it will be overwritten by personal
 rm ~/.gitconfig
 pushd ~/dotfiles/
-stow neovim ripgrep wezterm personal
+stow neovim ripgrep wezterm
 popd
-
-###############################################################################
-# Neovim
-###############################################################################
-echo "Installing neovim and setting it up"
-pip3 install neovim
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
