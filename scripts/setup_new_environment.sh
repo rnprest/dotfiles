@@ -20,9 +20,7 @@ popd
 ###############################################################################
 # Stow
 ###############################################################################
-echo "Stowing neovim, ripgrep, wezterm, and personal"
-# Remove gitconfig because it will be overwritten by personal
-rm ~/.gitconfig
+echo "Stowing neovim, ripgrep, tmux, and wezterm"
 pushd ~/dotfiles/
-stow neovim ripgrep wezterm
+stow neovim ripgrep tmux wezterm
 popd
