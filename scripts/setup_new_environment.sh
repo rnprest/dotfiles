@@ -20,7 +20,7 @@ popd
 ###############################################################################
 # Stow
 ###############################################################################
-echo "Stowing neovim, ripgrep, tmux, and wezterm"
+echo "Stowing neovim, ripgrep, tmux, formatters, and wezterm"
 pushd ~/dotfiles/
-stow neovim ripgrep tmux wezterm
+stow neovim ripgrep tmux formatters wezterm
 popd
