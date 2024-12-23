@@ -158,15 +158,6 @@ local M = {
         require('telescope').load_extension 'file_browser'
         require('telescope').load_extension 'ui-select'
         require('telescope').load_extension 'git_worktree'
-        require('telescope').load_extension 'refactoring'
-
-        -- remap to open the Telescope refactoring menu in visual mode
-        vim.api.nvim_set_keymap(
-            'v',
-            '<leader><leader>r',
-            "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-            { noremap = true }
-        )
     end,
 }
 

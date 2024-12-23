@@ -77,6 +77,15 @@ return {
                 silent = true,
                 noremap = true,
             },
+            {
+                '<leader><leader>r',
+                function()
+                    return require('refactoring').select_refactor()
+                end,
+                silent = true,
+                noremap = true,
+                mode = 'x',
+            },
         },
     },
 
