@@ -164,7 +164,6 @@ return {
                     'html',
                     'jsonls',
                     'lua_ls',
-                    'ruff_lsp',
                     'rust_analyzer',
                     'sqlls',
                     'terraformls',
