@@ -79,4 +79,45 @@ return {
             'tpope/vim-fugitive',
         },
     },
+    {
+        'linrongbin16/gitlinker.nvim',
+        cmd = 'GitLink',
+        opts = {},
+        config = function()
+            require('gitlinker').setup {
+                router = {
+                    browse = {
+                        [vim.fn.getenv 'GITLINKER_HOST'] = vim.fn.getenv 'GITLINKER_URL'
+                            .. '{_A.ORG}/'
+                            .. '{_A.REPO}/blob/'
+                            .. '{_A.CURRENT_BRANCH}/'
+                            .. '{_A.FILE}'
+                            .. '#L{_A.LSTART}'
+                            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+                    },
+                    file_only = {
+                        [vim.fn.getenv 'GITLINKER_HOST'] = vim.fn.getenv 'GITLINKER_URL'
+                            .. '{_A.ORG}/'
+                            .. '{_A.REPO}/blob/'
+                            .. '{_A.CURRENT_BRANCH}/'
+                            .. '{_A.FILE}',
+                    },
+                },
+            }
+        end,
+        keys = {
+            {
+                '<leader>of',
+                '<cmd>GitLink!<cr>',
+                mode = { 'v' },
+                desc = 'Open file in browser',
+            },
+            {
+                '<leader>of',
+                '<cmd>GitLink! file_only<cr>',
+                mode = { 'n' },
+                desc = 'Open file in browser',
+            },
+        },
+    },
 }
