@@ -84,10 +84,12 @@ return {
         cmd = 'GitLink',
         opts = {},
         config = function()
+            local GITLINKER_HOST = vim.fn.getenv 'GITLINKER_HOST'
+            local GITLINKER_URL = vim.fn.getenv 'GITLINKER_URL'
             require('gitlinker').setup {
                 router = {
                     browse = {
-                        [vim.fn.getenv 'GITLINKER_HOST'] = vim.fn.getenv 'GITLINKER_URL'
+                        [GITLINKER_HOST] = GITLINKER_URL
                             .. '{_A.ORG}/'
                             .. '{_A.REPO}/blob/'
                             .. '{_A.CURRENT_BRANCH}/'
@@ -96,7 +98,7 @@ return {
                             .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
                     },
                     file_only = {
-                        [vim.fn.getenv 'GITLINKER_HOST'] = vim.fn.getenv 'GITLINKER_URL'
+                        [GITLINKER_HOST] = GITLINKER_URL
                             .. '{_A.ORG}/'
                             .. '{_A.REPO}/blob/'
                             .. '{_A.CURRENT_BRANCH}/'
