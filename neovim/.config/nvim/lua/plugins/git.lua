@@ -97,6 +97,15 @@ return {
                             .. '#L{_A.LSTART}'
                             .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
                     },
+                    perma_link = {
+                        [GITLINKER_HOST] = GITLINKER_URL
+                            .. '{_A.ORG}/'
+                            .. '{_A.REPO}/blob/'
+                            .. '{_A.REV}/'
+                            .. '{_A.FILE}'
+                            .. '#L{_A.LSTART}'
+                            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+                    },
                     file_only = {
                         [GITLINKER_HOST] = GITLINKER_URL
                             .. '{_A.ORG}/'
@@ -111,6 +120,12 @@ return {
             {
                 '<leader>of',
                 '<cmd>GitLink!<cr>',
+                mode = { 'v' },
+                desc = 'Open file in browser',
+            },
+            {
+                '<leader>opf',
+                '<cmd>GitLink! perma_link<cr>',
                 mode = { 'v' },
                 desc = 'Open file in browser',
             },
