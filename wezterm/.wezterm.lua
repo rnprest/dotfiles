@@ -1,14 +1,6 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
-----------------------------------------------------------------------
---                    Toggle Term inside Neovim                     --
-----------------------------------------------------------------------
-local function is_nvim(pane)
-    local process_name = pane:get_foreground_process_info().name
-    return process_name == 'nvim'
-end
-
 return {
     ----------------------------------------------------------------------
     --                          Font Settings                           --

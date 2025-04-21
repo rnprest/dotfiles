@@ -21,7 +21,7 @@ return {
                     go = { 'gofumpt' },
                     json = { 'jq' },
                     lua = { 'stylua' },
-                    markdown = { 'mdformat' },
+                    markdown = { 'prettier' },
                     python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' }, -- Conform will run multiple formatters sequentially
                     rust = { 'rustfmt' },
                     sql = { 'sleek' },

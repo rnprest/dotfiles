@@ -47,7 +47,7 @@ return {
             if ls.choice_active() then
                 ls.change_choice(-1)
             end
-        end)
+        end, { silent = true })
 
         vim.keymap.set('i', '<c-u>', require 'luasnip.extras.select_choice')
 
@@ -106,7 +106,7 @@ return {
                 -- Debug format
                 s('debug', { t '{:#?}' }),
                 -- print the contents of a variable
-                s('print', fmt([[ println!("{} = {{:#?}}", &{}); ]], { i(1, 'variable_name'), rep(1) })),
+                s('print', fmt([[ println!("{} = {{{}:#?}}"); ]], { i(1, 'variable_name'), rep(1) })),
                 -- implement display for a type
                 s(
                     'impldisplay',
@@ -170,6 +170,22 @@ return {
                         pub use {}::*;
                         ]],
                         { i(1, '<name of the rust file in this module>'), rep(1) }
+                    )
+                ),
+                -- initialize tracing subscriber
+                s(
+                    'tracing_fmt',
+                    fmt(
+                        [[
+                        tracing_subscriber::fmt()
+                            .with_max_level(tracing::Level::{})
+                            .with_target(false)
+                            .without_time()
+                            .init();
+                        ]],
+                        {
+                            c(1, { t 'INFO', t 'WARN', t 'ERROR' }),
+                        }
                     )
                 ),
             },

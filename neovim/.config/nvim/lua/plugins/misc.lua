@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 return {
     -- Documentation
     {
@@ -55,37 +56,6 @@ return {
         },
     },
 
-    -- Screenshots
-    {
-        'michaelrommel/nvim-silicon',
-        lazy = true,
-        cmd = 'Silicon',
-        main = 'nvim-silicon',
-        opts = {
-            line_offset = 1,
-            theme = 'material',
-            font = 'Iosevka Nerd Font Mono=20',
-            background = '#FFFFFF00',
-            no_line_number = false,
-            shadow_blur_radius = 7,
-            gobble = true,
-            pad_horiz = 20,
-            pad_vert = 20,
-            no_window_controls = true,
-        },
-        keys = {
-            {
-                '<leader>ss',
-                function()
-                    require('nvim-silicon').clip()
-                end,
-                silent = true,
-                noremap = true,
-                mode = 'v',
-            },
-        },
-    },
-
     {
         'folke/snacks.nvim',
         priority = 1000,
@@ -93,6 +63,7 @@ return {
         ---@type snacks.Config
         opts = {
             terminal = { enabled = true },
+            image = { enabled = true },
         },
         keys = {
             {

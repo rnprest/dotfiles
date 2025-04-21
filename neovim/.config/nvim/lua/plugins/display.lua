@@ -64,10 +64,11 @@ return {
             vim.cmd 'highlight LspReferenceText gui=NONE guibg=#464B5D'
         end,
     },
-    -- adds highlighting to markdown files
     {
-        'lukas-reineke/headlines.nvim',
-        dependencies = 'nvim-treesitter/nvim-treesitter',
-        config = true,
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
     },
 }
