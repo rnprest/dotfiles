@@ -69,7 +69,7 @@ return {
             --        Highlight references to the current word you're on        --
             ----------------------------------------------------------------------
             function BufferLspSupportsHighlighting()
-                local lsps = vim.lsp.get_active_clients {
+                local lsps = vim.lsp.get_clients {
                     bufnr = 0,
                 }
 

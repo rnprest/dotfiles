@@ -50,6 +50,7 @@ local options = {
     updatetime = 100, -- default updatetime 4000ms is not good for async update (vim/signify)
     wrap = false, -- Disable soft wrapping
     undofile = true, -- persist undo history between sessions
+    winborder = 'rounded',
 }
 for k, v in pairs(options) do
     opt[k] = v
@@ -121,6 +122,17 @@ vim.api.nvim_set_keymap('n', '<C-k>', ':cnext<CR>zz', { silent = true, noremap =
 vim.api.nvim_set_keymap('n', '<C-j>', ':cprev<CR>zz', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-q>', ':ToggleQFList<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', ':ToggleLList<CR>', { silent = true, noremap = true })
+-- When lines are on, text is off. Text on, lines off. Minimize clutter.
+vim.diagnostic.config {
+    virtual_lines = false,
+    virtual_text = true,
+}
+vim.keymap.set('n', '<leader>lt', function()
+    vim.diagnostic.config {
+        virtual_lines = not vim.diagnostic.config().virtual_lines,
+        virtual_text = not vim.diagnostic.config().virtual_text,
+    }
+end)
 -- Run go file
 vim.api.nvim_set_keymap('n', '<leader>rg', ':!go run .<CR>', { silent = true, noremap = true })
 ----------------------------------------------------------------------
