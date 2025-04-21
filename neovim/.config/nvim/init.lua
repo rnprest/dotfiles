@@ -320,6 +320,9 @@ vim.api.nvim_create_user_command('ToggleQFList', function()
     end
 end, {})
 
+-- Populate quick fix list with lsp errors
+vim.api.nvim_set_keymap('n', '<leader>eqf', [[:lua vim.diagnostic.setqflist()<CR>]], { silent = true, noremap = true })
+
 ----------------------------------------------------------------------
 --              Location List (toggle open and close)               --
 ----------------------------------------------------------------------
@@ -416,6 +419,7 @@ vim.api.nvim_create_autocmd('InsertCharPre', {
         end
         local row, col, _, _ = vim.treesitter.get_node_range(node)
         -- Return early if string is already a format string
+        ---@diagnostic disable-next-line: undefined-field
         local first_char = vim.api.nvim_buf_get_text(opts.buf, row, col, row, col + 1, {})[1]
         if first_char == 'f' then
             return
