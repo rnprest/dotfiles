@@ -390,7 +390,7 @@ autocmd('FileType', {
 })
 autocmd('FileType', {
     group = spellcheck_group,
-    pattern = 'gitcommit',
+    pattern = { 'gitcommit', 'jjdescription' },
     callback = function()
         opt.spell = true
         vim.bo.textwidth = 72
@@ -400,7 +400,7 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = '*',
     callback = function()
         local ft = vim.bo.filetype
-        if ft == 'markdown' or ft == 'gitcommit' then
+        if ft == 'markdown' or ft == 'gitcommit' or ft == 'jjdescription' then
             return
         end
         opt.spell = false
