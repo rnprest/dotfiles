@@ -1,0 +1,9 @@
+font-family = "Iosevka Nerd Font Mono"
+font-size = 16
+# font-thicken = true
+background-opacity = 0.75
+background-blur = true
+mouse-hide-while-typing = true
+
+# Keybindings
+keybind = super+q=close_window
