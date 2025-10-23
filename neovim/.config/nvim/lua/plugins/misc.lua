@@ -29,6 +29,12 @@ return {
             end)
         end,
     },
+
+    {
+        'danymat/neogen',
+        config = function()
+            require('neogen').setup { snippet_engine = 'luasnip' }
+        end,
     },
 
     {
