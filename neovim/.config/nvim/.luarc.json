@@ -1,8 +1,9 @@
 {
   "diagnostics.globals": [
-    "vim"
+    "vim",
+    "lspdiagnostics_group"
   ],
-    "diagnostics.disable": [
-        "undefined-doc-name"
-    ]
+  "diagnostics.disable": [
+    "undefined-doc-name"
+  ]
 }
