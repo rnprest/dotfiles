@@ -28,6 +28,7 @@ return {
                     terraform = { 'terraform_fmt' },
                     yaml = { 'yamlfmt' },
                     cs = { 'csharpier' },
+                    javascript = { 'prettier' },
                 },
             }
             -- Setup csharpier (default doesn't work)
@@ -105,11 +106,6 @@ return {
                 vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
                 vim.keymap.set('n', '<leader>dn', '<cmd>Lspsaga diagnostic_jump_next<CR>')
                 vim.keymap.set('n', '<leader>dp', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
-                vim.keymap.set('n', '<leader>ls', function()
-                    -- :LspStop<CR>'
-                    vim.cmd 'LspStop'
-                    vim.g.disable_autoformat = true
-                end)
                 vim.keymap.set('n', '<leader>cr', '<cmd>Lspsaga rename<CR>')
                 vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
                 vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
@@ -163,6 +159,7 @@ return {
                     'html',
                     'jsonls',
                     'lua_ls',
+                    'ruff',
                     'rust_analyzer',
                     'sqlls',
                     'terraformls',
