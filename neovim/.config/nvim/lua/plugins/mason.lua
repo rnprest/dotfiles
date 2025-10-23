@@ -53,15 +53,14 @@ return {
             vim.api.nvim_create_autocmd('BufWritePre', {
                 group = 'formatOnSave',
                 callback = function(args)
-                    if vim.g.disable_autoformat == true then
+                    if vim.g.disable_autoformat or vim.b[args.buf].disable_autoformat then
                         return
-                    else
-                        local extension = vim.fn.expand '%:e'
-                        if extension == 'template' then -- Only manually format cfn templates
-                            return
-                        end
-                        require('conform').format { bufnr = args.buf, timeout_ms = 5000 }
                     end
+                    local extension = vim.fn.expand '%:e'
+                    if extension == 'template' then -- Only manually format cfn templates
+                        return
+                    end
+                    require('conform').format { bufnr = args.buf, timeout_ms = 5000 }
                 end,
             })
 

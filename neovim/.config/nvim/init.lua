@@ -172,26 +172,41 @@ vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', { silent = true, noremap = tru
 --                          Multiple Modes                          --
 ----------------------------------------------------------------------
 vim.keymap.set('n', '<leader>f', function()
-    if vim.g.disable_autoformat == true then
-        return
-    else
-        -- Format cloudformation templates
-        local extension = vim.fn.expand '%:e'
-        if extension == 'template' then
-            local filename = vim.fn.expand '%'
-            vim.cmd('!rain fmt -w' .. ' ' .. filename)
-        else
-            require('conform').format { bufnr = 0, timeout_ms = 5000 }
-        end
-    end
+    vim.cmd 'FormatBuf'
 end)
-vim.keymap.set('v', '<leader>f', function()
-    if vim.g.disable_autoformat == true then
+vim.api.nvim_create_user_command('FormatBuf', function()
+    -- Disable with a global or buffer-local variable
+    if vim.g.disable_autoformat or vim.b[0].disable_autoformat then
         return
+    end
+    -- Format cloudformation templates
+    local extension = vim.fn.expand '%:e'
+    if extension == 'template' then
+        local filename = vim.fn.expand '%'
+        vim.cmd('!rain fmt -w' .. ' ' .. filename)
     else
         require('conform').format { bufnr = 0, timeout_ms = 5000 }
     end
-end)
+end, {
+    desc = 'Re-enable autoformat-on-save',
+})
+vim.api.nvim_create_user_command('FormatDisable', function(args)
+    if args.bang then
+        -- FormatDisable! will disable formatting just for this buffer
+        vim.b.disable_autoformat = true
+    else
+        vim.g.disable_autoformat = true
+    end
+end, {
+    desc = 'Disable autoformat-on-save',
+    bang = true,
+})
+vim.api.nvim_create_user_command('FormatEnable', function()
+    vim.b.disable_autoformat = false
+    vim.g.disable_autoformat = false
+end, {
+    desc = 'Re-enable autoformat-on-save',
+})
 -- Terraform format
 vim.keymap.set('n', '<leader>tf', function()
     local filename = vim.fn.expand '%'
