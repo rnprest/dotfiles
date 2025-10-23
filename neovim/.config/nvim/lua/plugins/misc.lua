@@ -1,59 +1,34 @@
 ---@diagnostic disable: undefined-global
 return {
-    -- Documentation
     {
         'ThePrimeagen/harpoon',
-        dependencies = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
-        keys = {
-            {
-                '<leader>hh',
-                function()
-                    return require('harpoon.mark').add_file()
-                end,
-                silent = true,
-                noremap = true,
-            },
-            {
-                '<leader>hm',
-                function()
-                    return require('harpoon.ui').toggle_quick_menu()
-                end,
-                silent = true,
-                noremap = true,
-            },
-            {
-                '<C-h>',
-                function()
-                    return require('harpoon.ui').nav_file(1)
-                end,
-                silent = true,
-                noremap = true,
-            },
-            {
-                '<C-t>',
-                function()
-                    return require('harpoon.ui').nav_file(2)
-                end,
-                silent = true,
-                noremap = true,
-            },
-            {
-                '<C-n>',
-                function()
-                    return require('harpoon.ui').nav_file(3)
-                end,
-                silent = true,
-                noremap = true,
-            },
-            {
-                '<C-s>',
-                function()
-                    return require('harpoon.ui').nav_file(4)
-                end,
-                silent = true,
-                noremap = true,
-            },
-        },
+        branch = 'harpoon2',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            local harpoon = require 'harpoon'
+            harpoon:setup()
+
+            vim.keymap.set('n', '<leader>hh', function()
+                harpoon:list():add()
+            end)
+            vim.keymap.set('n', '<leader>hm', function()
+                harpoon.ui:toggle_quick_menu(harpoon:list())
+            end)
+
+            vim.keymap.set('n', '<C-h>', function()
+                harpoon:list():select(1)
+            end)
+            vim.keymap.set('n', '<C-t>', function()
+                harpoon:list():select(2)
+            end)
+            vim.keymap.set('n', '<C-n>', function()
+                harpoon:list():select(3)
+            end)
+            vim.keymap.set('n', '<C-s>', function()
+                harpoon:list():select(4)
+            end)
+        end,
+    },
     },
 
     {
