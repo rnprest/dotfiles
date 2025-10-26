@@ -2,6 +2,7 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 
 return {
+    default_prog = { '/opt/homebrew/bin/fish' },
     ----------------------------------------------------------------------
     --                          Font Settings                           --
     ----------------------------------------------------------------------
