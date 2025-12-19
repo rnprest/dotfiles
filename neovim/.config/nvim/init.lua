@@ -184,6 +184,9 @@ vim.api.nvim_create_user_command('FormatBuf', function()
     if extension == 'template' then
         local filename = vim.fn.expand '%'
         vim.cmd('!rain fmt -w' .. ' ' .. filename)
+    elseif extension == 'toml' then
+        local filename = vim.fn.expand '%'
+        vim.cmd('!RUST_LOG= taplo fmt ' .. filename)
     else
         require('conform').format { bufnr = 0, timeout_ms = 5000 }
     end
