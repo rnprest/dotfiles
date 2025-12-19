@@ -32,9 +32,9 @@ return {
                 },
             }
             -- Setup csharpier (default doesn't work)
-            require('conform.formatters.csharpier').command = 'dotnet'
+            require('conform.formatters.csharpier').command = 'csharpier'
             require('conform.formatters.csharpier').args = function()
-                local args = { 'csharpier' }
+                local args = { 'format' }
                 return args
             end
             ----------------------------------------------------------------------
