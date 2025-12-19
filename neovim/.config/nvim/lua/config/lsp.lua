@@ -79,6 +79,13 @@ function M.setup()
         root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
     }
 
+    -- Python type-checker (ty)
+    vim.lsp.config.ty = {
+        cmd = { 'ty', 'server' },
+        filetypes = { 'python' },
+        root_markers = { 'ty.toml', 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git' },
+    }
+
     -- SQL LSP
     vim.lsp.config.sqlls = {
         cmd = { 'sql-language-server', 'up', '--method', 'stdio' },
@@ -175,6 +182,7 @@ function M.setup()
         'jsonls',
         'lua_ls',
         'ruff',
+        'ty',
         -- 'rust_analyzer', -- already configured via 'mrcjkb/rustaceanvim'
         'sqlls',
         'terraformls',
