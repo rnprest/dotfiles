@@ -2,6 +2,7 @@
 -----------------------------------------------------------------------------
 require 'config'
 require 'config.globals'
+require('config.lsp').init()
 
 -- File(s) from gitignore
 local config_path = vim.fn.stdpath 'config' .. '/lua/config/'

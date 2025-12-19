@@ -44,7 +44,6 @@ return {
                 },
                 plugins = { -- Uncomment the plugins that you use to highlight them
                     'gitsigns',
-                    'lspsaga',
                     'nvim-cmp',
                     'nvim-web-devicons',
                     'telescope',
