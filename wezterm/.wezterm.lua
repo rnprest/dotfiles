@@ -2,6 +2,7 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 
 return {
+    default_prog = { '/opt/homebrew/bin/fish' },
     ----------------------------------------------------------------------
     --                          Font Settings                           --
     ----------------------------------------------------------------------
@@ -15,7 +16,7 @@ return {
     macos_window_background_blur = 20,
     hide_tab_bar_if_only_one_tab = true,
     window_padding = {
-        -- Feels weird to have no left padding :/
+        left = 0,
         right = 0,
         top = 0,
         bottom = 0,
