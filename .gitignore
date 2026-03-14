@@ -1,4 +1,0 @@
-.DS_Store
-.luarc.json # lua lsp generates this (sumneko)
-packer_compiled.lua
-macros.lua
